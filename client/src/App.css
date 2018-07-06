@@ -1,7 +1,7 @@
 .content-wrapper {
   position: absolute;
   margin-left: 250px;
-  /* padding: calc(16px + 0.75rem) 16px; */
+  padding: calc(16px + 0.75rem) 16px;
   height: calc(100% - 112px);
   width: calc(100% - 250px);
   overflow: auto;

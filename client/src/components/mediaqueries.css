@@ -1,0 +1,17 @@
+/* Small and down */
+@media only screen and (max-width: 600px) {}
+
+/* Medium and down */
+@media only screen and (max-width: 992px) {}
+
+/* Medium and up */
+@media only screen and (min-width: 601px) {}
+
+/* Medium Only */
+@media only screen and (min-width: 600px) and (max-width: 992px) {}
+
+/* Large and up */
+@media only screen and (min-width: 993px) {}
+
+/* XLarge and up */
+@media only screen and (min-width: 1201px) {}

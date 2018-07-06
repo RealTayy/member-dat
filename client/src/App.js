@@ -1,23 +1,73 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import XPage from "./pages/XPage";
-import XPageTwo from "./pages/XPageTwo"
-import XCollection from "./pages/XCollection"
 import XNoMatch from "./pages/XNoMatch";
-import { XNav } from "./components/XNav";
+import { Header } from "./components/Header/Header";
+import { Sidenav } from "./components/Sidenav/Sidenav";
+import { Dashboard } from "./pages/Dashboard";
+import { Search } from "./pages/Search";
+import { Pointofsale } from "./pages/Pointofsale";
+import { Addnew } from "./pages/Addnew";
+import './App.css';
 
-const App = () => (
-  <Router>
-    <div>
-      <XNav />
-      <Switch>
-        <Route exact path="/" component={XPage} />
-        <Route exact path="/XPageTwo" component={XPageTwo} />
-        <Route exact path="/XCollection/:id" component={XCollection} />
-        <Route component={XNoMatch} />
-      </Switch>
-    </div>
-  </Router>
-);
+
+export class App extends Component {
+  state = {
+    activeID: '',
+    activeTab: 'activeTab',
+    tabs: [],
+  }
+
+  changeActive
+
+  setActiveTab = (tabID) => {
+    console.log('Changing activeTab: ' + tabID);
+    this.setState({ activeTab: tabID });
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Header />
+          <Sidenav
+            activeTab={this.state.activeTab}
+            setActiveTab={this.setActiveTab}
+          />
+          {/* Router starts here */}
+          <div className="content-wrapper">
+            <Switch>
+              {/* Dashboard/Home Route */}
+              <Route exact path="/" render={() => {
+                return (
+                  <Dashboard />
+                )
+              }} />
+              {/* Search Route */}
+              <Route exact path="/search" render={() => {
+                return (
+                  <Search />
+                )
+              }} />
+              {/* Pointofsale Route */}
+              <Route exact path="/pointofsale" render={() => {
+                return (
+                  <Pointofsale />
+                )
+              }} />
+              <Route exact path="/addnew" render={() => {
+                return (
+                  <Addnew />
+                )
+              }} />
+              {/* 404 Route */}
+              <Route component={XNoMatch} />
+            </Switch>
+          </div>
+          {/* Router ends here */}
+        </div>
+      </Router>
+    )
+  }
+}
 
 export default App;

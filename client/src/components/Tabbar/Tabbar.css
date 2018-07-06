@@ -1,0 +1,56 @@
+.tabbar {
+  margin-left: 250px;
+}
+
+.tabbar>.col {
+  padding: 0;
+}
+
+.tabbar.row {
+  margin-bottom: 0;
+}
+
+.tab>a {
+  border-top-left-radius: 24px;
+  background-color: #1976d2;
+}
+
+.tab>a>i.material-icons {
+  padding: 0;
+  margin: 0 12px;
+  position: relative;
+  top: 6px;
+}
+
+.tab>a>i.material-icons.close-tab:hover {
+  color: #E83B3B !important;
+}
+
+.tabs>.tab>a {
+  padding: 0;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

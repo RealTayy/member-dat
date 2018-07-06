@@ -38,7 +38,7 @@ $primary-color: color("blue", "darken-1") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
-$secondary-color: color("orange", "lighten-1") !default;
+$secondary-color: #E83B3B !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
@@ -279,9 +279,9 @@ $spinner-default-color: $secondary-color !default;
 // 17. Tabs
 // ==========================================================================
 
-$tabs-underline-color: $primary-color-light !default;
-$tabs-text-color: $primary-color !default;
-$tabs-bg-color: #fff !default;
+$tabs-underline-color: $secondary-color !default;
+$tabs-text-color: #fff !default;
+$tabs-bg-color: $primary-color-dark !default;
 
 
 // 18. Tables

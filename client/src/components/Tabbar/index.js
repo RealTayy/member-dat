@@ -1,0 +1,1 @@
+import { default as Tabbar } from './Tabbar.js'

@@ -1,3 +1,16 @@
 .content-wrapper {
+  position: absolute;
   margin-left: 250px;
+  /* padding: calc(16px + 0.75rem) 16px; */
+  height: calc(100% - 112px);
+  width: calc(100% - 250px);
+  overflow: auto;
+}
+
+.waves-effect.waves-blue .waves-ripple {
+  background-color: rgba(30, 136, 229, 0.65);
+}
+
+.waves-effect {
+  z-index: 0;
 }

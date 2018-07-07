@@ -10,7 +10,6 @@ import { Pointofsale } from "./pages/Pointofsale";
 import { Addnew } from "./pages/Addnew";
 import { Tabbar } from "./components/Tabbar/Tabbar";
 
-
 export class App extends Component {
   state = {
     activeID: '',

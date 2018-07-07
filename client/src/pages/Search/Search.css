@@ -1,3 +1,19 @@
 .search-form form p label {
   color: #333;
 }
+
+.input-field .tabs {
+  /* border: 1px solid #455A64; */
+  /* padding: 0; */
+}
+
+.input-field .tab>a {
+  border-right: 0;
+  /* background-color: #455A64; */
+}
+
+.input-field .tab>a>i.material-icons {
+  position: relative;
+  top: 6px;
+  margin-right: 12px;
+}

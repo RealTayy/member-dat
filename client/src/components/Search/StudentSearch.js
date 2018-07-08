@@ -4,8 +4,8 @@ import $ from 'jquery';
 export class StudentSearch extends Component {
   state = {
     stuID: '',
-    firstName: '',
-    lastName: '',
+    stuFirstName: '',
+    stuLastName: '',
     beltRank: '',
   }
 
@@ -27,7 +27,7 @@ export class StudentSearch extends Component {
     // Builds search object from filled in fields
     let searchObject = {};
     for (let property in this.state) {
-      if (this.state[property] != "") { searchObject[property] = this.state[property] }
+      if (this.state[property] !== "") { searchObject[property] = this.state[property] }
     }
     console.log(searchObject);
   }
@@ -45,17 +45,17 @@ export class StudentSearch extends Component {
           </div>
           <div className="input-field col s12">
             <input
-              id="firstName" type="text" className="validate"
-              value={this.state.firstName} onChange={this.handleChange}
+              id="stuFirstName" type="text" className="validate"
+              value={this.state.stuFirstName} onChange={this.handleChange}
             />
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="stuFirstName">First Name</label>
           </div>
           <div className="input-field col s12">
             <input
-              id="lastName" type="text" className="validate"
-              value={this.state.lastName} onChange={this.handleChange}
+              id="stuLastName" type="text" className="validate"
+              value={this.state.stuLastName} onChange={this.handleChange}
             />
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="stuLastName">Last Name</label>
           </div>
           <div className="input-field col s12">
             <select

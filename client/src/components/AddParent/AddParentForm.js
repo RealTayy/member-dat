@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import $ from 'jquery';
+import moment from 'moment';
+
+// https://www.npmjs.com/package/react-datepicker
+
 
 export class AddParentForm extends Component {
 	state = {
@@ -10,11 +16,10 @@ export class AddParentForm extends Component {
 		dateOfBirth: '',
 		addressLine: '',
 		addressLine2: '',
-
 	}
 
 	componentDidMount() {
-		$('.datepicker').datepicker();
+		
 	}
 	
 
@@ -75,8 +80,6 @@ export class AddParentForm extends Component {
 						/>
 						<label htmlFor="dateOfBirth">Date of Birth</label>
 					</div> */}
-
-					<input type="text" className="datepicker" />
 
 
 					<div className="input-field col s12">

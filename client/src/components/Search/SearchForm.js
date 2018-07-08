@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { ParentSearch, StudentSearch } from '.';
+import $ from 'jquery';
 
 export class SearchForm extends Component {
+	componentDidMount() {
+		$('.search-selector .tabs').tabs();
+	}
 	render() {
 		return (
 			<div className="search-form col s4">

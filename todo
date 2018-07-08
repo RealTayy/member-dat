@@ -4,3 +4,4 @@
 > Style hover for sidenav
 > Shadow for side nav or nah?
 > Green validate underline for "Select belt" under student search
+> change ParentSearch and Student search to not use id="parent-search" and use className="parent-search" instead.

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-export class Addnew extends Component {
+export class AddStudent extends Component {
 	render() {
 		return (
 			<div>
-				Addnew
+				AddStudent
 			</div>
 		)
 	}
 };
 
-export default Addnew;
+export default AddStudent;

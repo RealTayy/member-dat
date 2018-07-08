@@ -6,8 +6,9 @@ import { Header } from "./components/Header/Header";
 import { Sidenav } from "./components/Sidenav/Sidenav";
 import { Dashboard } from "./pages/Dashboard";
 import { Search } from "./pages/Search";
+import {AddParent} from "./pages/AddParent";
+import {AddStudent} from "./pages/AddStudent";
 import { Pointofsale } from "./pages/Pointofsale";
-import { Addnew } from "./pages/Addnew";
 import { Tabbar } from "./components/Tabbar/Tabbar";
 import { Invoices } from "./pages/Invoices";
 
@@ -62,9 +63,16 @@ export class App extends Component {
                   <Pointofsale />
                 )
               }} />
-              <Route exact path="/addnew" render={() => {
+              {/* AddParent Route */}
+              <Route exact path="/addparent" render={() => {
                 return (
-                  <Addnew />
+                  <AddParent />
+                )
+              }} />
+              {/* AddStudent Route */}
+              <Route exact path="/addstudent" render={() => {
+                return (
+                  <AddStudent />
                 )
               }} />
               {/* 404 Route */}

@@ -2,36 +2,74 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 export class StudentSearch extends Component {
-  componentDidMount() {
-    $('select').material_select();
+  state = {
+    stuID: '',
+    firstName: '',
+    lastName: '',
+    beltRank: '',
   }
+
+  beltRankArr = ['white', 'blue', 'red'];
+
+  componentDidMount = () => {
+    // Initialize MaterializeCSS's select
+    $('#beltRank').material_select();
+    // Add on change listener cause onChange for select won't fire otherwise
+    $('#beltRank').on('change', this.handleChange)
+  }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.id]: e.target.value });
+    setTimeout(() => { console.log(this.state) }, 1)
+  }
+
+  handleSubmit = (e) => {
+    // Builds search object from filled in fields
+    let searchObject = {};
+    for (let property in this.state) {
+      if (this.state[property] != "") { searchObject[property] = this.state[property] }
+    }
+    console.log(searchObject);
+  }
+
   render() {
     return (
       <div id="student-search" className="row">
         <form className="col s12 ">
           <div className="input-field col s12">
-            <input id="student-id" type="text" className="validate" />
-            <label htmlFor="student-id">ID #</label>
+            <input
+              id="stuID" type="text" className="validate"
+              value={this.state.stuID} onChange={this.handleChange}
+            />
+            <label htmlFor="stuID">ID #</label>
           </div>
           <div className="input-field col s12">
-            <input id="student-firstname" type="text" className="validate" />
-            <label htmlFor="student-firstname">First Name</label>
+            <input
+              id="firstName" type="text" className="validate"
+              value={this.state.firstName} onChange={this.handleChange}
+            />
+            <label htmlFor="firstName">First Name</label>
           </div>
           <div className="input-field col s12">
-            <input id="student-lastname" type="text" className="validate" />
-            <label htmlFor="student-lastname">Last Name</label>
+            <input
+              id="lastName" type="text" className="validate"
+              value={this.state.lastName} onChange={this.handleChange}
+            />
+            <label htmlFor="lastName">Last Name</label>
           </div>
           <div className="input-field col s12">
-            <select className="validate">
-              <option value="" disabled selected>Choose Belt Rank</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+            <select
+              id="beltRank" className="validate"
+              value={this.state.beltRank}>
+              <option key="0" value="">None</option>
+              {this.beltRankArr.map((beltRank, i) => {
+                return <option key={i + 1} value={beltRank}>{beltRank}</option>
+              })}
             </select>
             <label htmlFor="student-phonenumber">Belt Rank</label>
           </div>
           <div className="student-searchbtn center-align">
-            <a class="waves-effect waves-light btn-large">Search<i class="material-icons right">search</i></a>
+            <a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Search<i className="material-icons right">search</i></a>
           </div>
         </form>
       </div>

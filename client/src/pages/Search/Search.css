@@ -1,10 +1,5 @@
-.search-form form p label {
-  color: #333;
-}
-
-.input-field .tabs {
-  /* border: 1px solid #455A64; */
-  /* padding: 0; */
+.search-header {
+  margin: 0;
 }
 
 .input-field .tab>a {
@@ -18,12 +13,11 @@
   margin-right: 12px;
 }
 
-#parent-search form,
-#student-search form {
-  padding: 0px;
-}
-
 .parent-searchbtn>a,
 .student-searchbtn>a {
   margin-top: 15px;
+}
+
+.search-selector .search-selector-container {
+  padding: 0 1.5rem;
 }

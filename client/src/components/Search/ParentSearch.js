@@ -22,7 +22,7 @@ export class ParentSearch extends Component {
             <label htmlFor="parent-phonenumber">Phone Number</label>
           </div>
           <div className="parent-searchbtn center-align">
-            <a class="waves-effect waves-light btn-large">Search<i class="material-icons right">search</i></a>
+            <a className="waves-effect waves-light btn-large">Search<i className="material-icons right">search</i></a>
           </div>
         </form>
       </div>

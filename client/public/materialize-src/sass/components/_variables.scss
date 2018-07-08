@@ -39,6 +39,7 @@ $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
 $secondary-color: #E83B3B !default;
+$alternative-color: #F49738 !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
@@ -61,22 +62,22 @@ $button-font-size: 14px !default;
 $button-icon-font-size: 1.3rem !default;
 $button-height: 36px !default;
 $button-padding: 0 16px !default;
-$button-radius: 2px !default;
+$button-radius: 0px !default;
 
 // Disabled styles
 $button-disabled-background: #DFDFDF !default;
 $button-disabled-color: #9F9F9F !default;
 
 // Raised buttons
-$button-raised-background: $secondary-color !default;
+$button-raised-background: $alternative-color !default;
 $button-raised-background-hover: lighten($button-raised-background, 5%) !default;
 $button-raised-color: #fff !default;
 
 // Large buttons
 $button-large-font-size: 15px !default;
 $button-large-icon-font-size: 1.6rem !default;
-$button-large-height: $button-height * 1.5 !default;
-$button-floating-large-size: 56px !default;
+$button-large-height: 48px !default;
+$button-floating-large-size: 48px !default;
 
 // Small buttons
 $button-small-font-size: 13px !default;
@@ -169,7 +170,7 @@ $input-border: 1px solid $input-border-color !default;
 $input-background: #fff !default;
 $input-error-color: $error-color !default;
 $input-success-color: $success-color !default;
-$input-focus-color: $secondary-color !default;
+$input-focus-color: $alternative-color !default;
 $input-font-size: 16px !default;
 $input-margin-bottom: 8px;
 $input-margin: 0 0 $input-margin-bottom 0 !default;

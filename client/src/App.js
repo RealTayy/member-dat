@@ -9,6 +9,7 @@ import { Search } from "./pages/Search";
 import { Pointofsale } from "./pages/Pointofsale";
 import { Addnew } from "./pages/Addnew";
 import { Tabbar } from "./components/Tabbar/Tabbar";
+import { Invoices } from "./pages/Invoices";
 
 export class App extends Component {
   state = {
@@ -47,6 +48,12 @@ export class App extends Component {
               <Route exact path="/search" render={() => {
                 return (
                   <Search />
+                )
+              }} />
+              {/* Search Route */}
+              <Route exact path="/invoices" render={() => {
+                return (
+                  <Invoices />
                 )
               }} />
               {/* Pointofsale Route */}

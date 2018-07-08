@@ -3712,7 +3712,7 @@ small {
 .btn, .btn-large, .btn-small,
 .btn-flat {
   border: none;
-  border-radius: 2px;
+  border-radius: 0px;
   display: inline-block;
   height: 36px;
   line-height: 36px;
@@ -3784,18 +3784,18 @@ small {
 
 .btn:focus, .btn-large:focus, .btn-small:focus,
 .btn-floating:focus {
-  background-color: #d71919; }
+  background-color: #ec7e0d; }
 
 .btn, .btn-large, .btn-small {
   text-decoration: none;
   color: #fff;
-  background-color: #E83B3B;
+  background-color: #F49738;
   text-align: center;
   letter-spacing: .5px;
   transition: background-color .2s ease-out;
   cursor: pointer; }
   .btn:hover, .btn-large:hover, .btn-small:hover {
-    background-color: #eb5252; }
+    background-color: #f5a450; }
 
 .btn-floating {
   display: inline-block;
@@ -3817,13 +3817,13 @@ small {
   .btn-floating:before {
     border-radius: 0; }
   .btn-floating.btn-large {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     padding: 0; }
     .btn-floating.btn-large.halfway-fab {
-      bottom: -28px; }
+      bottom: -24px; }
     .btn-floating.btn-large i {
-      line-height: 56px; }
+      line-height: 48px; }
   .btn-floating.btn-small {
     width: 32.4px;
     height: 32.4px; }
@@ -3892,7 +3892,7 @@ button.btn-floating {
         margin: 15px 0 0 0; }
   .fixed-action-btn.toolbar {
     padding: 0;
-    height: 56px; }
+    height: 48px; }
     .fixed-action-btn.toolbar.active > a i {
       opacity: 0; }
     .fixed-action-btn.toolbar ul {
@@ -3915,7 +3915,7 @@ button.btn-floating {
           background-color: transparent;
           box-shadow: none;
           color: #fff;
-          line-height: 56px;
+          line-height: 48px;
           z-index: 1; }
           .fixed-action-btn.toolbar ul li a i {
             line-height: inherit; }
@@ -3958,8 +3958,8 @@ button.btn-floating {
     cursor: default; }
 
 .btn-large {
-  height: 54px;
-  line-height: 54px;
+  height: 48px;
+  line-height: 48px;
   font-size: 15px;
   padding: 0 28px; }
   .btn-large i {
@@ -4478,8 +4478,8 @@ textarea.materialize-textarea {
   input[type=number]:not(.browser-default):focus:not([readonly]),
   input[type=search]:not(.browser-default):focus:not([readonly]),
   textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #E83B3B;
-    box-shadow: 0 1px 0 0 #E83B3B; }
+    border-bottom: 1px solid #F49738;
+    box-shadow: 0 1px 0 0 #F49738; }
   input:not([type]):focus:not([readonly]) + label,
   input[type=text]:not(.browser-default):focus:not([readonly]) + label,
   input[type=password]:not(.browser-default):focus:not([readonly]) + label,
@@ -4493,7 +4493,7 @@ textarea.materialize-textarea {
   input[type=number]:not(.browser-default):focus:not([readonly]) + label,
   input[type=search]:not(.browser-default):focus:not([readonly]) + label,
   textarea.materialize-textarea:focus:not([readonly]) + label {
-    color: #E83B3B; }
+    color: #F49738; }
   input:not([type]):focus.valid ~ label,
   input[type=text]:not(.browser-default):focus.valid ~ label,
   input[type=password]:not(.browser-default):focus.valid ~ label,
@@ -4784,7 +4784,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
     transition: color .2s;
     top: 0.5rem; }
     .input-field .prefix.active {
-      color: #E83B3B; }
+      color: #F49738; }
   .input-field .prefix ~ input,
   .input-field .prefix ~ textarea,
   .input-field .prefix ~ label,
@@ -5238,7 +5238,7 @@ select {
     user-select: none;
     z-index: 1; }
     .select-wrapper input.select-dropdown:focus {
-      border-bottom: 1px solid #E83B3B; }
+      border-bottom: 1px solid #F49738; }
   .select-wrapper .caret {
     position: absolute;
     right: 0;
@@ -5535,9 +5535,9 @@ input[type=range]::-ms-thumb {
     .sidenav li > a.btn-flat {
       color: #343434; }
     .sidenav li > a.btn:hover, .sidenav li > a.btn-large:hover, .sidenav li > a.btn-small:hover, .sidenav li > a.btn-large:hover {
-      background-color: #eb5252; }
+      background-color: #f5a450; }
     .sidenav li > a.btn-floating:hover {
-      background-color: #E83B3B; }
+      background-color: #F49738; }
     .sidenav li > a > i,
     .sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"],
     .sidenav li > a > i.material-icons {

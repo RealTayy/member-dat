@@ -9,11 +9,21 @@
 
 .input-field .tab>a {
   border-right: 0;
-  /* background-color: #455A64; */
+  background-color: #1976D2;
 }
 
 .input-field .tab>a>i.material-icons {
   position: relative;
   top: 6px;
   margin-right: 12px;
+}
+
+#parent-search form,
+#student-search form {
+  padding: 0px;
+}
+
+.parent-searchbtn>a,
+.student-searchbtn>a {
+  margin-top: 15px;
 }

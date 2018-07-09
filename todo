@@ -1,7 +1,9 @@
+> Format input type=tel to autoformat #.
 > Add in correct belts for StudentSearch in beltRankArr
+> Make date field pretty using jQueryUI
 > Put scroll bar on top of tabbar
 > Make close button hover transition smoothly
 > Style hover for sidenav
 > Shadow for side nav or nah?
-> Green validate underline for "Select belt" under student search
+> Green validate underline for "Select belt" under student search and Date fields
 > change ParentSearch and Student search to not use id="parent-search" and use className="parent-search" instead.

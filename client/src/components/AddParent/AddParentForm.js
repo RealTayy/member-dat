@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './AddParentForm.css'
 import $ from 'jquery';
 import 'jquery-ui';
 
@@ -15,14 +14,30 @@ export class AddParentForm extends Component {
 		city: '',
 		state: '',
 		zipCode: '',
+		ecFirstName: '',
+		ecLastName: '',
+		referBy: '',
+		heardBy: ''
 	}
+
+	heardByArr = [
+		"Email",
+		"Referrence",
+		"Drove By",
+		"Web Search",
+		"Facebook",
+		"Instagram",
+		"Paper Ads",
+		"Magazine",
+		"Newspaper",
+		"School Event",
+		"Other Event"
+	];
 
 	componentDidMount() {
-
+		$('#heardBy').material_select();
+		$('#heardBy').on('change', this.handleChange);
 	}
-
-
-
 
 	handleChange = (e) => {
 		this.setState({ [e.target.id]: e.target.value });
@@ -41,8 +56,9 @@ export class AddParentForm extends Component {
 		return (
 			<div className="addparent-form">
 				<form className="col s12">
+					<div className="divider row"></div>
 					<div className="parent-info row">
-						<h5 className="form-section-header col s12">Parent Info</h5>
+						<h5 className="col s12">Parent Info</h5>
 						<div className="input-field col s12 m6">
 							<input
 								id="firstName" type="text" className="validate"
@@ -114,14 +130,70 @@ export class AddParentForm extends Component {
 							<label htmlFor="zipCode">Zip Code *</label>
 						</div>
 					</div>
-					<div className="divider"></div>
-					<div className="emergency-contact-info">
-						asdf
+					<div className="divider row"></div>
+					<div className="emergency-contact-info row">
+						<h5 className="col s12">Emergency Contact Info</h5>
+						<div className="input-field col s12 m6">
+							<input
+								id="ecFirstName" type="text" className="validate"
+								value={this.state.ecFirstName} onChange={this.handleChange}
+							/>
+							<label htmlFor="ecFirstName">First Name *</label>
+						</div>
+						<div className="input-field col s12 m6">
+							<input
+								id="ecLastName" type="text" className="validate"
+								value={this.state.ecLastName} onChange={this.handleChange}
+							/>
+							<label htmlFor="ecLastName">Last Name *</label>
+						</div>
+						<div className="input-field col s12 m6">
+							<input
+								id="ecEmail" type="text" className="validate"
+								value={this.state.ecEmail} onChange={this.handleChange}
+							/>
+							<label htmlFor="ecEmail">Email</label>
+						</div>
+						<div className="input-field col s12 m3">
+							<input
+								id="ecPhoneNumber" type="tel" className="validate"
+								value={this.state.ecPhoneNumber} onChange={this.handleChange}
+							/>
+							<label htmlFor="ecPhoneNumber">Phone Number *</label>
+						</div>
+						<div className="input-field col s12 m3">
+							<input
+								id="ecRelation" type="text" className="validate"
+								value={this.state.ecRelation} onChange={this.handleChange}
+							/>
+							<label htmlFor="ecRelation">Relation</label>
+						</div>
 					</div>
-					<div className="divider"></div>
-					<div className="additional-info">
-						asdf
+					<div className="divider row"></div>
+					<div className="additional-info row">
+						<h5 className="col s12">Additional Info</h5>
+						<div className="input-field col s12 m6">
+							<input
+								id="referBy" type="text" className="validate"
+								value={this.state.referBy} onChange={this.handleChange}
+							/>
+							<label htmlFor="referBy">Referred By</label>
+						</div>
+						<div className="input-field col s12 m6">
+							<select
+								id="heardBy" type="text" className="validate"
+								value={this.state.heardBy} onChange={this.handleChange}>
+								<option key="0" value="">Not Answered</option>
+								{this.heardByArr.sort().map((heardBy, i) => {
+									return <option key={i + 1} value={heardBy}>{heardBy}</option>
+								})}
+							</select>
+							<label htmlFor="heardBy">How did you hear about us</label>
+						</div>
 					</div>
+					<div className="submit-btn center-align">
+						<a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Submit<i className="material-icons right">person_add</i></a>
+					</div>					
 				</form>
 			</div>
 		)

@@ -6,10 +6,13 @@ export class Addnew extends Component {
 	render() {
 		return (
 			<div className="row">
-				<h4 className="addparent-header">Add New Parent</h4>
-				<div className="addparent-subheader">Required field are indicated with a *</div>
-				<div className="addparent-container col m12 l10 xl8">
-					<AddParentForm />
+				<div className="addparent-container col m12 l10 xl8" >
+					<div className="z-depth-2">
+						<h4 className="addparent-header center-align">Add New Parent</h4>
+						<div className="addparent-subheader center-align">Required field are indicated with a *</div>
+						<AddParentForm />
+						<div>&nbsp;</div>
+					</div>
 				</div>
 			</div >
 		)

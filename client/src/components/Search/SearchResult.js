@@ -4,8 +4,10 @@ export class SearchResult extends Component {
 	render() {
 		return (
 			<div className="search-result col s8">
-				Search Results goes here!
-		</div>
+				<div className="col s12 z-depth-2">
+					Search Results goes here!
+				</div>
+			</div>
 		)
 	}
 };

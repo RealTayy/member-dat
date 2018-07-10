@@ -27,3 +27,8 @@ input[type=date]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   display: none;
 }
+
+/* Change select drop down color */
+.dropdown-content li > a, .dropdown-content li > span {
+  color: #1976D2;
+}

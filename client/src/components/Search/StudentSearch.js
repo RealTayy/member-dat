@@ -9,13 +9,21 @@ export class StudentSearch extends Component {
     beltRank: '',
   }
 
-  beltRankArr = ['white', 'blue', 'red'];
+  beltRankArr = [
+    "White",
+    "Yellow", "Yellow Stripe",
+    "Orange", "Orange Stripe",
+    "Green", "Green Stripe",
+    "Blue", "Blue Stripe",
+    "Brown", "Brown Stripe",
+    "Red", "Red Stripe",
+    "Black Candidate",
+    "Black 1", "Black 2", "Black 3", "Black 4", "Black 5", "Black 6", "Black 7", "Black 8", "Black 9"
+  ];
 
   componentDidMount = () => {
-    // Initialize MaterializeCSS's select
     $('#beltRank').material_select();
-    // Add on change listener cause onChange for select won't fire otherwise
-    $('#beltRank').on('change', this.handleChange)
+    $('#beltRank').on('change', this.handleChange);
   }
 
   handleChange = (e) => {

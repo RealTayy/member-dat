@@ -21,7 +21,7 @@ export class Sidenav extends Component {
 					<li className="sidenav-item"><Link to="/pointofsale" id="pointofsale-tab" className="waves-effect waves-blue" onClick={this.clickHandler}><i className="material-icons">attach_money</i>Point of Sale</Link></li>
 					<li className="sidenav-item"><Link to="/addparent" id="addparent-tab" className="waves-effect waves-blue" onClick={this.clickHandler}><i className="material-icons">person_add</i>Add Parent</Link></li>
 					<li className="sidenav-item"><Link to="/addstudent" id="addstudent-tab" className="waves-effect waves-blue" onClick={this.clickHandler}><i className="material-icons">person_add</i>Add Student</Link></li>
-					<li className="sidenav-item"><Link to="/" id="test5" className="waves-effect waves-blue" onClick={this.clickHandler}>{this.props.activeTab}</Link></li>
+					<li className="sidenav-item"><Link to="/dontclickme" id="why-you-click-me-bro" className="waves-effect waves-blue" onClick={this.clickHandler}>{this.props.activeTab}</Link></li>
 				</ul>
 				<a href="#!" data-target="slide-out" className="sidenav-trigger"><i className="material-icons">menu</i></a>
 			</div>

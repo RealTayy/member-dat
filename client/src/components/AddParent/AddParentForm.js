@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import $ from 'jquery';
+<<<<<<< HEAD
 import 'jquery-ui';
+=======
+import moment from 'moment';
+
+// https://www.npmjs.com/package/react-datepicker
+
+>>>>>>> bf29876c95e1043bbfdb0aa45d39fad3b594976b
 
 export class AddParentForm extends Component {
 	state = {
@@ -11,6 +20,7 @@ export class AddParentForm extends Component {
 		dateOfBirth: '',
 		addressLine: '',
 		addressLine2: '',
+<<<<<<< HEAD
 		city: '',
 		state: '',
 		zipCode: '',
@@ -19,6 +29,8 @@ export class AddParentForm extends Component {
 		ecLastName: '',
 		referBy: '',
 		heardBy: ''
+=======
+>>>>>>> bf29876c95e1043bbfdb0aa45d39fad3b594976b
 	}
 
 	heardByArr = [
@@ -36,8 +48,12 @@ export class AddParentForm extends Component {
 	];
 
 	componentDidMount() {
+<<<<<<< HEAD
 		$('#heardBy').material_select();
 		$('#heardBy').on('change', this.handleChange);
+=======
+		
+>>>>>>> bf29876c95e1043bbfdb0aa45d39fad3b594976b
 	}
 
 	handleChange = (e) => {
@@ -170,6 +186,7 @@ export class AddParentForm extends Component {
 							<label htmlFor="ecRelation">Relation</label>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div className="divider row"></div>
 					<div className="additional-info row">
 						<h5 className="col s12">Additional Info</h5>
@@ -191,6 +208,32 @@ export class AddParentForm extends Component {
 							</select>
 							<label htmlFor="heardBy">How did you hear about us</label>
 						</div>
+=======
+					<div className="input-field col s12 m3">
+						<input
+							id="phoneNumber" type="text" className="validate"
+							value={this.state.phoneNumber} onChange={this.handleChange}
+						/>
+						<label htmlFor="phoneNumber">Phone Number</label>
+					</div>
+
+
+					{/* <div className="input-field col s12 m3">
+						<input
+							id="dateOfBirth" type="text" className="datepicker validate"
+							value={this.state.dateOfBirth} onChange={this.handleChange}
+						/>
+						<label htmlFor="dateOfBirth">Date of Birth</label>
+					</div> */}
+
+
+					<div className="input-field col s12">
+						<input
+							id="addressLine" type="text" className="validate"
+							value={this.state.addressLine} onChange={this.handleChange}
+						/>
+						<label htmlFor="addressLine">Address</label>
+>>>>>>> bf29876c95e1043bbfdb0aa45d39fad3b594976b
 					</div>
 					<div className="submit-btn center-align">
 						<a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Submit<i className="material-icons right">person_add</i></a>

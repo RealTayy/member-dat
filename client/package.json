@@ -7,9 +7,14 @@
     "axios": "^0.16.2",
     "jquery": "^3.3.1",
     "materialize-css": "^0.100.2",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.1",
     "react": "^16.4.1",
+<<<<<<< HEAD
     "react-date-picker": "^6.10.4",
+=======
+    "react-datepicker": "^1.5.0",
+>>>>>>> bf29876c95e1043bbfdb0aa45d39fad3b594976b
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.1.4"

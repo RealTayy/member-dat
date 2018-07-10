@@ -11,6 +11,7 @@
   padding-bottom: 20px;
 }
 
-.student-info {
+.student-info,
+.enrollment-info {
   padding: 0 .75rem;
 }

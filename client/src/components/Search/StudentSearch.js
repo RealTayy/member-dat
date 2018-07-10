@@ -10,15 +10,15 @@ export class StudentSearch extends Component {
   }
 
   beltRankArr = [
-    "White",
-    "Yellow", "Yellow Stripe",
-    "Orange", "Orange Stripe",
-    "Green", "Green Stripe",
-    "Blue", "Blue Stripe",
-    "Brown", "Brown Stripe",
-    "Red", "Red Stripe",
-    "Black Candidate",
-    "Black 1", "Black 2", "Black 3", "Black 4", "Black 5", "Black 6", "Black 7", "Black 8", "Black 9"
+    'White',
+    'Yellow', 'Yellow Stripe',
+    'Orange', 'Orange Stripe',
+    'Green', 'Green Stripe',
+    'Blue', 'Blue Stripe',
+    'Brown', 'Brown Stripe',
+    'Red', 'Red Stripe',
+    'Black Candidate',
+    'Black 1', 'Black 2', 'Black 3', 'Black 4', 'Black 5', 'Black 6', 'Black 7', 'Black 8', 'Black 9'
   ];
 
   componentDidMount = () => {
@@ -74,7 +74,7 @@ export class StudentSearch extends Component {
                 return <option key={i + 1} value={beltRank}>{beltRank}</option>
               })}
             </select>
-            <label htmlFor="student-phonenumber">Belt Rank</label>
+            <label htmlFor="beltRank">Belt Rank</label>
           </div>
           <div className="student-searchbtn center-align">
             <a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Search<i className="material-icons right">search</i></a>

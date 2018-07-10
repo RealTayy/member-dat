@@ -14,6 +14,7 @@ export class AddParentForm extends Component {
 		city: '',
 		state: '',
 		zipCode: '',
+		ecEmail: '',
 		ecFirstName: '',
 		ecLastName: '',
 		referBy: '',
@@ -117,10 +118,10 @@ export class AddParentForm extends Component {
 						</div>
 						<div className="input-field col s12 m2">
 							<input
-								id="stateName" type="text" className="validate"
-								value={this.state.stateName} onChange={this.handleChange}
+								id="state" type="text" className="validate"
+								value={this.state.state} onChange={this.handleChange}
 							/>
-							<label htmlFor="stateName">State *</label>
+							<label htmlFor="state">State *</label>
 						</div>
 						<div className="input-field col s12 m2">
 							<input
@@ -149,7 +150,7 @@ export class AddParentForm extends Component {
 						</div>
 						<div className="input-field col s12 m6">
 							<input
-								id="ecEmail" type="text" className="validate"
+								id="ecEmail" type="email" className="validate"
 								value={this.state.ecEmail} onChange={this.handleChange}
 							/>
 							<label htmlFor="ecEmail">Email</label>
@@ -193,7 +194,7 @@ export class AddParentForm extends Component {
 					</div>
 					<div className="submit-btn center-align">
 						<a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Submit<i className="material-icons right">person_add</i></a>
-					</div>					
+					</div>
 				</form>
 			</div>
 		)

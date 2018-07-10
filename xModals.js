@@ -71,28 +71,24 @@ const student_object = {
 			month,
 			date,
 		},
-		address: {
-			full,
-			line1,
-			line2,
-			city,
-			state,
-			zip,
-		},		
+		contact: {
+			phone,
+		},
+		school,
 	},
 	enrollment: {
 		dojo,
 		type,
-		monthlycost,
+		monthlyRate,
 	}
 }
 
 invoice: {
 	parentID,
-	studentID,
-	type,
-	cost,
-	payStatus,
-	payMethod,
-	payDate	
+		studentID,
+		type,
+		cost,
+		payStatus,
+		payMethod,
+		payDate
 }

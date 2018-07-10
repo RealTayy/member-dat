@@ -108,4 +108,4 @@ ParentSchema.virtual('info.emergencyContact.name.full')
 /***********|
 |* EXPORTS *|
 |***********/
-module.exports = mongoose.model("Parent", ParentSchema);
+module.exports = mongoose.model("Parents", ParentSchema);

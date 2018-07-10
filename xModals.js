@@ -19,7 +19,7 @@ const parent_object = {
 			full,
 			year,
 			month,
-			date,
+			day,
 		},
 		address: {
 			full,

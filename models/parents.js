@@ -19,7 +19,7 @@ const ParentSchema = new Schema({
 	info: {
 		name: {
 			first: { type: String, required: true, trim: true },
-			last: { type: String, required: true, trim: true },
+			last: { type: String, required: true, trim: true }
 		},
 		contact: {
 			phone: { type: String, required: true, trim: true },
@@ -58,19 +58,27 @@ const ParentSchema = new Schema({
 	},
 	students: [{ type: Schema.Types.ObjectId, ref: "Students" }],
 	invoices: [{ type: Schema.Types.ObjectId, ref: "Invoices" }],
-});
+}, {
+		toObject: {
+			virtuals: true
+		},
+		toJSON: {
+			virtuals: true
+		}
+	}
+);
 
 // Create Virtuals for ParentSchema
 ParentSchema.virtual('info.name.full')
-	.get(() => {
-		return `${this.name.first} ${this.name.last}`
+	.get(function () {
+		return `${this.info.name.first} ${this.info.name.last}`
 	})
 
 ParentSchema.virtual('info.dob.full')
-	.get(() => {
-		return `${this.info.dob.year}-${this.info.dob.month}-${this.dob.day}`
+	.get(function () {
+		return `${this.info.dob.year}-${this.info.dob.month}-${this.info.dob.day}`
 	})
-	.set((fullDate) => {
+	.set(function () {
 		var split = fullDate.split('-')
 			, year = split[0]
 			, month = split[1]
@@ -81,10 +89,10 @@ ParentSchema.virtual('info.dob.full')
 	})
 
 ParentSchema.virtual('info.startDate.full')
-	.get(() => {
-		return `${this.info.startDate.year}-${this.info.startDate.month}-${this.startDate.day}`
+	.get(function () {
+		return `${this.info.startDate.year}-${this.info.startDate.month}-${this.info.startDate.day}`
 	})
-	.set((fullDate) => {
+	.set(function() {
 		var split = fullDate.split('-')
 			, year = split[0]
 			, month = split[1]
@@ -95,13 +103,13 @@ ParentSchema.virtual('info.startDate.full')
 	})
 
 ParentSchema.virtual('info.address.full')
-	.get(() => {
+	.get(function () {
 		let a = this.info.address;
 		return `${a.line1}${(a.line2) ? ',' : ` ${a.line2},`} ${a.city}, ${a.state}, ${a.zip}`
 	})
 
 ParentSchema.virtual('info.emergencyContact.name.full')
-	.get(() => {
+	.get(function () {
 		return `${this.info.emergencyContact.first} ${this.info.emergencyContact.last}`
 	})
 

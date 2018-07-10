@@ -26,14 +26,10 @@ const ParentSchema = new Schema({
 			email: { type: String, required: true, trim: true },
 		},
 		dob: {
-			year: { type: String, required: true, trim: true },
-			month: { type: String, required: true, trim: true },
-			day: { type: String, required: true, trim: true },
+			full: { type: String, required: true, trim: true },
 		},
-		stateDate: {
-			year: { type: String, required: true, trim: true },
-			month: { type: String, required: true, trim: true },
-			day: { type: String, required: true, trim: true },
+		startDate: {
+			full: { type: String, required: true, trim: true },
 		},
 		address: {
 			line1: { type: String, required: true, trim: true },
@@ -72,34 +68,6 @@ const ParentSchema = new Schema({
 ParentSchema.virtual('info.name.full')
 	.get(function () {
 		return `${this.info.name.first} ${this.info.name.last}`
-	})
-
-ParentSchema.virtual('info.dob.full')
-	.get(function () {
-		return `${this.info.dob.year}-${this.info.dob.month}-${this.info.dob.day}`
-	})
-	.set(function () {
-		var split = fullDate.split('-')
-			, year = split[0]
-			, month = split[1]
-			, day = split[2]
-		this.set('info.dob.year', year);
-		this.set('info.dob.month', month);
-		this.set('info.dob.day', day);
-	})
-
-ParentSchema.virtual('info.startDate.full')
-	.get(function () {
-		return `${this.info.startDate.year}-${this.info.startDate.month}-${this.info.startDate.day}`
-	})
-	.set(function() {
-		var split = fullDate.split('-')
-			, year = split[0]
-			, month = split[1]
-			, day = split[2]
-		this.set('info.startDate.year', year);
-		this.set('info.startDate.month', month);
-		this.set('info.startDate.day', day);
 	})
 
 ParentSchema.virtual('info.address.full')

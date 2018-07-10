@@ -12,8 +12,8 @@ const router = require('express').Router();
 const parentsController = require('../../controllers/parentsController.js');
 
 // Matches with '/api/parents' this is defined in '../index.js'
-router.route('/')	
-	.get(parentsController.findAll)
+router.route('/')
+	.get(parentsController.findSomeRegex)
 	.post(parentsController.create);
 
 // Matches with '/api/parents/:id' this is defined in '../index.js'

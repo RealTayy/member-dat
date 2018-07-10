@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
+import { parentsAPI } from '../../utils/api/index';
 
 export class AddParentForm extends Component {
 	state = {
-		firstName: '',
-		lastName: '',
+		first: '',
+		last: '',
 		email: '',
-		phoneNumber: '',
-		dateOfBirth: '',
-		addressLine: '',
-		addressLine2: '',
+		phone: '',
+		dob: '',
+		line1: '',
+		line2: '',
 		city: '',
 		state: '',
-		zipCode: '',
+		zip: '',
 		ecEmail: '',
-		ecFirstName: '',
-		ecLastName: '',
+		ecFirst: '',
+		ecLast: '',
+		ecPhone: '',
+		ecRelation: '',
 		referBy: '',
 		heardBy: ''
 	}
@@ -46,12 +49,13 @@ export class AddParentForm extends Component {
 	}
 
 	handleSubmit = (e) => {
-		// Builds db object from filled in fields
 		let dbObject = {};
 		for (let property in this.state) {
 			if (this.state[property] !== "") { dbObject[property] = this.state[property] }
 		}
-		console.log(dbObject);
+		parentsAPI.submitNewParent(dbObject)
+			.then((data) => { console.log(data) })
+			.catch((error) => { console.log(error.response.data) });
 	}
 	render() {
 		return (
@@ -62,17 +66,17 @@ export class AddParentForm extends Component {
 						<h5 className="col s12">Parent Info</h5>
 						<div className="input-field col s12 m6">
 							<input
-								id="firstName" type="text" className="validate"
-								value={this.state.firstName} onChange={this.handleChange}
+								id="first" type="text" className="validate"
+								value={this.state.first} onChange={this.handleChange}
 							/>
-							<label htmlFor="firstName">First Name *</label>
+							<label htmlFor="first">First Name *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<input
-								id="lastName" type="text" className="validate"
-								value={this.state.lastName} onChange={this.handleChange}
+								id="last" type="text" className="validate"
+								value={this.state.last} onChange={this.handleChange}
 							/>
-							<label htmlFor="lastName">Last Name *</label>
+							<label htmlFor="last">Last Name *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<input
@@ -83,31 +87,31 @@ export class AddParentForm extends Component {
 						</div>
 						<div className="input-field col s12 m3">
 							<input
-								id="phoneNumber" type="tel" className="validate"
-								value={this.state.phoneNumber} onChange={this.handleChange}
+								id="phone" type="tel" className="validate"
+								value={this.state.phone} onChange={this.handleChange}
 							/>
-							<label htmlFor="phoneNumber">Phone Number *</label>
+							<label htmlFor="phone">Phone Number *</label>
 						</div>
 						<div className="input-field col s12 m3">
 							<input
-								id="dateOfBirth" type="date" className="validate"
-								value={this.state.dateOfBirth} onChange={this.handleChange}
+								id="dob" type="date" className="validate"
+								value={this.state.dob} onChange={this.handleChange}
 							/>
-							<label htmlFor="dateOfBirth">Date of Birth *</label>
+							<label htmlFor="dob">Date of Birth *</label>
 						</div>
 						<div className="input-field col s12">
 							<input
-								id="addressLine" type="text" className="validate"
-								value={this.state.addressLine} onChange={this.handleChange}
+								id="line1" type="text" className="validate"
+								value={this.state.line1} onChange={this.handleChange}
 							/>
-							<label htmlFor="addressLine">Address *</label>
+							<label htmlFor="line1">Address *</label>
 						</div>
 						<div className="input-field col s12 m4">
 							<input
-								id="addressLine2" type="text" className="validate"
-								value={this.state.addressLine2} onChange={this.handleChange}
+								id="line2" type="text" className="validate"
+								value={this.state.line2} onChange={this.handleChange}
 							/>
-							<label htmlFor="addressLine2">Address Line 2</label>
+							<label htmlFor="line2">Address Line 2</label>
 						</div>
 						<div className="input-field col s12 m4">
 							<input
@@ -125,10 +129,10 @@ export class AddParentForm extends Component {
 						</div>
 						<div className="input-field col s12 m2">
 							<input
-								id="zipCode" type="text" className="validate"
-								value={this.state.zipCode} onChange={this.handleChange}
+								id="zip" type="text" className="validate"
+								value={this.state.zip} onChange={this.handleChange}
 							/>
-							<label htmlFor="zipCode">Zip Code *</label>
+							<label htmlFor="zip">Zip Code *</label>
 						</div>
 					</div>
 					<div className="divider row"></div>
@@ -136,17 +140,17 @@ export class AddParentForm extends Component {
 						<h5 className="col s12">Emergency Contact Info</h5>
 						<div className="input-field col s12 m6">
 							<input
-								id="ecFirstName" type="text" className="validate"
-								value={this.state.ecFirstName} onChange={this.handleChange}
+								id="ecFirst" type="text" className="validate"
+								value={this.state.ecFirst} onChange={this.handleChange}
 							/>
-							<label htmlFor="ecFirstName">First Name *</label>
+							<label htmlFor="ecFirst">First Name *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<input
-								id="ecLastName" type="text" className="validate"
-								value={this.state.ecLastName} onChange={this.handleChange}
+								id="ecLast" type="text" className="validate"
+								value={this.state.ecLast} onChange={this.handleChange}
 							/>
-							<label htmlFor="ecLastName">Last Name *</label>
+							<label htmlFor="ecLast">Last Name *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<input
@@ -157,10 +161,10 @@ export class AddParentForm extends Component {
 						</div>
 						<div className="input-field col s12 m3">
 							<input
-								id="ecPhoneNumber" type="tel" className="validate"
-								value={this.state.ecPhoneNumber} onChange={this.handleChange}
+								id="ecPhone" type="tel" className="validate"
+								value={this.state.ecPhone} onChange={this.handleChange}
 							/>
-							<label htmlFor="ecPhoneNumber">Phone Number *</label>
+							<label htmlFor="ecPhone">Phone Number *</label>
 						</div>
 						<div className="input-field col s12 m3">
 							<input

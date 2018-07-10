@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { parentsAPI } from '../../utils/api/index';
 
 export class ParentSearch extends Component {
   state = {
-    parID: '',
-    parFirstName: '',
-    parLastName: '',
-    parPhoneNumber: ''
+    id: '',
+    parFirst: '',
+    parLast: '',
+    parPhone: ''
   }
 
   handleChange = (e) => {
@@ -15,11 +16,13 @@ export class ParentSearch extends Component {
 
   handleSubmit = (e) => {
     // Builds search object from filled in fields
-    let searchObject = {};
-    for (let property in this.state) {
-      if (this.state[property] !== "") { searchObject[property] = this.state[property] }
-    }
-    console.log(searchObject);
+    let searchQuery = {};
+    if (this.state.parFirst) searchQuery["info.name.first"] = this.state.parFirst;
+    if (this.state.parLast) searchQuery["info.name.last"] = this.state.parLast;
+    if (this.state.parPhone) searchQuery["info.contact.phone"] = this.state.parPhone;
+    parentsAPI.getSomeParents(searchQuery)
+      .then((data) => { console.log(data) })
+      .catch((error) => { console.log(error.response) })
   }
 
   render() {
@@ -27,28 +30,28 @@ export class ParentSearch extends Component {
       <div id="parent-search" className="row">
         <form className="col s12 ">
           <div className="input-field col s12">
-            <input id="parID" type="text" className="validate"
-            value={this.state.parID} onChange={this.handleChange}
+            <input id="id" type="text" className="validate"
+              value={this.state.id} onChange={this.handleChange}
             />
-            <label htmlFor="parID">ID #</label>
+            <label htmlFor="id">ID #</label>
           </div>
           <div className="input-field col s12">
-            <input id="parFirstName" type="text" className="validate"
-            value={this.state.parFirstName} onChange={this.handleChange}
+            <input id="parFirst" type="text" className="validate"
+              value={this.state.parFirst} onChange={this.handleChange}
             />
-            <label htmlFor="parFirstName">First Name</label>
+            <label htmlFor="parFirst">First Name</label>
           </div>
           <div className="input-field col s12">
-            <input id="parLastName" type="text" className="validate"
-            value={this.state.parLastName} onChange={this.handleChange}
+            <input id="parLast" type="text" className="validate"
+              value={this.state.parLast} onChange={this.handleChange}
             />
-            <label htmlFor="parLastName">Last Name</label>
+            <label htmlFor="parLast">Last Name</label>
           </div>
           <div className="input-field col s12">
-            <input id="parPhoneNumber" type="text" className="validate"
-            value={this.state.parPhoneNumber} onChange={this.handleChange}
+            <input id="parPhone" type="text" className="validate"
+              value={this.state.parPhone} onChange={this.handleChange}
             />
-            <label htmlFor="parPhoneNumber">Phone Number</label>
+            <label htmlFor="parPhone">Phone Number</label>
           </div>
           <div className="parent-searchbtn center-align">
             <a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Search<i className="material-icons right">search</i></a>

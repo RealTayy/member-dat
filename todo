@@ -10,3 +10,6 @@
 > Make sidenav mobile friendly
 > Make phonenumber input fields PRETTY AF search/addstu/addpar
 > Why Monthly rate field show invalid bro? WHY?!
+> Convert AddParentForm's state to match DB model for ez query
+> Make parentid and studentid fields for models
+> Make search by ID work

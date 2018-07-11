@@ -6,15 +6,13 @@
 > Restyle hover for sidenav
 > Green validate underline for "Select belt" under student search and Date fields
 > change ParentSearch and Student search to not use id="parent-search" and use className="parent-search" instead.
-> Add JR. and Middle intial to name structure
 > Make sidenav mobile friendly
 > Why Monthly rate field show invalid bro? WHY?!
 > Convert AddParentForm's state to match DB model for ez query
 > Add match exact for search forms
 > Make search results persist between tab changes
-> Only let search fire if fields are filled in
 > Add active only to parent fields
 > Add Seeds
 > Make search side bar thing fixed
 > Make prettier ParentID: not found warning for studentAdd
-> making "workgin..." button animation better
+> Fix toast width

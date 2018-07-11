@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { parentsAPI } from '../../utils/api/index';
+import $ from 'jquery';
 
 export class ParentSearch extends Component {
   state = {
@@ -20,9 +21,23 @@ export class ParentSearch extends Component {
     if (this.state.parFirst) searchQuery["info.name.first"] = this.state.parFirst;
     if (this.state.parLast) searchQuery["info.name.last"] = this.state.parLast;
     if (this.state.parPhone) searchQuery["info.contact.phone"] = this.state.parPhone;
+    if ($.isEmptyObject(searchQuery)) return window.Materialize.toast('You must enter in at least one search term', 5000, 'animated bounceInUp');
+    $('.parent-searchbtn i').addClass('animated infinite flip');
+    $('.parent-searchbtn a').addClass('disabled');
     parentsAPI.getSomeParents(searchQuery)
-      .then((data) => { console.log(data) })
-      .catch((error) => { console.log(error.response) })
+      .then((data) => {
+        console.log(data.data);
+        $('.parent-searchbtn i').removeClass('animated infinite flip');
+        $('.parent-searchbtn a').removeClass('disabled');
+        if (data.data.length === 0) return window.Materialize.toast(`No parents found please redefined search`, 5000, 'animated bounceInUp');
+        else window.Materialize.toast(`Search complete! Returned ${data.data.length} results`, 5000, 'animated bounceInUp green darken-2');
+      })
+      .catch((err) => {
+        console.log(err.response)
+        window.Materialize.toast(`Error searching database. Please try again`, 5000, 'animated bounceInUp red darken-2');
+        $('.parent-searchbtn i').removeClass('animated infinite flip');
+        $('.parent-searchbtn a').removeClass('disabled');
+      })
   }
 
   render() {

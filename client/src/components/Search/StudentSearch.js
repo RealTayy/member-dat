@@ -31,8 +31,7 @@ export class StudentSearch extends Component {
     setTimeout(() => { console.log(this.state) }, 1)
   }
 
-  handleSubmit = (e) => {
-    // Builds search object from filled in fields
+  handleSubmit = (e) => {    
     let searchObject = {};
     for (let property in this.state) {
       if (this.state[property] !== "") { searchObject[property] = this.state[property] }

@@ -32,3 +32,8 @@ input[type=date]::-webkit-inner-spin-button {
 .dropdown-content li > a, .dropdown-content li > span {
   color: #1976D2;
 }
+
+/* Edit Toast */
+.toast {
+  justify-content: flex-end;
+}

@@ -11,6 +11,7 @@ const router = require('express').Router();
 // Import in individual routes
 const collectionNameRoutes = require("./collectionName");
 const parentsRoutes = require('./parentsAPI.js');
+// const studentsRoutes = require('./studentsAPI.js');
 
 // Sets path to use individual routes
 // EXAMPLE:
@@ -18,6 +19,8 @@ const parentsRoutes = require('./parentsAPI.js');
 //   // www.url.com/api/collectionName will use routes from collectionNameRoutes
 router.use("/collectionName", collectionNameRoutes);
 router.use('/parents', parentsRoutes);
+// router.use('/students', studentsRoutes);
+
 
 /***********|
 |* EXPORTS *| 

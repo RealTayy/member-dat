@@ -49,13 +49,26 @@ export class AddParentForm extends Component {
 	}
 
 	handleSubmit = (e) => {
+		$('.submit-btn i').addClass('animated infinite flip');
+		$('.submit-btn a').addClass('disabled');
 		let dbObject = {};
 		for (let property in this.state) {
 			if (this.state[property] !== "") { dbObject[property] = this.state[property] }
 		}
 		parentsAPI.submitNewParent(dbObject)
-			.then((data) => { console.log(data) })
-			.catch((error) => { console.log(error.response.data) });
+			.then((data) => {
+				let parent = data.data;
+				console.log(data);
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				window.Materialize.toast(`${parent.info.name.full} successfully added`, 5000, 'animated bounceInUp green darken-2');
+			})
+			.catch((err) => {
+				console.log(err)
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				window.Materialize.toast(`Error adding new parent: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2');
+			});
 	}
 	render() {
 		return (

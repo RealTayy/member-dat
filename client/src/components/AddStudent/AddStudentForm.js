@@ -14,8 +14,9 @@ export class AddStudentForm extends Component {
 		dojo: '',
 		type: 'Standard',
 		rate: '',
+		parID: '',
 		parIDtwo: '',
-		parName: '',
+		parName: 'Please enter Parent ID',
 	}
 
 	dojoArr = [
@@ -59,16 +60,19 @@ export class AddStudentForm extends Component {
 		$('.link-btn a').addClass('disabled');
 		parentsAPI.getOneParentByIdTwo(this.state.parIDtwo)
 			.then((data) => {
+				let parent = data.data[0]
+				console.log(parent)
 				$('.link-btn i').removeClass('animated infinite flip');
 				$('.link-btn a').removeClass('disabled');
-				console.log(data)
-				if (data.data.length === 0) return window.Materialize.toast(`No parent found with ID:${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2');
+				if (data.data.length === 0) return window.Materialize.toast(`No parent found with ID: ${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2')
+				else window.Materialize.toast(`${parent.info.name.full} linked`, 5000, 'animated bounceInUp green darken-2');
+				this.setState({ parID: parent.id, parName: parent.info.name.full });
 			})
 			.catch((err) => {
-				window.Materialize.toast('Uh oh! ParentID not found', 5000, 'animated bounceInUp red darken-2');
 				console.log(err);
 				$('.link-btn i').removeClass('animated infinite flip');
 				$('.link-btn a').removeClass('disabled');
+				window.Materialize.toast(`Error searching ParentID: ${err.response.data.name} `, 5000, 'animated bounceInUp red darken-2');
 			});
 	}
 
@@ -105,10 +109,10 @@ export class AddStudentForm extends Component {
 							</div>
 							<div className="input-field col s12 m4 uneditable">
 								<input disabled
-									id="parFirst" type="text" className="validate"
-									value={this.state.parFirst} onChange={this.handleChange}
+									id="parName" type="text" className="validate"
+									value={this.state.parName} onChange={this.handleChange}
 								/>
-								<label htmlFor="parFirst">Name</label>
+								<label htmlFor="parName"></label>
 							</div>
 							<div className="col s12 m4">
 								<div className="link-btn center-align">

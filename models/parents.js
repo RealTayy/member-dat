@@ -15,6 +15,7 @@ const Schema = mongoose.Schema;
 |**********/
 // Create Schema for parents
 const ParentSchema = new Schema({
+	idtwo: { type: String, required: true, trim: true },
 	isActive: { type: Boolean, required: true },
 	info: {
 		name: {

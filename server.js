@@ -74,3 +74,7 @@ app.use(routes);
 |* LISTEN FOR CONNECTION ON PORT *| 
 |*********************************/
 app.listen(PORT, () => { console.log(`App listening on PORT: ${PORT}`) });
+
+// Testing stuff here lol
+// const countersController = require("./controllers/countersController");
+// console.log(countersController.findAndIncrement('parentid'));

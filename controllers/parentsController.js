@@ -3,6 +3,11 @@
 |**********************/
 const Parents = require("../models").Parents;
 
+/************************|
+|*  Imports In counter  *|
+|************************/
+const countersController = require("./countersController");
+
 /***************************|
 |*  Methods for controller *|
 |***************************/
@@ -15,10 +20,9 @@ const ParentsController = {
 	},
 	findSomeRegex: function (req, res) {
 		// Convert query to regex query
-		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }		
+		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
 		Parents
 			.find(req.query)
-			// .find({ "info.name.first": { $regex: /^T/ } })
 			.then((dbModel) => res.json(dbModel))
 			.catch((err) => res.status(422).json(err));
 	},
@@ -28,12 +32,26 @@ const ParentsController = {
 			.then((dbModel) => res.json(dbModel))
 			.catch((err) => res.status(422).json(err));
 	},
-	create: function (req, res) {
-		console.log(JSON.stringify(req.body, null, 2));
+	findByIdTwo: function (req, res) {
+		console.log(req.params.id);
 		Parents
-			.create(req.body)
+			.find({ idtwo: req.params.id })
 			.then((dbModel) => res.json(dbModel))
 			.catch((err) => res.status(422).json(err));
+	},
+	create: function (req, res) {
+		// Get next custom parentID from DB
+		countersController.findAndIncrement('parentid')
+			.then((id) => { req.body.idtwo = id })
+			.catch((err) => res.status(422).json(err))
+			.then(() => {
+				// If didn't run into error add parent to DB
+				console.log(JSON.stringify(req.body, null, 2));
+				Parents
+					.create(req.body)
+					.then((dbModel) => res.json(dbModel))
+					.catch((err) => res.status(422).json(err));
+			})
 	},
 	update: function (req, res) {
 		Parents
@@ -49,6 +67,12 @@ const ParentsController = {
 			.catch((err) => res.status(422).json(err));
 	}
 };
+
+/***********|
+|* HELPERS *|
+|***********/
+// Retrieve next ID stored in counters
+
 
 /***********|
 |* EXPORTS *|

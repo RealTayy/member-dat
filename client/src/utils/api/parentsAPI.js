@@ -4,11 +4,14 @@ export default {
   getAllParents: function () {
     return axios.get('/api/parents');
   },
-  getSomeParents: function (query) {    
+  getSomeParents: function (query) {
     return axios.get('/api/parents/', { params: query });
   },
-  getOneParent: function (id) {
-    return axios.get(`/api/parents/'${id}`);
+  getOneParentById: function (id) {
+    return axios.get(`/api/parents/${id}`);
+  },
+  getOneParentByIdTwo: function (id) {
+    return axios.get(`/api/parents/idtwo/${id}`);
   },
   deleteParent: function (id) {
     return axios.delete(`/api/parents/'${id}`);
@@ -18,7 +21,7 @@ export default {
     let curDate = new Date()
     // Formats Date object into "YYYY-MM-DD"
     parentData.startDate = `${curDate.getFullYear()}-${(curDate.getMonth() + 1).toString().padStart(2, "0")}-${curDate.getDate()}`
-
+    // formats recieved data to match database
     let formattedData = {
       isActive: true,
       info: {

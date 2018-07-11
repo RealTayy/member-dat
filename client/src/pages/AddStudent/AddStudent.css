@@ -12,6 +12,11 @@
 }
 
 .student-info,
-.enrollment-info {
+.enrollment-info,
+.parent-info {
   padding: 0 .75rem;
+}
+
+.parent-info .link-btn {
+  margin: 15px 0;
 }

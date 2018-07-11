@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
+import { parentsAPI } from '../../utils/api/index';
 
 export class AddStudentForm extends Component {
 	state = {
-		firstName: '',
-		lastName: '',
+		first: '',
+		last: '',
 		school: '',
-		phoneNumber: '',
+		phone: '',
 		dob: '',
 		beltRank: 'White',
 		dojo: '',
 		type: 'Standard',
-		monthlyrate: '',
+		rate: '',
+		parIDtwo: '',
+		parName: '',
 	}
-
 
 	dojoArr = [
 		'Pearland'
@@ -51,7 +53,26 @@ export class AddStudentForm extends Component {
 		setTimeout(() => { console.log(this.state) }, 1)
 	}
 
-	handleChangeMonthlyRate = (e) => {
+	handleLink = (e) => {
+		if (!this.state.parIDtwo) return window.Materialize.toast('You must enter in a Parent ID', 5000, 'animated bounceInUp');
+		$('.link-btn i').addClass('animated infinite flip');
+		$('.link-btn a').addClass('disabled');
+		parentsAPI.getOneParentByIdTwo(this.state.parIDtwo)
+			.then((data) => {
+				$('.link-btn i').removeClass('animated infinite flip');
+				$('.link-btn a').removeClass('disabled');
+				console.log(data)
+				if (data.data.length === 0) return window.Materialize.toast(`No parent found with ID:${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2');
+			})
+			.catch((err) => {
+				window.Materialize.toast('Uh oh! ParentID not found', 5000, 'animated bounceInUp red darken-2');
+				console.log(err);
+				$('.link-btn i').removeClass('animated infinite flip');
+				$('.link-btn a').removeClass('disabled');
+			});
+	}
+
+	handleBlurRate = (e) => {
 		let rate = parseFloat(e.target.value).toFixed(2);
 		this.setState({ [e.target.id]: rate });
 		setTimeout(() => { console.log(this.state) }, 1)
@@ -72,21 +93,46 @@ export class AddStudentForm extends Component {
 			<div className="addstudent-form">
 				<form className="col s12">
 					<div className="divider row"></div>
+					<div className="parent-info row">
+						<h5 className="col s12">Link Parent</h5>
+						<div className="">
+							<div className="input-field col s12 m4">
+								<input
+									id="parIDtwo" type="text" className=""
+									value={this.state.parIDtwo} onChange={this.handleChange}
+								/>
+								<label htmlFor="parIDtwo">Parent ID</label>
+							</div>
+							<div className="input-field col s12 m4 uneditable">
+								<input disabled
+									id="parFirst" type="text" className="validate"
+									value={this.state.parFirst} onChange={this.handleChange}
+								/>
+								<label htmlFor="parFirst">Name</label>
+							</div>
+							<div className="col s12 m4">
+								<div className="link-btn center-align">
+									<a className="waves-effect waves-light btn-large" onClick={this.handleLink}>Link<i className="material-icons right">insert_link</i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="divider row"></div>
 					<div className="student-info row">
 						<h5 className="col s12">Student Info</h5>
 						<div className="input-field col s12 m6">
 							<input
-								id="firstName" type="text" className="validate"
-								value={this.state.firstName} onChange={this.handleChange}
+								id="first" type="text" className="validate"
+								value={this.state.first} onChange={this.handleChange}
 							/>
-							<label htmlFor="firstName">First Name *</label>
+							<label htmlFor="first">First Name *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<input
-								id="lastName" type="text" className="validate"
-								value={this.state.lastName} onChange={this.handleChange}
+								id="last" type="text" className="validate"
+								value={this.state.last} onChange={this.handleChange}
 							/>
-							<label htmlFor="lastName">Last Name *</label>
+							<label htmlFor="last">Last Name *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<input
@@ -97,14 +143,14 @@ export class AddStudentForm extends Component {
 						</div>
 						<div className="input-field col s12 m3">
 							<input
-								id="phoneNumber" type="tel" className="validate"
-								value={this.state.phoneNumber} onChange={this.handleChange}
+								id="phone" type="tel" className="validate"
+								value={this.state.phone} onChange={this.handleChange}
 							/>
-							<label htmlFor="phoneNumber">Phone Number</label>
+							<label htmlFor="phone">Phone Number</label>
 						</div>
 						<div className="input-field col s12 m3">
 							<input
-								id="dob" type="date" className="validate"
+								id="dob" type="date" className="datepicker validate"
 								value={this.state.dob} onChange={this.handleChange}
 							/>
 							<label htmlFor="dob">Date of Birth *</label>
@@ -146,10 +192,10 @@ export class AddStudentForm extends Component {
 						</div>
 						<div className="input-field col s12 m6">
 							<input
-								id="monthlyrate" type="number" className="validate"
-								value={this.state.monthlyrate} onChange={this.handleChange} onBlur={this.handleChangeMonthlyRate}
+								id="rate" type="number" className="validate"
+								value={this.state.rate} onChange={this.handleChange} onBlur={this.handleBlurRate}
 							/>
-							<label htmlFor="monthlyrate">Monthly Rate ($) *</label>
+							<label htmlFor="rate">Monthly Rate ($) *</label>
 						</div>
 					</div>
 					<div className="submit-btn center-align">

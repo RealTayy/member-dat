@@ -15,8 +15,8 @@ export class ParentSearch extends Component {
   }
 
   handleSubmit = (e) => {
-    // Builds search object from filled in fields
     let searchQuery = {};
+    if (this.state.id) searchQuery["idtwo"] = this.state.id;
     if (this.state.parFirst) searchQuery["info.name.first"] = this.state.parFirst;
     if (this.state.parLast) searchQuery["info.name.last"] = this.state.parLast;
     if (this.state.parPhone) searchQuery["info.contact.phone"] = this.state.parPhone;

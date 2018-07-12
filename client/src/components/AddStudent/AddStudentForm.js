@@ -10,7 +10,7 @@ export class AddStudentForm extends Component {
 		school: '',
 		phone: '',
 		dob: '',
-		beltRank: 'White',
+		beltrank: 'White',
 		dojo: '',
 		type: 'Standard',
 		rate: '',
@@ -41,8 +41,8 @@ export class AddStudentForm extends Component {
 	];
 
 	componentDidMount() {
-		$('#beltRank').material_select();
-		$('#beltRank').on('change', this.handleChange);
+		$('#beltrank').material_select();
+		$('#beltrank').on('change', this.handleChange);
 		$('#dojo').material_select();
 		$('#dojo').on('change', this.handleChange);
 		$('#type').material_select();
@@ -61,12 +61,11 @@ export class AddStudentForm extends Component {
 		parentsAPI.getOneParentByIdTwo(this.state.parIDtwo)
 			.then((data) => {
 				let parent = data.data[0]
-				console.log(parent)
 				$('.link-btn i').removeClass('animated infinite flip');
 				$('.link-btn a').removeClass('disabled');
 				if (data.data.length === 0) return window.Materialize.toast(`No parent found with ID: ${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2')
-				else window.Materialize.toast(`${parent.info.name.full} linked`, 5000, 'animated bounceInUp green darken-2');
-				this.setState({ parID: parent.id, parName: parent.info.name.full });
+				else window.Materialize.toast(`${parent.info.name.dFull} linked`, 5000, 'animated bounceInUp green darken-2');
+				this.setState({ parID: parent.id, parName: parent.info.name.dFull });
 			})
 			.catch((err) => {
 				console.log(err);
@@ -96,14 +95,14 @@ export class AddStudentForm extends Component {
 				console.log(data);
 				$('.submit-btn i').removeClass('animated infinite flip');
 				$('.submit-btn a').removeClass('disabled');
-				// window.Materialize.toast(`${student.info.name.full} successfully added`, 5000, 'animated bounceInUp green darken-2');
+				// window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
 				window.Materialize.toast(`${student.first} successfully added`, 5000, 'animated bounceInUp green darken-2');
 			})
 			.catch((err) => {
 				console.log(err)
 				$('.submit-btn i').removeClass('animated infinite flip');
 				$('.submit-btn a').removeClass('disabled');
-				if (err.response) { console.log(err.response); window.Materialize.toast(`Error adding new student: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2'); }
+				if (err.response) { console.log(err.response); return window.Materialize.toast(`Error adding new student: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2'); }
 				else console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
 			});
 
@@ -194,13 +193,13 @@ export class AddStudentForm extends Component {
 						</div>
 						<div className="input-field col s12 m6">
 							<select
-								id="beltRank" type="text" className="validate"
-								value={this.state.beltRank} onChange={this.handleChange}>
-								{this.beltRankArr.map((beltRank, i) => {
-									return <option key={i} value={beltRank}>{beltRank}</option>
+								id="beltrank" type="text" className="validate"
+								value={this.state.beltrank} onChange={this.handleChange}>
+								{this.beltRankArr.map((beltrank, i) => {
+									return <option key={i} value={beltrank}>{beltrank}</option>
 								})}
 							</select>
-							<label htmlFor="beltRank">Belt Rank *</label>
+							<label htmlFor="beltrank">Belt Rank *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<select

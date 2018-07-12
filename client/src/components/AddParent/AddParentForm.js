@@ -61,7 +61,7 @@ export class AddParentForm extends Component {
 				console.log(data);
 				$('.submit-btn i').removeClass('animated infinite flip');
 				$('.submit-btn a').removeClass('disabled');
-				window.Materialize.toast(`${parent.info.name.full} successfully added`, 5000, 'animated bounceInUp green darken-2');
+				window.Materialize.toast(`${parent.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
 			})
 			.catch((err) => {
 				console.log(err)

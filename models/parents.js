@@ -19,8 +19,8 @@ const ParentSchema = new Schema({
 	isActive: { type: Boolean, required: true },
 	info: {
 		name: {
-			first: { type: String, required: true, trim: true },
-			last: { type: String, required: true, trim: true }
+			first: { type: String, required: true, trim: true, lowercase: true },
+			last: { type: String, required: true, trim: true, lowercase: true }
 		},
 		contact: {
 			phone: { type: String, required: true, trim: true },
@@ -53,7 +53,10 @@ const ParentSchema = new Schema({
 		heardBy: { type: String, required: false, trim: true },
 		referBy: { type: String, required: false, trim: true },
 	},
-	students: [{ type: Schema.Types.ObjectId, ref: "Students" }],
+	students: [{
+		_id: { type: Schema.Types.ObjectId, ref: "Students" },
+		dFull: { type: String, required: true, trim: true },
+	}],
 	invoices: [{ type: Schema.Types.ObjectId, ref: "Invoices" }],
 }, {
 		toObject: {
@@ -66,9 +69,19 @@ const ParentSchema = new Schema({
 );
 
 // Create Virtuals for ParentSchema
-ParentSchema.virtual('info.name.full')
+ParentSchema.virtual('info.name.dFull')
 	.get(function () {
-		return `${this.info.name.first} ${this.info.name.last}`
+		return `${this.info.name.dFirst} ${this.info.name.dLast}`
+	})
+
+ParentSchema.virtual('info.name.dFirst')
+	.get(function () {
+		return `${this.info.name.first.charAt(0).toUpperCase()}${this.info.name.first.substring(1)}`
+	})
+
+ParentSchema.virtual('info.name.dLast')
+	.get(function () {
+		return `${this.info.name.last.charAt(0).toUpperCase()}${this.info.name.last.substring(1)}`
 	})
 
 ParentSchema.virtual('info.address.full')

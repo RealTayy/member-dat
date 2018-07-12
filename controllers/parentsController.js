@@ -69,6 +69,13 @@ const ParentsController = {
 			.then((dbModel) => dbModel.remove())
 			.then((dbModel) => res.json(dbModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
+	seed: function (seed) {
+		return Parents
+			.remove({})
+			.then(() => Parents.insertMany(seed))
+			.then((dbModel) => { return dbModel })
+			.catch((err) => console.log(err));
 	}
 };
 

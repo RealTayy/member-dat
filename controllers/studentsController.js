@@ -21,6 +21,14 @@ const parentsController = require('./parentsController')
 |*  Methods for controller *|
 |***************************/
 const StudentsController = {
+	findSomeRegex: function (req, res) {
+		// Convert query to regex query
+		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
+		Students
+			.find(req.query)
+			.then((dbModel) => res.json(dbModel))
+			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
 	create: function (req, res) {
 		console.log(req.body);
 		// Create ObjectID from parentID and assign to parent field		

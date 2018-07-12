@@ -28,7 +28,7 @@ export class AddStudentForm extends Component {
 		"Trial"
 	]
 
-	beltRankArr = [
+	beltrankArr = [
 		'White',
 		'Yellow', 'Yellow Stripe',
 		'Orange', 'Orange Stripe',
@@ -194,7 +194,7 @@ export class AddStudentForm extends Component {
 							<select
 								id="beltrank" type="text" className="validate"
 								value={this.state.beltrank} onChange={this.handleChange}>
-								{this.beltRankArr.map((beltrank, i) => {
+								{this.beltrankArr.map((beltrank, i) => {
 									return <option key={i} value={beltrank}>{beltrank}</option>
 								})}
 							</select>

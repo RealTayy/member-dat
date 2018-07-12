@@ -46,20 +46,22 @@ const StudentSchema = new Schema({
 });
 
 // Create Virtuals for StudentSchema
-StudentSchema.virtual('info.name.dFull')
-	.get(function () {
-		return `${this.info.name.dFirst} ${this.info.name.dLast}`
-	})
+StudentSchema.pre('save', function () {
+	StudentSchema.virtual('info.name.dFull')
+		.get(function () {
+			return `${this.info.name.first.charAt(0).toUpperCase()}${this.info.name.first.substring(1)} ${this.info.name.last.charAt(0).toUpperCase()}${this.info.name.last.substring(1)}`
+		})
 
-StudentSchema.virtual('info.name.dFirst')
-	.get(function () {
-		return `${this.info.name.first.charAt(0).toUpperCase()}${this.info.name.first.substring(1)}`
-	})
+	StudentSchema.virtual('info.name.dFirst')
+		.get(function () {
+			return `${this.info.name.first.charAt(0).toUpperCase()}${this.info.name.first.substring(1)}`
+		})
 
-StudentSchema.virtual('info.name.dLast')
-	.get(function () {
-		return `${this.info.name.last.charAt(0).toUpperCase()}${this.info.name.last.substring(1)}`
-	})
+	StudentSchema.virtual('info.name.dLast')
+		.get(function () {
+			return `${this.info.name.last.charAt(0).toUpperCase()}${this.info.name.last.substring(1)}`
+		})
+});
 
 /***********|
 |* EXPORTS *|

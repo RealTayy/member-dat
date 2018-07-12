@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 export class ParentSearch extends Component {
   state = {
-    id: '',
+    parID: '',
     parFirst: '',
     parLast: '',
     parPhone: ''
@@ -15,9 +15,9 @@ export class ParentSearch extends Component {
     setTimeout(() => { console.log(this.state) }, 1)
   }
 
-  handleSubmit = (e) => {
+  handleSearch = (e) => {
     let searchQuery = {};
-    if (this.state.id) searchQuery["idtwo"] = this.state.id;
+    if (this.state.parID) searchQuery["idtwo"] = this.state.parID;
     if (this.state.parFirst) searchQuery["info.name.first"] = this.state.parFirst;
     if (this.state.parLast) searchQuery["info.name.last"] = this.state.parLast;
     if (this.state.parPhone) searchQuery["info.contact.phone"] = this.state.parPhone;
@@ -45,8 +45,8 @@ export class ParentSearch extends Component {
       <div id="parent-search" className="row">
         <form className="col s12 ">
           <div className="input-field col s12">
-            <input id="id" type="text" className="validate"
-              value={this.state.id} onChange={this.handleChange}
+            <input id="parID" type="text" className="validate"
+              value={this.state.parID} onChange={this.handleChange}
             />
             <label htmlFor="id">ID #</label>
           </div>
@@ -69,7 +69,7 @@ export class ParentSearch extends Component {
             <label htmlFor="parPhone">Phone Number</label>
           </div>
           <div className="parent-searchbtn center-align">
-            <a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Search<i className="material-icons right">search</i></a>
+            <a className="waves-effect waves-light btn-large" onClick={this.handleSearch}>Search<i className="material-icons right">search</i></a>
           </div>
         </form>
       </div>

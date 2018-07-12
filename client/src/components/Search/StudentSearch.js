@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { studentsAPI } from '../../utils/api/index';
 import $ from 'jquery';
 
 export class StudentSearch extends Component {
   state = {
     stuID: '',
-    stuFirstName: '',
-    stuLastName: '',
-    beltRank: '',
+    stuFirst: '',
+    stuLast: '',
+    beltrank: '',
   }
 
-  beltRankArr = [
+  beltrankArr = [
     'White',
     'Yellow', 'Yellow Stripe',
     'Orange', 'Orange Stripe',
@@ -22,8 +23,8 @@ export class StudentSearch extends Component {
   ];
 
   componentDidMount = () => {
-    $('#beltRank').material_select();
-    $('#beltRank').on('change', this.handleChange);
+    $('#beltrank').material_select();
+    $('#beltrank').on('change', this.handleChange);
   }
 
   handleChange = (e) => {
@@ -31,12 +32,29 @@ export class StudentSearch extends Component {
     setTimeout(() => { console.log(this.state) }, 1)
   }
 
-  handleSubmit = (e) => {    
-    let searchObject = {};
-    for (let property in this.state) {
-      if (this.state[property] !== "") { searchObject[property] = this.state[property] }
-    }
-    console.log(searchObject);
+  handleSearch = (e) => {
+    let searchQuery = {};
+    if (this.state.stuID) searchQuery["idtwo"] = this.state.id;
+    if (this.state.stuFirst) searchQuery["info.name.first"] = this.state.stuFirst;
+    if (this.state.stuLast) searchQuery["info.name.last"] = this.state.stuLast;
+    if (this.state.beltrank) searchQuery["enrollment.beltrank"] = this.state.beltrank;
+    if ($.isEmptyObject(searchQuery)) return window.Materialize.toast('You must enter in at least one search term', 5000, 'animated bounceInUp');
+    $('.student-searchbtn i').addClass('animated infinite flip');
+    $('.student-searchbtn a').addClass('disabled');
+    studentsAPI.getSomeStudents(searchQuery)
+      .then((data) => {
+        console.log(data.data);
+        $('.student-searchbtn i').removeClass('animated infinite flip');
+        $('.student-searchbtn a').removeClass('disabled');
+        if (data.data.length === 0) return window.Materialize.toast(`No students found please redefined search`, 5000, 'animated bounceInUp');
+        else window.Materialize.toast(`Search complete! Returned ${data.data.length} results`, 5000, 'animated bounceInUp green darken-2');
+      })
+      .catch((err) => {
+        console.log(err.response)
+        window.Materialize.toast(`Error searching database. Please try again`, 5000, 'animated bounceInUp red darken-2');
+        $('.student-searchbtn i').removeClass('animated infinite flip');
+        $('.student-searchbtn a').removeClass('disabled');
+      })
   }
 
   render() {
@@ -52,31 +70,31 @@ export class StudentSearch extends Component {
           </div>
           <div className="input-field col s12">
             <input
-              id="stuFirstName" type="text" className="validate"
-              value={this.state.stuFirstName} onChange={this.handleChange}
+              id="stuFirst" type="text" className="validate"
+              value={this.state.stuFirst} onChange={this.handleChange}
             />
-            <label htmlFor="stuFirstName">First Name</label>
+            <label htmlFor="stuFirst">First Name</label>
           </div>
           <div className="input-field col s12">
             <input
-              id="stuLastName" type="text" className="validate"
-              value={this.state.stuLastName} onChange={this.handleChange}
+              id="stuLast" type="text" className="validate"
+              value={this.state.stuLast} onChange={this.handleChange}
             />
-            <label htmlFor="stuLastName">Last Name</label>
+            <label htmlFor="stuLast">Last Name</label>
           </div>
           <div className="input-field col s12">
             <select
-              id="beltRank" className="validate"
-              value={this.state.beltRank}>
+              id="beltrank" className="validate"
+              value={this.state.beltrank}>
               <option key="0" value="">None</option>
-              {this.beltRankArr.map((beltRank, i) => {
-                return <option key={i + 1} value={beltRank}>{beltRank}</option>
+              {this.beltrankArr.map((beltrank, i) => {
+                return <option key={i + 1} value={beltrank}>{beltrank}</option>
               })}
             </select>
-            <label htmlFor="beltRank">Belt Rank</label>
+            <label htmlFor="beltrank">Belt Rank</label>
           </div>
           <div className="student-searchbtn center-align">
-            <a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Search<i className="material-icons right">search</i></a>
+            <a className="waves-effect waves-light btn-large" onClick={this.handleSearch}>Search<i className="material-icons right">search</i></a>
           </div>
         </form>
       </div>

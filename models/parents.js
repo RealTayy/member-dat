@@ -69,31 +69,33 @@ const ParentSchema = new Schema({
 );
 
 // Create Virtuals for ParentSchema
-ParentSchema.virtual('info.name.dFull')
-	.get(function () {
-		return `${this.info.name.dFirst} ${this.info.name.dLast}`
-	})
+ParentSchema.pre('save', function () {
+	ParentSchema.virtual('info.name.dFull')
+		.get(function () {
+			return `${this.info.name.first.charAt(0).toUpperCase()}${this.info.name.first.substring(1)} ${this.info.name.last.charAt(0).toUpperCase()}${this.info.name.last.substring(1)}`
+		})
 
-ParentSchema.virtual('info.name.dFirst')
-	.get(function () {
-		return `${this.info.name.first.charAt(0).toUpperCase()}${this.info.name.first.substring(1)}`
-	})
+	ParentSchema.virtual('info.name.dFirst')
+		.get(function () {
+			return `${this.info.name.first.charAt(0).toUpperCase()}${this.info.name.first.substring(1)}`
+		})
 
-ParentSchema.virtual('info.name.dLast')
-	.get(function () {
-		return `${this.info.name.last.charAt(0).toUpperCase()}${this.info.name.last.substring(1)}`
-	})
+	ParentSchema.virtual('info.name.dLast')
+		.get(function () {
+			return `${this.info.name.last.charAt(0).toUpperCase()}${this.info.name.last.substring(1)}`
+		})
 
-ParentSchema.virtual('info.address.full')
-	.get(function () {
-		let a = this.info.address;
-		return `${a.line1}${(a.line2) ? ',' : ` ${a.line2},`} ${a.city}, ${a.state}, ${a.zip}`
-	})
+	ParentSchema.virtual('info.address.full')
+		.get(function () {
+			let a = this.info.address;
+			return `${a.line1}${(a.line2) ? ',' : ` ${a.line2},`} ${a.city}, ${a.state}, ${a.zip}`
+		})
 
-ParentSchema.virtual('info.emergencyContact.name.full')
-	.get(function () {
-		return `${this.info.emergencyContact.first} ${this.info.emergencyContact.last}`
-	})
+	ParentSchema.virtual('info.emergencyContact.name.full')
+		.get(function () {
+			return `${this.info.emergencyContact.first} ${this.info.emergencyContact.last}`
+		})
+});
 
 /***********|
 |* EXPORTS *|

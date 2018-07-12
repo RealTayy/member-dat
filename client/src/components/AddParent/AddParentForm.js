@@ -67,7 +67,7 @@ export class AddParentForm extends Component {
 				console.log(err)
 				$('.submit-btn i').removeClass('animated infinite flip');
 				$('.submit-btn a').removeClass('disabled');
-				window.Materialize.toast(`Error adding new parent: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2');
+				window.Materialize.toast(`Error adding new parent`, 5000, 'animated bounceInUp red darken-2');
 			});
 	}
 	render() {

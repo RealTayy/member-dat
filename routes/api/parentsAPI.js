@@ -7,7 +7,7 @@ const router = require('express').Router();
 
 /***********************************|
 |*  SETS UP API ROUTES FOR PARENTS *|
-|************************************/
+|***********************************/
 // Imports in controller for parents
 const parentsController = require('../../controllers/parentsController.js');
 

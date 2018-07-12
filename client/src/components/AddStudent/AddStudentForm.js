@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
-import { parentsAPI } from '../../utils/api/index';
+import { parentsAPI, studentsAPI } from '../../utils/api/index';
 
 export class AddStudentForm extends Component {
 	state = {
@@ -83,12 +83,30 @@ export class AddStudentForm extends Component {
 	}
 
 	handleSubmit = (e) => {
-		// Builds db object from filled in fields
+		if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
+		$('.submit-btn i').addClass('animated infinite flip');
+		$('.submit-btn a').addClass('disabled');
 		let dbObject = {};
 		for (let property in this.state) {
 			if (this.state[property] !== "") { dbObject[property] = this.state[property] }
 		}
-		console.log(dbObject);
+		studentsAPI.submitNewStudent(dbObject)
+			.then((data) => {
+				let student = data.data;
+				console.log(data);
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				// window.Materialize.toast(`${student.info.name.full} successfully added`, 5000, 'animated bounceInUp green darken-2');
+				window.Materialize.toast(`${student.first} successfully added`, 5000, 'animated bounceInUp green darken-2');
+			})
+			.catch((err) => {
+				console.log(err)
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				if (err.response) { console.log(err.response); window.Materialize.toast(`Error adding new student: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2'); }
+				else console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
+			});
+
 	}
 
 	render() {

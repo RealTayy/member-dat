@@ -69,7 +69,7 @@ const ParentSchema = new Schema({
 );
 
 // Create Virtuals for ParentSchema
-ParentSchema.pre('save', function () {
+ParentSchema.post('validate', function () {
 	ParentSchema.virtual('info.name.dFull')
 		.get(function () {
 			return `${this.info.name.first.charAt(0).toUpperCase()}${this.info.name.first.substring(1)} ${this.info.name.last.charAt(0).toUpperCase()}${this.info.name.last.substring(1)}`

@@ -60,6 +60,7 @@ export class AddStudentForm extends Component {
 		$('.link-btn a').addClass('disabled');
 		parentsAPI.getOneParentByIdTwo(this.state.parIDtwo)
 			.then((data) => {
+				console.log(data);
 				let parent = data.data[0]
 				$('.link-btn i').removeClass('animated infinite flip');
 				$('.link-btn a').removeClass('disabled');
@@ -108,7 +109,6 @@ export class AddStudentForm extends Component {
 	}
 
 	render() {
-		// <div className="divider row"></div>
 		return (
 			<div className="addstudent-form">
 				<form className="col s12">

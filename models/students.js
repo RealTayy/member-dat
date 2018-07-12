@@ -19,7 +19,6 @@ const StudentSchema = new Schema({
 	isActive: { type: Boolean, required: true },
 	first: { type: String, required: true },
 	parent: { type: Schema.Types.ObjectId, ref: 'Parents', required: true }
-
 })
 
 /***********|

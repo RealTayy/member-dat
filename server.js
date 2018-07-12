@@ -53,9 +53,13 @@ db.on("error", (error) => {
 	console.log(`DB Error: ${error}`);
 });
 
+// Imports in seed files
+
 // Logs success if sucessfully connected to db
 db.once("open", () => {
 	console.log("DB connection successful!");
+	console.log("Running Seeds...");
+	require('./seeds/index.js')();
 });
 
 /*****************|

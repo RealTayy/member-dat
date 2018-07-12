@@ -95,8 +95,7 @@ export class AddStudentForm extends Component {
 				console.log(data);
 				$('.submit-btn i').removeClass('animated infinite flip');
 				$('.submit-btn a').removeClass('disabled');
-				// window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
-				window.Materialize.toast(`${student.first} successfully added`, 5000, 'animated bounceInUp green darken-2');
+				window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');				
 			})
 			.catch((err) => {
 				console.log(err)

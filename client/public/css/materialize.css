@@ -2270,7 +2270,7 @@ table {
   table.highlight > tbody > tr {
     transition: background-color .25s ease; }
     table.highlight > tbody > tr:hover {
-      background-color: rgba(242, 242, 242, 0.5); }
+      background-color: #eceff1; }
   table.centered thead tr th, table.centered tbody tr td {
     text-align: center; }
 

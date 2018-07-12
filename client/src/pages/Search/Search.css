@@ -18,3 +18,7 @@
 .search-selector .search-selector-container {
   padding: 0 1.5rem;
 }
+
+.search-selector a>i.material-icons {
+  pointer-events: none;
+}

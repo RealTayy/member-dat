@@ -3,9 +3,14 @@ import { ParentSearch, StudentSearch } from '.';
 import $ from 'jquery';
 
 export class SearchForm extends Component {
+	handleTabClick = (e) => {
+		this.props.setActiveSearchTab(e.target.id);
+	}
+
 	componentDidMount() {
 		$('.search-selector .tabs').tabs();
 	}
+
 	render() {
 		return (
 			<div className="search-form col s4">
@@ -14,14 +19,26 @@ export class SearchForm extends Component {
 					<div className="search-selector">
 						<div className="input-field row">
 							<div className="search-selector-container col s12">
-								<ul className="tabs z-depth-1">
-									<li className="tab col s12 m6"><a className="waves-effect waves-blue" href="#parent-search"><i className="material-icons">contacts</i>Parent</a></li>
-									<li className="tab col s12 m6"><a className="waves-effect waves-blue" href="#student-search"><i className="material-icons">directions_walk</i>Student</a></li>
+								<ul className="tabs z-depth-2">
+									<li className="tab col s12 m6">
+										<a id="parent-tab" className="waves-effect waves-blue" href="#parent-search" onClick={this.handleTabClick}>
+											<i className="material-icons">contacts</i>Parent
+										</a>
+									</li>
+									<li className="tab col s12 m6">
+										<a id="student-tab" className="waves-effect waves-blue" href="#student-search" onClick={this.handleTabClick}>
+											<i className="material-icons">directions_walk</i>Student
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
-						<ParentSearch />
-						<StudentSearch />
+						<ParentSearch
+							setParSearchResults={this.props.setParSearchResults}
+						/>
+						<StudentSearch
+							setStuSearchResults={this.props.setStuSearchResults}
+						/>
 					</div>
 				</div>
 			</div>

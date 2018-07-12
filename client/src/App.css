@@ -8,32 +8,40 @@
 }
 
 /* Add custom .waves-blue class */
+
 .waves-effect.waves-blue .waves-ripple {
   background-color: rgba(30, 136, 229, 0.65);
 }
 
 /* Makes wave effect not cover tab's underline */
+
 .waves-effect {
   z-index: 0;
 }
 
 /* Lets you click through label to edit form input fields */
+
 form label {
   pointer-events: none;
 }
 
 /* Edit date field CSS */
+
 input[type=date]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   display: none;
 }
 
 /* Change select drop down color */
-.dropdown-content li > a, .dropdown-content li > span {
+
+.dropdown-content li>a,
+.dropdown-content li>span {
   color: #1976D2;
 }
 
 /* Edit Toast */
+
 .toast {
   justify-content: flex-end;
 }
+

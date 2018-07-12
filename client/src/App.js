@@ -19,20 +19,19 @@ export class App extends Component {
     tabs: [],
   }
 
-  changeActive
-
   setActiveTab = (tabID) => {
     console.log('Changing activeTab: ' + tabID);
     this.setState({ activeTab: tabID });
   }
 
   render() {
+    const activeTab = this.state.activeTab;
     return (
       <Router>
         <div className="app">
           <Header />
           <Sidenav
-            activeTab={this.state.activeTab}
+            activeTab={activeTab}
             setActiveTab={this.setActiveTab}
           />
           <Tabbar />

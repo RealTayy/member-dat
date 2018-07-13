@@ -48,8 +48,11 @@ const StudentSchema = new Schema({
 // Create Virtuals for StudentSchema
 StudentSchema.virtual('info.name.dFull')
 	.get(function () {
-		if (this.info.name.dFirst && this.info.name.dLast)
+		console.log('You made it here bby1')
+		if (this.info.name.dFirst && this.info.name.dLast){
+			console.log(`${this.info.name.dFirst} ${this.info.name.dLast}`);
 			return `${this.info.name.dFirst} ${this.info.name.dLast}`
+			}
 	})
 
 StudentSchema.virtual('info.name.dFirst')

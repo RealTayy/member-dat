@@ -83,26 +83,31 @@ export class AddStudentForm extends Component {
 	}
 
 	handleSubmit = (e) => {
+		// If user didn't link parent then exit handleSubmit and display Toast
 		if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
+		// Button goes to "Working" animation
 		$('.submit-btn i').addClass('animated infinite flip');
 		$('.submit-btn a').addClass('disabled');
-		let dbObject = {};
-		for (let property in this.state) {
-			if (this.state[property] !== "") { dbObject[property] = this.state[property] }
-		}
-		studentsAPI.submitNewStudent(dbObject)
+		// Submit this.state to API to build object to be added to DB
+		studentsAPI.submitNewStudent(this.state)
 			.then((data) => {
-				let student = data.data;
-				console.log(data);
+				// Button finishes "Working" animation
 				$('.submit-btn i').removeClass('animated infinite flip');
 				$('.submit-btn a').removeClass('disabled');
+				// Console log response data and display Success toast
+				let student = data.data;
+				console.log(data);
 				window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');				
 			})
 			.catch((err) => {
-				console.log(err)
+				// Button finishes "Working" animation
 				$('.submit-btn i').removeClass('animated infinite flip');
 				$('.submit-btn a').removeClass('disabled');
+				// If err then console log entire err
+				console.log(err)
+				// If error was from server display returned message in a toast
 				if (err.response) { console.log(err.response); return window.Materialize.toast(`Error adding new student: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2'); }
+				// Else display generic error toast
 				else console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
 			});
 

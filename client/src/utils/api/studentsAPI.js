@@ -4,7 +4,7 @@ export default {
 	getSomeStudents: function(query) {
 		return axios.get('/api/students/', { params: query });
 	},
-	submitNewStudents: function (studentData) {
+	submitNewStudent: function (studentData) {
 		// Get current date for startDate
 		let curDate = new Date()
 		// Formats Date object into "YYYY-MM-DD"

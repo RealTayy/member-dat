@@ -19,4 +19,3 @@
 
 > Add comments to stuff
 > Add validator to Add Parent/Add Student Forms
-> Find workout around for linking in seeded parent to studentAdd form. Pre Save hook doesn't create dFull virtual

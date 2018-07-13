@@ -9,6 +9,14 @@
   overflow: auto;
 }
 
+.content-wrapper,
+.tabbar,
+.sidenav,
+.sidenav>li>a {
+  /* transition: width 2s ease-in-out; */
+  transition: all .3s ease-in-out;
+}
+
 /* Add custom .waves-blue class */
 
 .waves-effect.waves-blue .waves-ripple {

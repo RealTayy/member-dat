@@ -21,12 +21,12 @@ export class ParentResult extends Component {
           <div className="col s3">
             <div className="col s12 right-align">
               <Dropdown trigger={
-                <Button className="btn-large btn-square"><i class="material-icons">directions_walk</i></Button>
+                <Button className="btn-large btn-square"><i className="material-icons">directions_walk</i></Button>
               }>
                 <NavItem>one</NavItem>
                 <NavItem>two</NavItem>
               </Dropdown>
-              <a class="waves-effect waves-light btn-large btn-square"><i class="material-icons">contacts</i></a>
+              <a className="waves-effect waves-light btn-large btn-square"><i className="material-icons">contacts</i></a>
             </div>
           </div>
         </div>
@@ -39,12 +39,12 @@ export class ParentResult extends Component {
           <div className="col s3">
             <div className="col s12 right-align">
               <Dropdown trigger={
-                <Button className="btn-flat btn-flat"><i class="material-icons">directions_walk</i>asdf</Button>
+                <Button className="btn-flat btn-flat"><i className="material-icons">directions_walk</i>asdf</Button>
               }>
                 <NavItem>one</NavItem>
                 <NavItem>two</NavItem>
               </Dropdown>
-              <a class="waves-effect waves-light btn-flat btn-square"><i class="material-icons">contacts</i></a>
+              <a className="waves-effect waves-light btn-flat btn-square"><i className="material-icons">contacts</i></a>
             </div>
           </div>
         </div>

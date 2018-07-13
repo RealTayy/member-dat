@@ -11,7 +11,7 @@ export class AddStudentForm extends Component {
 		phone: '',
 		dob: '',
 		beltrank: 'White',
-		dojo: '',
+		dojo: 'Pearland',
 		type: 'Standard',
 		rate: '',
 		parID: '',
@@ -42,16 +42,22 @@ export class AddStudentForm extends Component {
 
 	componentDidMount() {
 		$('#beltrank').material_select();
-		$('#beltrank').on('change', this.handleChange);
+		$('#beltrank').on('change', this.handleChangeDropdown);
 		$('#dojo').material_select();
-		$('#dojo').on('change', this.handleChange);
+		$('#dojo').on('change', this.handleChangeDropdown);
 		$('#type').material_select();
-		$('#type').on('change', this.handleChange);
+		$('#type').on('change', this.handleChangeDropdown);
 	}
 
 	handleChange = (e) => {
 		this.setState({ [e.target.id]: e.target.value });
 		setTimeout(() => { console.log(this.state) }, 1)
+	}
+
+	handleChangeDropdown = (e) => {
+		this.setState({ [e.target.id]: e.target.value });
+		if (e.target.value) $(`#${e.target.id}`).parent().children('input').addClass('valid');
+		else $(`#${e.target.id}`).parent().children('input').removeClass('valid');
 	}
 
 	handleLink = (e) => {
@@ -83,6 +89,8 @@ export class AddStudentForm extends Component {
 	}
 
 	handleSubmit = (e) => {
+		// If all required fields not filled in exit handleSubmit and display toast
+		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// If user didn't link parent then exit handleSubmit and display Toast
 		if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
 		// Button goes to "Working" animation
@@ -97,7 +105,7 @@ export class AddStudentForm extends Component {
 				// Console log response data and display Success toast
 				let student = data.data;
 				console.log(data);
-				window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');				
+				window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
 			})
 			.catch((err) => {
 				// Button finishes "Working" animation
@@ -110,8 +118,36 @@ export class AddStudentForm extends Component {
 				// Else display generic error toast
 				else console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
 			});
-
 	}
+
+	allRequiredFilled = () => {
+		// Helper function to detect when animation ends
+		const animationEnd = (function (el) {
+			const animations = {
+				animation: 'animationend',
+				OAnimation: 'oAnimationEnd',
+				MozAnimation: 'mozAnimationEnd',
+				WebkitAnimation: 'webkitAnimationEnd',
+			};
+
+			for (let t in animations) {
+				if (el.style[t] !== undefined) return animations[t];
+			}
+		})(document.createElement('div'));
+
+		// 
+		const validationArr = $('.addstudent-form .required').map(function () {
+			if (this.value !== '') return true
+			else {
+				$(this).removeClass('valid');
+				$(this).addClass('invalid');
+				$(this).parent().addClass('animated flash');
+				$(this).parent().one(animationEnd, () => $(this).parent().removeClass('animated flash'));
+				return false;
+			}
+		})		
+		return !validationArr.toArray().includes(false)
+	};
 
 	render() {
 		return (
@@ -147,14 +183,14 @@ export class AddStudentForm extends Component {
 						<h5 className="col s12">Student Info</h5>
 						<div className="input-field col s12 m6">
 							<input
-								id="first" type="text" className="validate"
+								id="first" type="text" className="required validate"
 								value={this.state.first} onChange={this.handleChange}
 							/>
 							<label htmlFor="first">First Name *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<input
-								id="last" type="text" className="validate"
+								id="last" type="text" className="required validate"
 								value={this.state.last} onChange={this.handleChange}
 							/>
 							<label htmlFor="last">Last Name *</label>
@@ -175,7 +211,7 @@ export class AddStudentForm extends Component {
 						</div>
 						<div className="input-field col s12 m3">
 							<input
-								id="dob" type="date" className="datepicker validate"
+								id="dob" type="date" className="required datepicker validate"
 								value={this.state.dob} onChange={this.handleChange}
 							/>
 							<label htmlFor="dob">Date of Birth *</label>
@@ -186,7 +222,7 @@ export class AddStudentForm extends Component {
 						<h5 className="col s12">Tuition/Enrollment Info</h5>
 						<div className="input-field col s12 m6">
 							<select
-								id="dojo" type="text" className="validate"
+								id="dojo" type="text" className="required validate"
 								value={this.state.dojo} onChange={this.handleChange}>
 								<option key="0" value="" disabled>Select Dojo</option>
 								{this.dojoArr.map((dojo, i) => {
@@ -197,7 +233,7 @@ export class AddStudentForm extends Component {
 						</div>
 						<div className="input-field col s12 m6">
 							<select
-								id="beltrank" type="text" className="validate"
+								id="beltrank" type="text" className="required validate"
 								value={this.state.beltrank} onChange={this.handleChange}>
 								{this.beltrankArr.map((beltrank, i) => {
 									return <option key={i} value={beltrank}>{beltrank}</option>
@@ -207,7 +243,7 @@ export class AddStudentForm extends Component {
 						</div>
 						<div className="input-field col s12 m6">
 							<select
-								id="type" type="text" className="validate"
+								id="type" type="text" className="required validate"
 								value={this.state.type} onChange={this.handleChange}>
 								{this.enrollmentArr.map((type, i) => {
 									return <option key={i} value={type}>{type}</option>
@@ -217,7 +253,7 @@ export class AddStudentForm extends Component {
 						</div>
 						<div className="input-field col s12 m6">
 							<input
-								id="rate" type="number" className="validate"
+								id="rate" type="number" className="required validate"
 								value={this.state.rate} onChange={this.handleChange} onBlur={this.handleBlurRate}
 							/>
 							<label htmlFor="rate">Monthly Rate ($) *</label>

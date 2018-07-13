@@ -9,10 +9,8 @@
 > Make search side bar thing fixed
 > Make prettier ParentID: not found warning for studentAdd
 > Fix toast width
-
 > Add comments to stuff
 > Add React Materialize to portfolio
-> Make undefined not shwo when adding student PLS. The virtuals are not working not sure what is going on.
 
 GAME PLAN:
 MemberDat - SP ref

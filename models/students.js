@@ -43,7 +43,15 @@ const StudentSchema = new Schema({
 		_id: { type: Schema.Types.ObjectId, ref: 'Parents', required: true },
 		dFull: { type: String, required: true, trim: true },
 	}
-});
+}, {
+		toObject: {
+			virtuals: true
+		},
+		toJSON: {
+			virtuals: true
+		}
+	}
+);
 
 // Create Virtuals for StudentSchema
 StudentSchema.virtual('info.name.dFull')

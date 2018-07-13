@@ -126,6 +126,47 @@ const parentsSeed = [
 			referBy: '',
 		}
 	},
+	{		
+		_id: new ObjectId('123456789123456789123453'),
+		idtwo: 'P000003',
+		isActive: true,
+		info: {
+			name: {
+				first: 'chiwetel',
+				last: 'ejiofor'
+			},
+			contact: {
+				phone: '456-456-4567',
+				email: 'blackpanther@wakanda.com'
+			},
+			dob: {
+				full: '1977-07-10'
+			},
+			startDate: {
+				full: '2018-04-24'
+			},
+			address: {
+				line1: '42 T\'Challa Rd',
+				line2: '',
+				city: 'Wakanda',
+				state: 'AF',
+				zip: '55055'
+			},
+			emergencyContact: {
+				name: {
+					first: 'T\'Chaka',
+					last: 'Shuri',
+				},
+				contact: {
+					phone: '777-777-7777',
+					email: 'ripinpeace@rip.com',
+				},
+				relation: 'Former King',
+			},
+			heardBy: 'Web Search',
+			referBy: '',
+		}
+	},
 ]
 parentsController.seed(parentsSeed)
 	.then((parents) => console.log(`${parents.length} document(s) inserted to parents!`))

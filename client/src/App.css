@@ -1,3 +1,5 @@
+/* Global CSS changes */
+
 .content-wrapper {
   position: absolute;
   margin-left: 250px;
@@ -32,7 +34,7 @@ input[type=date]::-webkit-inner-spin-button {
   display: none;
 }
 
-/* Change select drop down color */
+/* Change select drop down font color */
 
 .dropdown-content li>a,
 .dropdown-content li>span {
@@ -45,3 +47,8 @@ input[type=date]::-webkit-inner-spin-button {
   justify-content: flex-end;
 }
 
+/* Make a large square button class */
+
+.btn-large.btn-square {
+  padding: 0 14px;
+}

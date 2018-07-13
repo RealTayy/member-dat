@@ -1,22 +1,23 @@
 > Format input type=tel to autoformat #.
-> Add in correct belts for StudentSearch in beltRankArr
 > Make date field pretty using jQueryUI
 > Put scroll bar on top of tabbar
 > Make close button hover transition smoothly
 > Restyle hover for sidenav
 > Green validate underline for "Select belt" under student search and Date fields
-> change ParentSearch and Student search to not use id="parent-search" and use className="parent-search" instead.
 > Make sidenav mobile friendly
 > Why Monthly rate field show invalid bro? WHY?!
-> Convert AddParentForm's state to match DB model for ez query
 > Add match exact for search forms
 > Make search results persist between tab changes
 > Add active only to parent fields
-> Add Seeds
 > Make search side bar thing fixed
 > Make prettier ParentID: not found warning for studentAdd
 > Fix toast width
 
 > Add comments to stuff
 > Add validator to Add Parent/Add Student Forms
-> Find workout around for linking in seeded parent to studentAdd form. Pre Save hook doesn't create dFull virtual
+< Add seeds
+> Add React Materialize to portfolio
+
+GAME PLAN:
+MemberDat - SP ref
+C. Ejiofore

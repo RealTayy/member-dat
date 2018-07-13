@@ -24,9 +24,10 @@ export class ParentSearch extends Component {
     if (this.state.parPhone) searchQuery["info.contact.phone"] = this.state.parPhone;
     // If user didn't fill in any search fields exit handleSearch and display toast
     if ($.isEmptyObject(searchQuery)) return window.Materialize.toast('You must enter in at least one search term', 5000, 'animated bounceInUp');
+    // Button goes to "Working" animation
     $('.parent-searchbtn i').addClass('animated infinite flip');
     $('.parent-searchbtn a').addClass('disabled');
-    // Get array of data from API baed on searchQuery
+    // Get array of data from API based on searchQuery
     parentsAPI.getSomeParents(searchQuery)
       .then((data) => {
         // Button finishes "Working" animation

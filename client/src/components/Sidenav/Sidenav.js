@@ -17,7 +17,7 @@ export class Sidenav extends Component {
 	render() {
 		return (
 			<div className="sidenav-container">
-				<ul id="slide-out" className="sidenav sidenav-fixed blue-grey darken-2 z-depth-2">
+				<ul className="sidenav sidenav-fixed blue-grey darken-2 z-depth-2">
 					<li className="sidenav-item">
 						<Link to="/" id="dashboard-tab" className="waves-effect waves-blue" onClick={this.clickHandler}>
 							<i className="material-icons">dashboard</i>Dashboard
@@ -54,9 +54,6 @@ export class Sidenav extends Component {
 						</Link>
 					</li>
 				</ul>
-				<a href="#!" data-target="slide-out" className="sidenav-trigger">
-					<i className="material-icons">menu</i
-					></a>
 			</div>
 		)
 	}

@@ -54,7 +54,7 @@ export class AddParentForm extends Component {
 	}
 
 	handleBlur = (e) => {
-		if (e.target.value !== '') $(`#${e.target.id}`).addClass('valid');
+		if (e.target.value !== ''); $(`#${e.target.id}`).removeClass('invalid'); $(`#${e.target.id}`).addClass('valid');
 	}
 
 	handleSubmit = (e) => {

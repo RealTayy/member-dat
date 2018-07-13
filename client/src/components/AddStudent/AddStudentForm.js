@@ -61,7 +61,29 @@ export class AddStudentForm extends Component {
 	}
 
 	handleLink = (e) => {
-		if (!this.state.parIDtwo) return window.Materialize.toast('You must enter in a Parent ID', 5000, 'animated bounceInUp');
+		// Helper function to detect when animation ends
+		const animationEnd = (function (el) {
+			const animations = {
+				animation: 'animationend',
+				OAnimation: 'oAnimationEnd',
+				MozAnimation: 'mozAnimationEnd',
+				WebkitAnimation: 'webkitAnimationEnd',
+			};
+
+			for (let t in animations) {
+				if (el.style[t] !== undefined) return animations[t];
+			}
+		})(document.createElement('div'));
+
+		$(this).parent().addClass('animated flash');
+		$(this).parent().one(animationEnd, () => $(this).parent().removeClass('animated flash'));
+
+		if (!this.state.parIDtwo) {
+			$('#parIDtwo').addClass('invalid');
+			$('#parIDtwo').parent().addClass('animated flash');
+			$('#parIDtwo').parent().one(animationEnd, () => $('#parIDtwo').parent().removeClass('animated flash'));
+			return window.Materialize.toast('You must enter in a Parent ID', 5000, 'animated bounceInUp')
+		};
 		$('.link-btn i').addClass('animated infinite flip');
 		$('.link-btn a').addClass('disabled');
 		parentsAPI.getOneParentByIdTwo(this.state.parIDtwo)
@@ -70,6 +92,8 @@ export class AddStudentForm extends Component {
 				let parent = data.data[0]
 				$('.link-btn i').removeClass('animated infinite flip');
 				$('.link-btn a').removeClass('disabled');
+				$('#parName').addClass('valid');
+				$('#parIDtwo').addClass('valid');
 				if (data.data.length === 0) return window.Materialize.toast(`No parent found with ID: ${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2')
 				else window.Materialize.toast(`${parent.info.name.dFull} linked`, 5000, 'animated bounceInUp green darken-2');
 				this.setState({ parID: parent.id, parName: parent.info.name.dFull });
@@ -82,6 +106,10 @@ export class AddStudentForm extends Component {
 			});
 	}
 
+	handleBlur = (e) => {
+		if (e.target.value !== ''); $(`#${e.target.id}`).removeClass('invalid'); $(`#${e.target.id}`).addClass('valid');
+	}
+
 	handleBlurRate = (e) => {
 		let rate = parseFloat(e.target.value).toFixed(2);
 		this.setState({ [e.target.id]: rate });
@@ -89,10 +117,10 @@ export class AddStudentForm extends Component {
 	}
 
 	handleSubmit = (e) => {
-		// If all required fields not filled in exit handleSubmit and display toast
-		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// If user didn't link parent then exit handleSubmit and display Toast
 		if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
+		// If all required fields not filled in exit handleSubmit and display toast
+		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// Button goes to "Working" animation
 		$('.submit-btn i').addClass('animated infinite flip');
 		$('.submit-btn a').addClass('disabled');
@@ -145,7 +173,7 @@ export class AddStudentForm extends Component {
 				$(this).parent().one(animationEnd, () => $(this).parent().removeClass('animated flash'));
 				return false;
 			}
-		})		
+		})
 		return !validationArr.toArray().includes(false)
 	};
 
@@ -159,7 +187,7 @@ export class AddStudentForm extends Component {
 						<div className="">
 							<div className="input-field col s12 m4">
 								<input
-									id="parIDtwo" type="text" className=""
+									id="parIDtwo" type="text" className="validate"
 									value={this.state.parIDtwo} onChange={this.handleChange}
 								/>
 								<label htmlFor="parIDtwo">Parent ID</label>
@@ -212,7 +240,7 @@ export class AddStudentForm extends Component {
 						<div className="input-field col s12 m3">
 							<input
 								id="dob" type="date" className="required datepicker validate"
-								value={this.state.dob} onChange={this.handleChange}
+								value={this.state.dob} onChange={this.handleChange} onBlur={this.handleBlur}
 							/>
 							<label htmlFor="dob">Date of Birth *</label>
 						</div>

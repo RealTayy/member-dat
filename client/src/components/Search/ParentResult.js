@@ -39,7 +39,7 @@ export class ParentResult extends Component {
           <div className="col s3">
             <div className="col s12 right-align">
               <Dropdown trigger={
-                <Button className="btn-flat btn-flat"><i class="material-icons">directions_walk</i></Button>
+                <Button className="btn-flat btn-flat"><i class="material-icons">directions_walk</i>asdf</Button>
               }>
                 <NavItem>one</NavItem>
                 <NavItem>two</NavItem>

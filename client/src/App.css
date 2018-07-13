@@ -2,10 +2,10 @@
 
 .content-wrapper {
   position: absolute;
-  margin-left: 250px;
+  margin-left: 200px;
   padding: calc(16px + 0.75rem) 16px;
   height: calc(100% - 112px);
-  width: calc(100% - 250px);
+  width: calc(100% - 200px);
   overflow: auto;
 }
 

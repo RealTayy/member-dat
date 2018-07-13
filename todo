@@ -1,11 +1,8 @@
 > Format input type=tel to autoformat #.
-> Make date field pretty using jQueryUI
 > Put scroll bar on top of tabbar
 > Make close button hover transition smoothly
 > Restyle hover for sidenav
-> Green validate underline for "Select belt" under student search and Date fields
 > Make sidenav mobile friendly
-> Why Monthly rate field show invalid bro? WHY?!
 > Add match exact for search forms
 > Make search results persist between tab changes
 > Add active only to parent fields

@@ -1,0 +1,38 @@
+/* StudentResult.css */
+
+.belt-status.b-white {	
+	background-color: #fff;
+	border: 1.5px solid #222;
+	line-height: 18px;
+	height: 20px;
+  color: #222 !important;
+}
+
+.belt-status.b-yellow {
+  background-color: #ffee58  ;
+  color: #222 !important;
+}
+
+.belt-status.b-orange {
+  background-color: #ff9800  ;
+}
+
+.belt-status.b-green {
+  background-color: #4caf50  ;
+}
+
+.belt-status.b-blue {
+  background-color: #2196f3   ;
+}
+
+.belt-status.b-brown {
+  background-color: #795548 ;
+}
+
+.belt-status.b-red {
+  background-color: #D32F2F ;
+}
+
+.belt-status.b-black {
+  background-color: #222;
+}

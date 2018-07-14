@@ -18,27 +18,27 @@ export class Sidenav extends Component {
 			$('.content-wrapper,.tabbar').css({ 'margin-left': '250px' });
 			$('.content-wrapper').css({ 'width': 'calc(100% - 250px)' });
 			$('.sidenav').css({ 'width': '250px' });
-			$('.sidenav>li>a').css({ 'padding': '0 36px' })			
+			$('.sidenav>li>a').css({ 'padding': '0 36px' })
 			$('.material-tooltip').css({ 'padding': '0', 'width': '0' })
-			$('.tabbar .indicator').animate({ 'right': '-=202'});			
+			$('.tabbar .indicator').animate({ 'right': '-=202' });
 			$('.parent-tab.active').parent().parent().children('.indicator')
-			.animate({ 'right': '-=33'});		
+				.animate({ 'right': '-=33' });
 			$('.student-tab.active').parent().parent().children('.indicator')
-			.animate({ 'left': '-=33'});
-			
+				.animate({ 'left': '-=33' });
+
 			this.setState({ isCollapsed: false })
 		} else {
 			$('.content-wrapper,.tabbar').css({ 'margin-left': '48px' });
 			$('.content-wrapper').css({ 'width': 'calc(100% - 48px)' });
 			$('.sidenav').css({ 'width': '48px' });
 			$('.sidenav>li>a').css({ 'padding': '0 12px' })
-			$('.material-tooltip').css({ 'padding': '10px 8px', 'width': '' })			
-			$('.tabbar .tabs>.indicator').animate({ 'right': '+=202'});
+			$('.material-tooltip').css({ 'padding': '10px 8px', 'width': '' })
+			$('.tabbar .tabs>.indicator').animate({ 'right': '+=202' });
 			$('.parent-tab.active').parent().parent().children('.indicator')
-			.animate({ 'right': '+=33'});
+				.animate({ 'right': '+=33' });
 			$('.student-tab.active').parent().parent().children('.indicator')
-			.animate({ 'left': '+=33'});
-			
+				.animate({ 'left': '+=33' });
+
 			this.setState({ isCollapsed: true })
 		}
 	}

@@ -7,10 +7,17 @@
 > Make search results persist between tab changes
 > Add active only to parent fields
 > Make search side bar thing fixed
-> Make prettier ParentID: not found warning for studentAdd
+
+> Change Student Enrollment info to be selected on default
+> Make no parent id found bounce back thing make sense lmao
+> add horizontal scrolling to results scrolls?
+> tooltip shows on intial hover
 > Fix toast width
+
 > Add comments to stuff
 > Add React Materialize to portfolio
+
+> hoverintent over results scrolls?
 
 GAME PLAN:
 MemberDat - SP ref

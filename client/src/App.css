@@ -14,7 +14,7 @@
 .sidenav,
 .sidenav>li>a {
   /* transition: width 2s ease-in-out; */
-  transition: all .3s ease-in-out;
+  transition: all .4s cubic-bezier(.02, .01, .47, 1);
 }
 
 /* Add custom .waves-blue class */
@@ -59,4 +59,30 @@ input[type=date]::-webkit-inner-spin-button {
 
 .btn-large.btn-square {
   padding: 0 14px;
+}
+
+/* SCROLL BAR STUFF */
+/* width */
+
+::-webkit-scrollbar {
+  width: .75rem;
+  height: .375rem;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

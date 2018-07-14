@@ -21,12 +21,12 @@ export class SearchForm extends Component {
 							<div className="search-selector-container col s12">
 								<ul className="tabs z-depth-2">
 									<li className="tab col s12 m6">
-										<a id="parent-tab" className="waves-effect waves-blue" href="#parent-search" onClick={this.handleTabClick}>
+										<a id="parent-tab" className="parent-tab waves-effect waves-blue" href="#parent-search" onClick={this.handleTabClick}>
 											<i className="material-icons">contacts</i>Parent
 										</a>
 									</li>
 									<li className="tab col s12 m6">
-										<a id="student-tab" className="waves-effect waves-blue" href="#student-search" onClick={this.handleTabClick}>
+										<a id="student-tab" className="student-tab waves-effect waves-blue" href="#student-search" onClick={this.handleTabClick}>
 											<i className="material-icons">directions_walk</i>Student
 										</a>
 									</li>

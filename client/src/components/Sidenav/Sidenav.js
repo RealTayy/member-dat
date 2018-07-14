@@ -18,15 +18,27 @@ export class Sidenav extends Component {
 			$('.content-wrapper,.tabbar').css({ 'margin-left': '250px' });
 			$('.content-wrapper').css({ 'width': 'calc(100% - 250px)' });
 			$('.sidenav').css({ 'width': '250px' });
-			$('.sidenav>li>a').css({ 'padding': '0 36px' })
+			$('.sidenav>li>a').css({ 'padding': '0 36px' })			
 			$('.material-tooltip').css({ 'padding': '0', 'width': '0' })
+			$('.tabbar .indicator').animate({ 'right': '-=202'});			
+			$('.parent-tab.active').parent().parent().children('.indicator')
+			.animate({ 'right': '-=33'});		
+			$('.student-tab.active').parent().parent().children('.indicator')
+			.animate({ 'left': '-=33'});
+			
 			this.setState({ isCollapsed: false })
 		} else {
 			$('.content-wrapper,.tabbar').css({ 'margin-left': '48px' });
 			$('.content-wrapper').css({ 'width': 'calc(100% - 48px)' });
 			$('.sidenav').css({ 'width': '48px' });
 			$('.sidenav>li>a').css({ 'padding': '0 12px' })
-			$('.material-tooltip').css({ 'padding': '10px 8px', 'width': '' })
+			$('.material-tooltip').css({ 'padding': '10px 8px', 'width': '' })			
+			$('.tabbar .tabs>.indicator').animate({ 'right': '+=202'});
+			$('.parent-tab.active').parent().parent().children('.indicator')
+			.animate({ 'right': '+=33'});
+			$('.student-tab.active').parent().parent().children('.indicator')
+			.animate({ 'left': '+=33'});
+			
 			this.setState({ isCollapsed: true })
 		}
 	}
@@ -41,7 +53,7 @@ export class Sidenav extends Component {
 				<ul className="sidenav sidenav-fixed blue-grey darken-2 z-depth-2">
 					<li className="sidenav-item">
 						<a id="collapse-sidenav" className="waves-effect waves-blue" onClick={this.handleCollapse}>
-							<i className="material-icons">menu</i>Collapse Sidenav
+							<i className="material-icons">menu</i>Collapse
 						</a>
 					</li>
 					<li className="sidenav-item">

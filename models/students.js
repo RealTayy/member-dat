@@ -32,13 +32,9 @@ const StudentSchema = new Schema({
 			phone: { type: String, required: false, trim: true },
 		},
 		school: { type: String, required: false, trim: true },
-	},
-	enrollment: {
-		dojo: { type: String, required: true, trim: true },
-		type: { type: String, required: true, trim: true },
-		rate: { type: String, required: true, trim: true },
 		beltrank: { type: String, required: true, trim: true },
 	},
+	enrollment: { type: Schema.Types.ObjectId, ref: 'Enrollments', required: true },
 	parent: {
 		_id: { type: Schema.Types.ObjectId, ref: 'Parents', required: true },
 		dFull: { type: String, required: true, trim: true },
@@ -57,10 +53,10 @@ const StudentSchema = new Schema({
 StudentSchema.virtual('info.name.dFull')
 	.get(function () {
 		console.log('You made it here bby1')
-		if (this.info.name.dFirst && this.info.name.dLast){
+		if (this.info.name.dFirst && this.info.name.dLast) {
 			console.log(`${this.info.name.dFirst} ${this.info.name.dLast}`);
 			return `${this.info.name.dFirst} ${this.info.name.dLast}`
-			}
+		}
 	})
 
 StudentSchema.virtual('info.name.dFirst')

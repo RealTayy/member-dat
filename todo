@@ -24,3 +24,21 @@ MemberDat - SP ref
 C. Ejiofore
 
 > Add validator for phone field
+
+EMERGENCY TO DO LIST:
+-moved enrollment.beltrank to info.beltrank for students
+-moved enrollment.dojo/type/rate to enrollments model
+-changde enrolllment to Object ID
+
+-things to add to addStudentForm/tuition/enrollment
+dojo
+beltrank
+programtype -> type
+monthly rate
+initionation fee
+program length -> expireDate
+will renew
+
+dojo|beltrank
+programtype|programlength
+monthly|init|will renew

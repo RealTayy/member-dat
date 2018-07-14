@@ -10,9 +10,9 @@ export class AddStudentForm extends Component {
 		school: '',
 		phone: '',
 		dob: '',
-		beltrank: 'White',
-		dojo: 'Pearland',
-		type: 'Standard',
+		beltrank: '',
+		dojo: '',
+		type: '',
 		rate: '',
 		parID: '',
 		parIDtwo: '',
@@ -56,7 +56,10 @@ export class AddStudentForm extends Component {
 
 	handleChangeDropdown = (e) => {
 		this.setState({ [e.target.id]: e.target.value });
-		if (e.target.value) $(`#${e.target.id}`).parent().children('input').addClass('valid');
+		if (e.target.value) {
+			$(`#${e.target.id}`).parent().children('input').addClass('valid');
+			$(`#${e.target.id}`).parent().children('input').removeClass('invalid');
+		}
 		else $(`#${e.target.id}`).parent().children('input').removeClass('valid');
 	}
 
@@ -167,8 +170,11 @@ export class AddStudentForm extends Component {
 		const validationArr = $('.addstudent-form .required').map(function () {
 			if (this.value !== '') return true
 			else {
-				$(this).removeClass('valid');
-				$(this).addClass('invalid');
+				if (this.tagName === "SELECT") {
+					$(this).parent().children('input').removeClass('valid');
+					$(this).parent().children('input').addClass('invalid');
+				}
+				$(this).removeClass('valid'); $(this).addClass('invalid');
 				$(this).parent().addClass('animated flash');
 				$(this).parent().one(animationEnd, () => $(this).parent().removeClass('animated flash'));
 				return false;
@@ -263,8 +269,9 @@ export class AddStudentForm extends Component {
 							<select
 								id="beltrank" type="text" className="required validate"
 								value={this.state.beltrank} onChange={this.handleChange}>
+								<option key="0" value="" disabled>Select Belt Rank</option>
 								{this.beltrankArr.map((beltrank, i) => {
-									return <option key={i} value={beltrank}>{beltrank}</option>
+									return <option key={i + 1} value={beltrank}>{beltrank}</option>
 								})}
 							</select>
 							<label htmlFor="beltrank">Belt Rank *</label>
@@ -273,8 +280,9 @@ export class AddStudentForm extends Component {
 							<select
 								id="type" type="text" className="required validate"
 								value={this.state.type} onChange={this.handleChange}>
+								<option key="0" value="" disabled>Select Enroll Type</option>
 								{this.enrollmentArr.map((type, i) => {
-									return <option key={i} value={type}>{type}</option>
+									return <option key={i + 1} value={type}>{type}</option>
 								})}
 							</select>
 							<label htmlFor="type">Enrollment Type *</label>

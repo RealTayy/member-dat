@@ -103,8 +103,13 @@ export class AddParentForm extends Component {
 		const validationArr = $('.addparent-form .required').map(function () {
 			if (this.value !== '') return true
 			else {
-				$(this).removeClass('valid');
-				$(this).addClass('invalid');
+				if (this.tagName === "SELECT") {
+					$(this).parent().children('input').removeClass('valid');
+					$(this).parent().children('input').addClass('invalid');
+				} else {
+					$(this).removeClass('valid');
+					$(this).addClass('invalid');
+				}
 				$(this).parent().addClass('animated flash');
 				$(this).parent().one(animationEnd, () => $(this).parent().removeClass('animated flash'));
 				return false;

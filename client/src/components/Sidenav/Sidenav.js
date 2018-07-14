@@ -43,6 +43,9 @@ export class Sidenav extends Component {
 		}
 	}
 
+	componentDidMount() {
+	}
+	
 	componentDidUpdate() {
 		$(`#${this.props.activeTab}`).addClass('active');
 	}

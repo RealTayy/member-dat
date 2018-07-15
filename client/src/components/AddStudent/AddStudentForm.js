@@ -137,39 +137,62 @@ export class AddStudentForm extends Component {
 
 	handleSubmit = (e) => {
 		// If user didn't link parent then exit handleSubmit and display Toast
-		////if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
+		if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
 		// If all required fields not filled in exit handleSubmit and display toast
-		////if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
+		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// Button goes to "Working" animation
-		////$('.submit-btn i').addClass('animated infinite flip');
-		////$('.submit-btn a').addClass('disabled');
-		// Submit this.state to API to build object to be added to DB
+		$('.submit-btn i').addClass('animated infinite flip');
+		$('.submit-btn a').addClass('disabled');
+		// Submit this.state to enrollmentAPI to add to DB
 		enrollmentAPI.submitEnrollment(this.state)
 			.then((data) => {
-				console.log(data);
+				// Console log response data and display Success toast
+				console.log(data.data);
+				window.Materialize.toast(`Enrollment successful`, 5000, 'animated bounceInUp green darken-2');
+				window.Materialize.toast(`Attempting to add Student...`, 5000, 'animated bounceInUp');
+				// Create studentData object, add enrollment id to it, and send to studentsAPI
+				const studentData = this.state;
+				studentData.enrollment = data.data._id;
+				// Send studentData to studentsAPI
+				studentsAPI.submitNewStudent(studentData)
+					.then((data) => {
+						// Console log response data and display Success toast
+						let student = data.data;
+						console.log(data.data);
+						window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
+						// Create array of invoice objects, add student id to it, and send to invoicesAPI
+						// YOU ARE HERE BRO
+						// YOU ARE HERE BRO
+						// YOU ARE HERE BRO
+						// YOU ARE HERE BRO
+						// YOU ARE HERE BRO
+
+					})
+					// Error from submitNewStudent
+					.catch((err) => {
+						// Button finishes "Working" animation
+						$('.submit-btn i').removeClass('animated infinite flip');
+						$('.submit-btn a').removeClass('disabled');
+						// If err then console log entire err
+						console.log(err)
+						// If error was from server display returned message in a toast
+						if (err.response) { console.log(err.response); return window.Materialize.toast(`Error adding new student: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2'); }
+						// Else display generic error toast
+						else console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
+					});
 			})
-		// submit student starts HERE
-		// studentsAPI.submitNewStudent(this.state)
-		// 	.then((data) => {
-		// 		// Button finishes "Working" animation
-		// 		$('.submit-btn i').removeClass('animated infinite flip');
-		// 		$('.submit-btn a').removeClass('disabled');
-		// 		// Console log response data and display Success toast
-		// 		let student = data.data;
-		// 		console.log(data);
-		// 		window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
-		// 	})
-		// 	.catch((err) => {
-		// 		// Button finishes "Working" animation
-		// 		$('.submit-btn i').removeClass('animated infinite flip');
-		// 		$('.submit-btn a').removeClass('disabled');
-		// 		// If err then console log entire err
-		// 		console.log(err)
-		// 		// If error was from server display returned message in a toast
-		// 		if (err.response) { console.log(err.response); return window.Materialize.toast(`Error adding new student: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2'); }
-		// 		// Else display generic error toast
-		// 		else console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
-		// 	});
+			// Error from submitEnrollment			
+			.catch((err) => {
+				// Button finishes "Working" animation
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				// If err then console log entire err and display generic error toast
+				console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2')
+			});
+
+		// Button finishes "Working" animation
+		$('.submit-btn i').removeClass('animated infinite flip');
+		$('.submit-btn a').removeClass('disabled');
 	}
 
 	allRequiredFilled = () => {

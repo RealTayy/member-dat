@@ -30,6 +30,7 @@ export default {
 				},
 				school: studentData.school,
 			},
+			enrollment: studentData.enrollment,
 			parent: {
 				_id: studentData.parID,
 				dFull: studentData.parName

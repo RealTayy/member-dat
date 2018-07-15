@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
-import { parentsAPI, studentsAPI, enrollmentAPI } from '../../utils/api/index';
+import { parentsAPI, studentsAPI, enrollmentsAPI } from '../../utils/api/index';
 
 export class AddStudentForm extends Component {
 	state = {
@@ -92,10 +92,7 @@ export class AddStudentForm extends Component {
 			for (let t in animations) {
 				if (el.style[t] !== undefined) return animations[t];
 			}
-		})(document.createElement('div'));
-
-		$(this).parent().addClass('animated flash');
-		$(this).parent().one(animationEnd, () => $(this).parent().removeClass('animated flash'));
+		})(document.createElement('div'));		
 
 		if (!this.state.parIDtwo) {
 			$('#parIDtwo').addClass('invalid');
@@ -143,8 +140,8 @@ export class AddStudentForm extends Component {
 		// Button goes to "Working" animation
 		$('.submit-btn i').addClass('animated infinite flip');
 		$('.submit-btn a').addClass('disabled');
-		// Submit this.state to enrollmentAPI to add to DB
-		enrollmentAPI.submitEnrollment(this.state)
+		// Submit this.state to enrollmentsAPI to add to DB
+		enrollmentsAPI.submitEnrollment(this.state)
 			.then((data) => {
 				// Console log response data and display Success toast
 				console.log(data.data);
@@ -157,15 +154,13 @@ export class AddStudentForm extends Component {
 				studentsAPI.submitNewStudent(studentData)
 					.then((data) => {
 						// Console log response data and display Success toast
-						let student = data.data;
+						const student = data.data;
 						console.log(data.data);
 						window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
 						// Create array of invoice objects, add student id to it, and send to invoicesAPI
-						// YOU ARE HERE BRO
-						// YOU ARE HERE BRO
-						// YOU ARE HERE BRO
-						// YOU ARE HERE BRO
-						// YOU ARE HERE BRO
+						let invoiceArr = 
+						Promise.all([invoiceArr])
+						
 
 					})
 					// Error from submitNewStudent
@@ -212,7 +207,6 @@ export class AddStudentForm extends Component {
 
 		// 
 		const validationArr = $('.addstudent-form .required').map(function () {
-			console.log(this)
 			if (this.value !== '') return true
 			else {
 				if (this.tagName === "SELECT") {

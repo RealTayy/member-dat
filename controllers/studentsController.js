@@ -31,9 +31,6 @@ const StudentsController = {
 	},
 	create: function (req, res) {
 		console.log(req.body);
-		// Create ObjectID from parentID and assign to parent field		
-		// let parentObjId = new ObjectId(req.body.parent._id);
-		// req.body.parent._id = parentObjId;
 		// Get next custom studentID from counters collection
 		countersController
 			.findAndIncrement('studentid')

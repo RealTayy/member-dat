@@ -8,6 +8,7 @@
 > Add active only to parent fields
 > Make search side bar thing fixed
 > Make words dissapearing transition smoothly when collapse
+> Remove collectionNAme bp code
 
 > add horizontal scrolling to results scrolls?
 > tooltip shows on intial hover
@@ -25,28 +26,3 @@ MemberDat - SP ref
 C. Ejiofore
 
 > Add validator for phone field
-
-EMERGENCY TO DO LIST:
--moved enrollment.beltrank to info.beltrank for students
--moved enrollment.dojo/type/rate to enrollments model
--changde enrolllment to Object ID
-
--things to add to addStudentForm/tuition/enrollment
-dojo
-beltrank
-programtype -> type
-monthly rate
-initionation fee
-program length -> expireDate
-will renew
-
-Black belt-3k-3years
-black belt bi-annual 540
-1 Year -1,320-1year
-month-to-month - 130 per month
-2 weeks - 40
-6 weeeks - 99
-
-dojo|beltrank
-programtype|programlength
-monthly|init|will renew

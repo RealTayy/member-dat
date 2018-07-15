@@ -43,9 +43,7 @@ export class AddParentForm extends Component {
 		$('#heardBy').on('change', this.handleChangeDropdown);
 	}
 
-	handleChange = (e) => {
-		this.setState({ [e.target.id]: e.target.value });
-	}
+	handleChange = (e) => { this.setState({ [e.target.id]: e.target.value }); }
 
 	handleChangeDropdown = (e) => {
 		this.setState({ [e.target.id]: e.target.value });

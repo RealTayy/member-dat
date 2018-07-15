@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 export class InvoicesForm extends Component {
 	state = {
 		parID: '',
-		parName: 'Please Link Parent',
+		parName: 'Please Link Parent ID',
 	};
 
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps);
-		this.setState(nextProps);
+		if (nextProps.parName) this.setState(nextProps);
 	}
 
 	render() {

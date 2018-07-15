@@ -15,12 +15,14 @@ const Schema = mongoose.Schema;
 |**********/
 // Create Schema for enrollments
 const EnrollmentSchema = new Schema({
-  type: { type: String, required: true, trim: true },
   dojo: { type: String, required: true, trim: true },
+  beltRank: { type: String, required: true, trim: true },
+  type: { type: String, required: true, trim: true },
   initFee: { type: Number, required: true },
-  monthlyFee: { type: Number, required: true },
-  startDate: { type: String, required: true, trim: true },
+  rateFee: { type: Number, required: true },
   expireDate: { type: String, required: true, trim: true },
+  length: { type: String, required: true, trim: true },
+  startDate: { type: String, required: true, trim: true },
   willRenew: { type: Boolean, required: true, }
 });
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
-import { parentsAPI, studentsAPI } from '../../utils/api/index';
+import { parentsAPI, studentsAPI, enrollmentAPI } from '../../utils/api/index';
 
 export class AddStudentForm extends Component {
 	state = {
@@ -10,25 +10,39 @@ export class AddStudentForm extends Component {
 		school: '',
 		phone: '',
 		dob: '',
-		beltrank: '',
+		beltRank: '',
 		dojo: '',
 		type: '',
-		rate: '',
+		length: '',
+		initFee: '',
+		rateFee: '',
+		uniform: false,
 		parID: '',
 		parIDtwo: '',
 		parName: 'Please enter Parent ID',
 	}
 
 	dojoArr = [
-		'Pearland'
+		'Pearland',
+		'Cypress'
 	]
 
-	enrollmentArr = [
-		"Standard",
-		"Trial"
+	enrollmentTypeArr = [
+		'Black belt',
+		'Standard',
+		'Trial'
 	]
 
-	beltrankArr = [
+	enrollmentLengthArr = [
+		'3 Years',
+		'1 Year',
+		'6 Months',
+		'1 Month',
+		'6 Weeks',
+		'2 weeks'
+	]
+
+	beltRankArr = [
 		'White',
 		'Yellow', 'Yellow Stripe',
 		'Orange', 'Orange Stripe',
@@ -41,12 +55,14 @@ export class AddStudentForm extends Component {
 	];
 
 	componentDidMount() {
-		$('#beltrank').material_select();
-		$('#beltrank').on('change', this.handleChangeDropdown);
+		$('#beltRank').material_select();
+		$('#beltRank').on('change', this.handleChangeDropdown);
 		$('#dojo').material_select();
 		$('#dojo').on('change', this.handleChangeDropdown);
 		$('#type').material_select();
 		$('#type').on('change', this.handleChangeDropdown);
+		$('#length').material_select();
+		$('#length').on('change', this.handleChangeDropdown);
 	}
 
 	handleChange = (e) => {
@@ -113,7 +129,7 @@ export class AddStudentForm extends Component {
 		if (e.target.value !== ''); $(`#${e.target.id}`).removeClass('invalid'); $(`#${e.target.id}`).addClass('valid');
 	}
 
-	handleBlurRate = (e) => {
+	handleBlurNumber = (e) => {
 		let rate = parseFloat(e.target.value).toFixed(2);
 		this.setState({ [e.target.id]: rate });
 		setTimeout(() => { console.log(this.state) }, 1)
@@ -121,34 +137,36 @@ export class AddStudentForm extends Component {
 
 	handleSubmit = (e) => {
 		// If user didn't link parent then exit handleSubmit and display Toast
-		if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
+		////if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
 		// If all required fields not filled in exit handleSubmit and display toast
-		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
+		////if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// Button goes to "Working" animation
-		$('.submit-btn i').addClass('animated infinite flip');
-		$('.submit-btn a').addClass('disabled');
+		////$('.submit-btn i').addClass('animated infinite flip');
+		////$('.submit-btn a').addClass('disabled');
 		// Submit this.state to API to build object to be added to DB
-		studentsAPI.submitNewStudent(this.state)
-			.then((data) => {
-				// Button finishes "Working" animation
-				$('.submit-btn i').removeClass('animated infinite flip');
-				$('.submit-btn a').removeClass('disabled');
-				// Console log response data and display Success toast
-				let student = data.data;
-				console.log(data);
-				window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
-			})
-			.catch((err) => {
-				// Button finishes "Working" animation
-				$('.submit-btn i').removeClass('animated infinite flip');
-				$('.submit-btn a').removeClass('disabled');
-				// If err then console log entire err
-				console.log(err)
-				// If error was from server display returned message in a toast
-				if (err.response) { console.log(err.response); return window.Materialize.toast(`Error adding new student: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2'); }
-				// Else display generic error toast
-				else console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
-			});
+		enrollmentAPI.submitEnrollment(this.state);		
+		// submit student starts HERE
+		// studentsAPI.submitNewStudent(this.state)
+		// 	.then((data) => {
+		// 		// Button finishes "Working" animation
+		// 		$('.submit-btn i').removeClass('animated infinite flip');
+		// 		$('.submit-btn a').removeClass('disabled');
+		// 		// Console log response data and display Success toast
+		// 		let student = data.data;
+		// 		console.log(data);
+		// 		window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
+		// 	})
+		// 	.catch((err) => {
+		// 		// Button finishes "Working" animation
+		// 		$('.submit-btn i').removeClass('animated infinite flip');
+		// 		$('.submit-btn a').removeClass('disabled');
+		// 		// If err then console log entire err
+		// 		console.log(err)
+		// 		// If error was from server display returned message in a toast
+		// 		if (err.response) { console.log(err.response); return window.Materialize.toast(`Error adding new student: ${err.response.data.name}`, 5000, 'animated bounceInUp red darken-2'); }
+		// 		// Else display generic error toast
+		// 		else console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
+		// 	});
 	}
 
 	allRequiredFilled = () => {
@@ -168,6 +186,7 @@ export class AddStudentForm extends Component {
 
 		// 
 		const validationArr = $('.addstudent-form .required').map(function () {
+			console.log(this)
 			if (this.value !== '') return true
 			else {
 				if (this.tagName === "SELECT") {
@@ -186,7 +205,7 @@ export class AddStudentForm extends Component {
 	render() {
 		return (
 			<div className="addstudent-form">
-				<form className="col s12">
+				<form className="col s12" action="#">
 					<div className="divider row"></div>
 					<div className="parent-info row">
 						<h5 className="col s12">Link Parent</h5>
@@ -267,32 +286,58 @@ export class AddStudentForm extends Component {
 						</div>
 						<div className="input-field col s12 m6">
 							<select
-								id="beltrank" type="text" className="required validate"
-								value={this.state.beltrank} onChange={this.handleChange}>
+								id="beltRank" type="text" className="required validate"
+								value={this.state.beltRank} onChange={this.handleChange}>
 								<option key="0" value="" disabled>Select Belt Rank</option>
-								{this.beltrankArr.map((beltrank, i) => {
-									return <option key={i + 1} value={beltrank}>{beltrank}</option>
+								{this.beltRankArr.map((beltRank, i) => {
+									return <option key={i + 1} value={beltRank}>{beltRank}</option>
 								})}
 							</select>
-							<label htmlFor="beltrank">Belt Rank *</label>
+							<label htmlFor="beltRank">Belt Rank *</label>
 						</div>
 						<div className="input-field col s12 m6">
 							<select
 								id="type" type="text" className="required validate"
 								value={this.state.type} onChange={this.handleChange}>
-								<option key="0" value="" disabled>Select Enroll Type</option>
-								{this.enrollmentArr.map((type, i) => {
+								<option key="0" value="" disabled>Select Program Type</option>
+								{this.enrollmentTypeArr.map((type, i) => {
 									return <option key={i + 1} value={type}>{type}</option>
 								})}
 							</select>
-							<label htmlFor="type">Enrollment Type *</label>
+							<label htmlFor="type">Program Type *</label>
 						</div>
 						<div className="input-field col s12 m6">
+							<select
+								id="length" type="text" className="required validate"
+								value={this.state.length} onChange={this.handleChange}>
+								<option key="0" value="" disabled>Select Program Length</option>
+								{this.enrollmentLengthArr.map((length, i) => {
+									return <option key={i + 1} value={length}>{length}</option>
+								})}
+							</select>
+							<label htmlFor="length">Program Length *</label>
+						</div>
+						<div className="input-field col s12 m3">
 							<input
-								id="rate" type="number" className="required validate"
-								value={this.state.rate} onChange={this.handleChange} onBlur={this.handleBlurRate}
+								id="initFee" type="number" className="required validate"
+								value={this.state.initFee} onChange={this.handleChange} onBlur={this.handleBlurNumber}
 							/>
-							<label htmlFor="rate">Monthly Rate ($) *</label>
+							<label htmlFor="initFee">One Time Fee ($) *</label>
+						</div>
+						<div className="input-field col s12 m3">
+							<input
+								id="rateFee" type="number" className="required validate"
+								value={this.state.rateFee} onChange={this.handleChange} onBlur={this.handleBlurNumber}
+							/>
+							<label htmlFor="rateFee">Renewal Fee ($) *</label>
+						</div>
+						<div className="input-field col s12 m6">
+							<p>
+								<label htmlFor="uniform">
+									<input id="uniform" type="checkbox" className="filled-in" />
+									<span>Purchase Uniform</span>
+								</label>
+							</p>
 						</div>
 					</div>
 					<div className="submit-btn center-align">

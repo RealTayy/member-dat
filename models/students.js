@@ -32,7 +32,6 @@ const StudentSchema = new Schema({
 			phone: { type: String, required: false, trim: true },
 		},
 		school: { type: String, required: false, trim: true },
-		beltrank: { type: String, required: true, trim: true },
 	},
 	enrollment: { type: Schema.Types.ObjectId, ref: 'Enrollments', required: true },
 	parent: {

@@ -1,7 +1,9 @@
 import axios from 'axios';
-
+// create enrollment first
+// then create student
+// then create invoices
 export default {
-	getSomeStudents: function(query) {
+	getSomeStudents: function (query) {
 		return axios.get('/api/students/', { params: query });
 	},
 	submitNewStudent: function (studentData) {
@@ -28,17 +30,11 @@ export default {
 				},
 				school: studentData.school,
 			},
-			enrollment: {
-				dojo: studentData.dojo,
-				type: studentData.type,
-				rate: studentData.rate,
-				beltrank: studentData.beltrank,
-			},
 			parent: {
 				_id: studentData.parID,
 				dFull: studentData.parName
 			}
 		};
-		return axios.post('api/students', formattedData)
+		return axios.post('api/students', formattedData);
 	}
 }

@@ -4,5 +4,5 @@ module.exports = {
   Students: require('./students.js'),
   Counters: require('./counters.js'),
   Invoices: require('./invoices.js'),
-  Enrollments: require('enrollments.js')
+  Enrollments: require('./enrollments.js')
 };

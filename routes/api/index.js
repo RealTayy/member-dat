@@ -12,6 +12,7 @@ const router = require('express').Router();
 const collectionNameRoutes = require("./collectionName");
 const parentsRoutes = require('./parentsAPI.js');
 const studentsRoutes = require('./studentsAPI.js');
+const enrollmentsRoutes = require('./enrollmentsAPI.js');
 
 // Sets path to use individual routes
 // EXAMPLE:
@@ -20,6 +21,7 @@ const studentsRoutes = require('./studentsAPI.js');
 router.use("/collectionName", collectionNameRoutes);
 router.use('/parents', parentsRoutes);
 router.use('/students', studentsRoutes);
+router.use('/enrollments', enrollmentsRoutes)
 
 
 /***********|

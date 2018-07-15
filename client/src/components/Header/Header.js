@@ -15,7 +15,7 @@ export class Header extends Component {
 							<b>MemberDat - Demo</b>
 						</a>
 						<ul className="right">
-							<li><a href="#!">Log off<i className="material-icons right">exit_to_app</i></a></li>
+							<li><a className="" href="#!">Log off<i className="material-icons right">exit_to_app</i></a></li>
 						</ul>
 					</div>
 				</nav>

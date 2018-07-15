@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import { invoicesAPI } from '../../utils/api/index';
 
 export class PointofsaleForm extends Component {
 	state = {
@@ -12,6 +13,7 @@ export class PointofsaleForm extends Component {
 	};
 
 	typeArr = [
+		'Initiation Fee',
 		'Member Dues',
 		'Uniform',
 		'Equipment',
@@ -54,12 +56,22 @@ export class PointofsaleForm extends Component {
 			}
 		})(document.createElement('div'));
 
+		// If user didn't link parent then exit handleSubmit and display Toast
 		if (!this.state.parID) {
 			$('#parIDtwo').addClass('invalid');
 			$('#parIDtwo').parent().addClass('animated flash');
 			$('#parIDtwo').parent().one(animationEnd, () => $('#parIDtwo').parent().removeClass('animated flash'));
 			return window.Materialize.toast('Please link parent before creating invoice', 5000, 'animated bounceInUp')
 		};
+		// If all required fields not filled in exit handleSubmit and display toast
+		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
+		// Button goes to "Working" animation
+		///// $('.submit-btn i').addClass('animated infinite flip');
+		///// $('.submit-btn a').addClass('disabled');
+		// Submit this.state to invoicesAPI to add to DB
+		// console.log(this.state);
+		invoicesAPI.submitInvoice(this.state)
+			// .then()
 
 	}
 
@@ -89,7 +101,7 @@ export class PointofsaleForm extends Component {
 		})(document.createElement('div'));
 
 		// 
-		const validationArr = $('.addstudent-form .required').map(function () {
+		const validationArr = $('.pointofsale-form .required').map(function () {
 			if (this.value !== '') return true
 			else {
 				if (this.tagName === "SELECT") {
@@ -108,7 +120,7 @@ export class PointofsaleForm extends Component {
 	render() {
 		const parName = this.state.parName;
 		return (
-			<div className="pointofsale col s8">
+			<div className="pointofsale-form col s8">
 				<div className="col s12 z-depth-2">
 					<h4 className="pointofsale-header">
 						Point of Sale
@@ -120,7 +132,7 @@ export class PointofsaleForm extends Component {
 							<select
 								id="type" type="text" className="required validate"
 								value={this.state.type} onChange={this.handleChange}>
-								<option key="0" value="" disabled>Select Program Length</option>
+								<option key="0" value="" disabled>Select Type</option>
 								{this.typeArr.map((type, i) => {
 									return <option key={i + 1} value={type}>{type}</option>
 								})}

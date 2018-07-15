@@ -43,7 +43,10 @@ const StudentsController = {
 					.then((dbModel) => {
 						// If didn't run into error add student objID to parent's students array
 						parentsController
-							.updatePromise({ params: { id: req.body.parent._id }, body: { $push: { students: { _id: dbModel._id, dFull: dbModel.info.name.dFull } } } })
+							.updatePromise({
+								params: { id: req.body.parent._id },
+								body: { $push: { students: { _id: dbModel._id, dFull: dbModel.info.name.dFull } } }
+							})
 							.then(() => res.json(dbModel))
 							.catch((err) => { console.log(err); res.status(422).json(err) });
 					})

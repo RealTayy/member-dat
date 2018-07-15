@@ -1,4 +1,4 @@
-// This file empties countersController and inserts the countersSeeds into the collection
+// This file empties counters collection and inserts the countersSeeds into the collection
 const countersController = require('../controllers/countersController');
 
 const countersSeed = [

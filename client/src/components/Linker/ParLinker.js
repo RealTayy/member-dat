@@ -44,12 +44,15 @@ export class ParLinker extends Component {
 				let parent = data.data[0]
 				$('.link-btn i').removeClass('animated infinite flip');
 				$('.link-btn a').removeClass('disabled');
+				if (data.data.length === 0) {
+					return window.Materialize.toast(`No parent found with ID: ${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2')
+				}
+				else window.Materialize.toast(`${parent.info.name.dFull} linked`, 5000, 'animated bounceInUp green darken-2');
+				$('#parIDtwo').removeClass('invalid');
 				$('#parName').addClass('valid');
 				$('#parIDtwo').addClass('valid');
 				$('#parPhone').addClass('valid');
 				$('#parEmail').addClass('valid');
-				if (data.data.length === 0) return window.Materialize.toast(`No parent found with ID: ${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2')
-				else window.Materialize.toast(`${parent.info.name.dFull} linked`, 5000, 'animated bounceInUp green darken-2');
 				this.setState({ parID: parent.id, parName: parent.info.name.dFull, parPhone: parent.info.contact.phone, parEmail: parent.info.contact.email });				
 				this.props.setParID(parent.id)
 				this.props.setParName(parent.info.name.dFull)

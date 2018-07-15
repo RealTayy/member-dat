@@ -1,10 +1,10 @@
-// This file empties parentsController and inserts the parentsSeeds into the collection
+// This file empties parents collection and inserts the parentsSeeds into the collection
 const parentsController = require('../controllers/parentsController');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 const parentsSeed = [
-	{
-		_id: new ObjectId('123456789123456789123450'),
+	{                      
+		_id: new ObjectId('012345678901234567891000'),
 		idtwo: 'P000000',
 		isActive: true,
 		info: {
@@ -45,7 +45,7 @@ const parentsSeed = [
 		}
 	},
 	{
-		_id: new ObjectId('123456789123456789123451'),
+		_id: new ObjectId('012345678901234567891001'),
 		idtwo: 'P000001',
 		isActive: true,
 		info: {
@@ -86,7 +86,7 @@ const parentsSeed = [
 		}
 	},
 	{
-		_id: new ObjectId('123456789123456789123452'),
+		_id: new ObjectId('012345678901234567891002'),
 		idtwo: 'P000002',
 		isActive: true,
 		info: {
@@ -127,7 +127,7 @@ const parentsSeed = [
 		}
 	},
 	{
-		_id: new ObjectId('123456789123456789123453'),
+		_id: new ObjectId('012345678901234567891003'),
 		idtwo: 'P000003',
 		isActive: true,
 		info: {

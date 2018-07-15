@@ -35,9 +35,10 @@ const StudentsController = {
 		let parentObjId = new ObjectId(req.body.parent._id);
 		req.body.parent._id = parentObjId;
 		// Get next custom studentID from counters collection
-		countersController.findAndIncrement('studentid')
+		countersController
+			.findAndIncrement('studentid')
 			.then((id) => { req.body.idtwo = id })
-			.catch((err) => res.status(422).json(err))
+			.catch((err) => { res.status(422).json(err) })
 			.then(() => {
 				// If didn't run into error add student to DB
 				Students

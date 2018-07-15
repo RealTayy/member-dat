@@ -39,7 +39,7 @@ export class AddStudentForm extends Component {
 		'6 Months',
 		'1 Month',
 		'6 Weeks',
-		'2 weeks'
+		'2 Weeks'
 	]
 
 	beltRankArr = [
@@ -144,7 +144,10 @@ export class AddStudentForm extends Component {
 		////$('.submit-btn i').addClass('animated infinite flip');
 		////$('.submit-btn a').addClass('disabled');
 		// Submit this.state to API to build object to be added to DB
-		enrollmentAPI.submitEnrollment(this.state);		
+		enrollmentAPI.submitEnrollment(this.state)
+			.then((data) => {
+				console.log(data);
+			})
 		// submit student starts HERE
 		// studentsAPI.submitNewStudent(this.state)
 		// 	.then((data) => {

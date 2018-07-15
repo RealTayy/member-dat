@@ -22,7 +22,7 @@ export default {
 			case '6 Weeks':
 				expDate.setDate(expDate.getDate() + 42);
 				break;
-			case '2 weeks':
+			case '2 Weeks':
 				expDate.setDate(expDate.getDate() + 14);
 				break;
 			default:
@@ -30,28 +30,18 @@ export default {
 		}
 		enrollmentData.startDate = `${curDate.getFullYear()}-${(curDate.getMonth() + 1).toString().padStart(2, "0")}-${curDate.getDate()}`
 		enrollmentData.expireDate = `${expDate.getFullYear()}-${(expDate.getMonth() + 1).toString().padStart(2, "0")}-${expDate.getDate()}`
-		// Formats enrollmentData into formattedData to be passes to back-end API
+		// Formats enrollmentData into formattedData to be passes to back-end API		
 		const formattedData = {
 			dojo: enrollmentData.dojo,
-			beltrank: enrollmentData.beltRank,
+			beltRank: enrollmentData.beltRank,
 			type: enrollmentData.type,
-			initfee: enrollmentData.initFee,
-			ratefee: enrollmentData.rateFee,
+			initFee: enrollmentData.initFee,
+			rateFee: enrollmentData.rateFee,
 			expireDate: enrollmentData.expireDate,
+			length: enrollmentData.length,
 			startDate: enrollmentData.startDate,
-			willRenew: (enrollmentData.ratefee === "0.00") ? false : true,
-		}
+			willRenew: (enrollmentData.rateFee === "0.00") ? false : true,
+		}		
 		return axios.post('api/enrollments', formattedData);
-		
 	}
 }
-
-// dojo: { type: String, required: true, trim: true },
-// beltrank: { type: String, required: true, trim: true },
-// type: { type: String, required: true, trim: true },
-// initfee: { type: Number, required: true },
-// monthlyFee: { type: Number, required: true },
-// expireDate: { type: String, required: true, trim: true },
-// length: { type: String, required: true, trim: true },
-// startDate: { type: String, required: true, trim: true },
-// willRenew: { type: Boolean, required: true, }

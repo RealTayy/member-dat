@@ -9,18 +9,26 @@ export class Pointofsale extends Component {
 	};
 
 	setParID = (parID) => {
-		this.setState({ parID: parID});
+		this.setState({ parID: parID });
 	}
 
 	setParName = (parName) => {
-		this.setState({ parName: parName});
+		this.setState({ parName: parName });
 	}
 
 	render() {
+		const parID = this.state.parID;
+		const parName = this.state.parName;
 		return (
-			<div>
-				<ParLinker/>
-				<PointofsaleForm/>
+			<div className="row">
+				<ParLinker
+					setParID={this.setParID}
+					setParName={this.setParName}
+				/>
+				<PointofsaleForm
+					parID={parID}
+					parName={parName}
+				/>
 			</div>
 		)
 	}

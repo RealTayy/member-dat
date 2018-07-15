@@ -67,7 +67,6 @@ export class AddStudentForm extends Component {
 
 	handleChange = (e) => {
 		this.setState({ [e.target.id]: e.target.value });
-		setTimeout(() => { console.log(this.state) }, 1)
 	}
 
 	handleChangeDropdown = (e) => {

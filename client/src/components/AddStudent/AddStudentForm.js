@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
-import { parentsAPI, studentsAPI, enrollmentsAPI } from '../../utils/api/index';
+import { parentsAPI, studentsAPI, enrollmentsAPI, invoicesAPI } from '../../utils/api/index';
 
 export class AddStudentForm extends Component {
 	state = {
@@ -92,7 +92,7 @@ export class AddStudentForm extends Component {
 			for (let t in animations) {
 				if (el.style[t] !== undefined) return animations[t];
 			}
-		})(document.createElement('div'));		
+		})(document.createElement('div'));
 
 		if (!this.state.parIDtwo) {
 			$('#parIDtwo').addClass('invalid');
@@ -157,10 +157,30 @@ export class AddStudentForm extends Component {
 						const student = data.data;
 						console.log(data.data);
 						window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
-						// Create array of invoice objects, add student id to it, and send to invoicesAPI
-						let invoiceArr = 
+						// Create array of invoice objects, add student id to invoices, and send to invoicesAPI
+						const studentID = student.id;
+						let invoiceArr = [];
+						console.log(this.state);
+						// If "Purchase Uniform was checked off" create Uniform invoice and push to invoiceArr
+						if (this.state.uniform) {
+							invoiceArr.push(invoicesAPI.submitInvoice('uniform invoice'));
+						}
+						// If initFee has value create Initation Fee Invoice and push to invoiceArr
+						if (this.state.initFee !== '') {
+							invoiceArr.push(invoicesAPI.submitInvoice('initiation invoice'));
+						}
+						// If rateFee has value create Renewal Rate Invoice and push to invoiceArr
+						if (this.state.rateFee !== '') {
+							invoiceArr.push(invoicesAPI.submitInvoice('monthly invoice'));
+						}
 						Promise.all([invoiceArr])
-						
+							.then((dataArr) => {
+								console.log(dataArr)
+							})
+							.catch((err) => {
+
+							})
+
 
 					})
 					// Error from submitNewStudent
@@ -354,7 +374,9 @@ export class AddStudentForm extends Component {
 						<div className="input-field col s12 m6">
 							<p>
 								<label htmlFor="uniform">
-									<input id="uniform" type="checkbox" className="filled-in" />
+									<input id="uniform" type="checkbox" className="filled-in"
+										value={this.state.uniform} onChange={this.handleChange}
+									/>
 									<span>Purchase Uniform</span>
 								</label>
 							</p>

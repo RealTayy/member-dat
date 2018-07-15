@@ -22,6 +22,11 @@ const InvoiceSchema = new Schema({
   paidDate: { type: String, required: true, trim: true },
   isPaid: { type: Boolean, required: true },
   payment: { type: String, required: true, trim: true },
+  note: { type: String, required: true, trim: true },
+  parent: {
+    _id: { type: Schema.Types.ObjectId, ref: 'Parents', required: true },
+    dFull: { type: String, required: true, trim: true },
+  }
 });
 
 /***********|

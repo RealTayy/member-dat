@@ -1,7 +1,6 @@
 // AT WORK TO DO LIST:
 	> Create Seeds for invoices and students and enrollments... fk so much omg
 	> Make no parent id found bounce back thing make sense lmao AKA handleLink
-	> Make words dissapearing transition smoothly when collapse
 
 > Format input type=tel to autoformat #.
 > Put scroll bar on top of tabbar instead of bottom

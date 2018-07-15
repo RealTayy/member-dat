@@ -1,0 +1,1 @@
+export { default as PointofsaleForm } from './PointofsaleForm.js';

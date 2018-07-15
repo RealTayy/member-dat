@@ -1,6 +1,6 @@
 > Format input type=tel to autoformat #.
-> Put scroll bar on top of tabbar
-> Make close button hover transition smoothly
+> Put scroll bar on top of tabbar instead of bottom
+> Make close tab button hover transition smoothly
 > Restyle hover for sidenav
 > Make sidenav mobile friendly
 > Add match exact for search forms
@@ -26,3 +26,4 @@ MemberDat - SP ref
 C. Ejiofore
 
 > Add validator for phone field
+> Change Pointofsale to PointOfSale

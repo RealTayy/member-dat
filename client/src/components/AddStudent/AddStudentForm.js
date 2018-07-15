@@ -163,6 +163,7 @@ export class AddStudentForm extends Component {
 						console.log(this.state);
 						// If "Purchase Uniform was checked off" create Uniform invoice and push to invoiceArr
 						if (this.state.uniform) {
+							// YOU ARE HERE BRO!
 							invoiceArr.push(invoicesAPI.submitInvoice('uniform invoice'));
 						}
 						// If initFee has value create Initation Fee Invoice and push to invoiceArr

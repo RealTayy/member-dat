@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { ParLinker } from '../../components/Linker';
-import { PointofsaleForm } from '../../components/PointofsaleForm';
 
-export class Pointofsale extends Component {
+export class PointofsaleForm extends Component {
 	state = {
 		parID: '',
 		parName: '',
@@ -18,12 +16,11 @@ export class Pointofsale extends Component {
 
 	render() {
 		return (
-			<div>
-				<ParLinker/>
-				<PointofsaleForm/>
+			<div className="pointofsale-form">
+				point of sale form
 			</div>
 		)
-	}
+	};
 };
 
-export default Pointofsale;
+export default PointofsaleForm;

@@ -22,7 +22,7 @@ export class AddParentForm extends Component {
 		ecRelation: '',
 		referBy: '',
 		heardBy: ''
-	}
+	};
 
 	heardByArr = [
 		"Email",

@@ -78,6 +78,11 @@ export class AddStudentForm extends Component {
 		else $(`#${e.target.id}`).parent().children('input').removeClass('valid');
 	}
 
+	handleChangeCheckbox = (e) => {
+		this.setState({ [e.target.id]: (e.target.value === 'false') ? 'true' : 'false' });
+		setTimeout(() => { console.log(this.state) }, 10);
+	}
+
 	handleLink = (e) => {
 		// Helper function to detect when animation ends
 		const animationEnd = (function (el) {
@@ -131,6 +136,7 @@ export class AddStudentForm extends Component {
 		setTimeout(() => { console.log(this.state) }, 1)
 	}
 
+	// I AM SO SORRY THIS IS SO LONG I COMMENTED THE FK OUT OF IT SO IT MIGHT BE JUST A LITTLE READABLE LMAO
 	handleSubmit = (e) => {
 		// If user didn't link parent then exit handleSubmit and display Toast
 		if (this.state.parID === '') return window.Materialize.toast(`Please link parent before submitting student`, 5000, 'animated bounceInUp');
@@ -144,8 +150,7 @@ export class AddStudentForm extends Component {
 			.then((data) => {
 				// Console log response data and display Success toast
 				console.log(data.data);
-				window.Materialize.toast(`Enrollment successful`, 5000, 'animated bounceInUp green darken-2');
-				window.Materialize.toast(`Attempting to add Student...`, 5000, 'animated bounceInUp');
+				window.Materialize.toast(`Enrollment successful`, 7500, 'animated bounceInUp green darken-2');
 				// Create studentData object, add enrollment id to it, and send to studentsAPI
 				const studentData = this.state;
 				studentData.enrollment = data.data._id;
@@ -155,29 +160,63 @@ export class AddStudentForm extends Component {
 						// Console log response data and display Success toast
 						const student = data.data;
 						console.log(data.data);
-						window.Materialize.toast(`${student.info.name.dFull} successfully added`, 5000, 'animated bounceInUp green darken-2');
-						// Create array of invoice objects, add student id to invoices, and send to invoicesAPI
-						const studentID = student.id;
+						window.Materialize.toast(`${student.info.name.dFull} successfully added`, 7500, 'animated bounceInUp green darken-2');
+						// Create empty array of invoice objectsto send to invoicesAPI
 						let invoiceArr = [];
+						// Get current Date for dueDate
+						const curDate = new Date()
+						// Formats dueDate into "YYYY-MM-DD"
+						const dueDate = `${curDate.getFullYear()}-${(curDate.getMonth() + 1).toString().padStart(2, "0")}-${curDate.getDate()}`
 						console.log(this.state);
-						// If "Purchase Uniform was checked off" create Uniform invoice and push to invoiceArr
-						if (this.state.uniform) {
-							// YOU ARE HERE BRO!
-							invoiceArr.push(invoicesAPI.submitInvoice('uniform invoice'));
+						// If "Purchase Uniform was checked off" auto create Uniform invoice and push to invoiceArr
+						if (this.state.uniform === 'true') {
+							const uniformInvoiceData = {
+								type: 'Uniform',
+								amountDue: (this.state.beltRank.match(/^Black/)) ? '150.00' : '50.00',
+								dueDate: dueDate,
+								isPaid: false,
+								note: `AUTO: Purchased ${(this.state.beltRank.match(/^Black/)) ? 'Black belt' : 'standard'} uniform when enrolling`,
+								parID: this.state.parID,
+								parName: this.state.parName,
+							}
+							invoiceArr.push(invoicesAPI.submitInvoice(uniformInvoiceData));
 						}
-						// If initFee has value create Initation Fee Invoice and push to invoiceArr
-						if (this.state.initFee !== '') {
-							invoiceArr.push(invoicesAPI.submitInvoice('initiation invoice'));
+						// If initFee has value auto create Initation Fee Invoice and push to invoiceArr
+						if (this.state.initFee !== '0.00') {
+							const initInvoiceData = {
+								type: 'Initiation Fee',
+								amountDue: this.state.initFee,
+								dueDate: dueDate,
+								isPaid: false,
+								note: 'AUTO: Initiation fee charged when enrolling',
+								parID: this.state.parID,
+								parName: this.state.parName,
+							}
+							invoiceArr.push(invoicesAPI.submitInvoice(initInvoiceData));
 						}
-						// If rateFee has value create Renewal Rate Invoice and push to invoiceArr
-						if (this.state.rateFee !== '') {
-							invoiceArr.push(invoicesAPI.submitInvoice('monthly invoice'));
+						// If rateFee has value auto create Renewal Rate Invoice and push to invoiceArr
+						if (this.state.rateFee !== '0.00') {
+							const rateInvoiceData = {
+								type: 'Member Dues',
+								amountDue: this.state.rateFee,
+								dueDate: dueDate,
+								isPaid: false,
+								note: 'AUTO: First Member due fee charged when enrolling',
+								parID: this.state.parID,
+								parName: this.state.parName,
+							}
+							invoiceArr.push(invoicesAPI.submitInvoice(rateInvoiceData));
 						}
+						// Submit all generated invoice promises to invoicesAPI
 						Promise.all([invoiceArr])
+							// if no error then console.log dataArr and display success toast
 							.then((dataArr) => {
 								console.log(dataArr)
+								window.Materialize.toast(`${dataArr.length} Invoice(s) succesfully created`, 7500, 'animated bounceInUp green darken-2');
 							})
+							// If error console log entire err and display generic error toast
 							.catch((err) => {
+								console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
 							})
 					})
 					// Error from submitNewStudent
@@ -372,7 +411,7 @@ export class AddStudentForm extends Component {
 							<p>
 								<label htmlFor="uniform">
 									<input id="uniform" type="checkbox" className="filled-in"
-										value={this.state.uniform} onChange={this.handleChange}
+										value={this.state.uniform} onChange={this.handleChangeCheckbox}
 									/>
 									<span>Purchase Uniform</span>
 								</label>

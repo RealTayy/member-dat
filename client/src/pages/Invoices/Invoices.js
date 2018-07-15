@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ParLinker } from '../../components/Linker';
-import { InvoicesForm } from '../../components/Invoices';
+import { InvoicesResults } from '../../components/Invoices';
 import './Invoices.css';
 
 export class Invoices extends Component {
@@ -26,7 +26,7 @@ export class Invoices extends Component {
 					setParID={this.setParID}
 					setParName={this.setParName}
 				/>
-				<InvoicesForm
+				<InvoicesResults
 					parID={parID}
 					parName={parName}
 				/>

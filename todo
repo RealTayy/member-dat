@@ -1,14 +1,17 @@
+// AT WORK TO DO LIST:
+	> Create Seeds for invoices and students and enrollments... fk so much omg
+	> Make no parent id found bounce back thing make sense lmao AKA handleLink
+	> Make words dissapearing transition smoothly when collapse
+
 > Format input type=tel to autoformat #.
 > Put scroll bar on top of tabbar instead of bottom
 > Make close tab button hover transition smoothly
 > Restyle hover for sidenav
-> Make sidenav mobile friendly
 > Add match exact for search forms
 > Make search results persist between tab changes
 > Add active only to parent fields
 > Make search side bar thing fixed
-> Make words dissapearing transition smoothly when collapse
-> Remove collectionNAme bp code
+> Remove collectionName bp code
 > Validator for email and phone
 
 > add horizontal scrolling to results scrolls?
@@ -19,8 +22,6 @@
 > Add React Materialize to portfolio
 
 > hoverintent over results scrolls?
-
-> Make no parent id found bounce back thing make sense lmao
 
 GAME PLAN:
 MemberDat - SP ref

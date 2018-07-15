@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class InvoicesForm extends Component {
+export class InvoicesResults extends Component {
 	state = {
 		parID: '',
 		parName: 'Please Link Parent ID',
@@ -29,4 +29,4 @@ export class InvoicesForm extends Component {
 	};
 };
 
-export default InvoicesForm;
+export default InvoicesResults;

@@ -1,1 +1,1 @@
-export { default as InvoicesForm } from './InvoicesForm.js';
+export { default as InvoicesResults } from './InvoicesResults.js';

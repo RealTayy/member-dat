@@ -66,8 +66,8 @@ export class PointofsaleForm extends Component {
 		// If all required fields not filled in exit handleSubmit and display toast
 		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// Button goes to "Working" animation
-		///// $('.submit-btn i').addClass('animated infinite flip');
-		///// $('.submit-btn a').addClass('disabled');
+		$('.submit-btn i').addClass('animated infinite flip');
+		$('.submit-btn a').addClass('disabled');
 		// Submit this.state to invoicesAPI to add to DB
 		// console.log(this.state);
 		invoicesAPI.submitInvoice(this.state)

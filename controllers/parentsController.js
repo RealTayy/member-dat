@@ -26,6 +26,20 @@ const ParentsController = {
 			.then((dbModel) => res.json(dbModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
+	findSomeRegexPop: function (req, res) {
+		// Convert query to regex query
+		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
+		Parents
+			.find(req.query)
+			.populate('students')
+			.populate('invoices')
+			.exec(function (err, dbModel) {
+				if (err) { console.log(err); res.status(422).json(err) }
+				res.json(dbModel)
+			})
+		// .then((dbModel) => res.json(dbModel))
+		// .catch((err) => { console.log(err); res.status(422).json(err) });
+	},
 	findById: function (req, res) {
 		Parents
 			.findById(req.params.id)

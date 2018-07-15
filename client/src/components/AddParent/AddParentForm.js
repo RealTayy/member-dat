@@ -215,10 +215,10 @@ export class AddParentForm extends Component {
 						</div>
 						<div className="input-field col s12 m6">
 							<input
-								id="ecEmail" type="email" className="validate"
+								id="ecEmail" type="email" className="required validate"
 								value={this.state.ecEmail} onChange={this.handleChange}
 							/>
-							<label htmlFor="ecEmail">Email</label>
+							<label htmlFor="ecEmail">Email *</label>
 						</div>
 						<div className="input-field col s12 m3">
 							<input

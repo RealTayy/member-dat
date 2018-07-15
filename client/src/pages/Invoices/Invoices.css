@@ -1,0 +1,6 @@
+.invoices-header>span {
+	position: relative;
+	top: 6px;
+	vertical-align: bottom;
+	font-size: 1.5rem;	
+}

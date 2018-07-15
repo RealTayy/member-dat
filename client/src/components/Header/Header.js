@@ -12,7 +12,7 @@ export class Header extends Component {
 							<img className="logo-img" src={logo} alt="logo" />
 						</a>
 						<a href="#!" className="brand-logo">
-							<b>MemberDat - JungDo TKD</b>
+							<b>MemberDat - Demo</b>
 						</a>
 						<ul className="right">
 							<li><a href="#!">Log off<i className="material-icons right">exit_to_app</i></a></li>

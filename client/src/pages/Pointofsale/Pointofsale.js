@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ParLinker } from '../../components/Linker';
 import { PointofsaleForm } from '../../components/PointofsaleForm';
+import './Pointofsale.css';
 
 export class Pointofsale extends Component {
 	state = {

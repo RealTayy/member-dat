@@ -178,10 +178,7 @@ export class AddStudentForm extends Component {
 								console.log(dataArr)
 							})
 							.catch((err) => {
-
 							})
-
-
 					})
 					// Error from submitNewStudent
 					.catch((err) => {

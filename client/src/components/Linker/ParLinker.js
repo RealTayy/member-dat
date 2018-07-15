@@ -46,9 +46,13 @@ export class ParLinker extends Component {
 				$('.link-btn a').removeClass('disabled');
 				$('#parName').addClass('valid');
 				$('#parIDtwo').addClass('valid');
+				$('#parPhone').addClass('valid');
+				$('#parEmail').addClass('valid');
 				if (data.data.length === 0) return window.Materialize.toast(`No parent found with ID: ${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2')
 				else window.Materialize.toast(`${parent.info.name.dFull} linked`, 5000, 'animated bounceInUp green darken-2');
-				this.setState({ parID: parent.id, parName: parent.info.name.dFull });
+				this.setState({ parID: parent.id, parName: parent.info.name.dFull, parPhone: parent.info.contact.phone, parEmail: parent.info.contact.email });				
+				this.props.setParID(parent.id)
+				this.props.setParName(parent.info.name.dFull)
 			})
 			.catch((err) => {
 				console.log(err);
@@ -63,6 +67,7 @@ export class ParLinker extends Component {
 			<div className="parlinker col s4">
 				<div className="col s12 z-depth-2">
 					<h4 className="parlinker-header center-align">Link Parent</h4>
+					<div className="divider row"></div>
 					<form className="col s12">
 						<div id="parlinker-form" className="row parlinker-form">
 							<div className="input-field col s12">

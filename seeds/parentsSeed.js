@@ -3,7 +3,7 @@ const parentsController = require('../controllers/parentsController');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 const parentsSeed = [
-	{		
+	{
 		_id: new ObjectId('123456789123456789123450'),
 		idtwo: 'P000000',
 		isActive: true,
@@ -44,7 +44,7 @@ const parentsSeed = [
 			referBy: 'Andrew Nguyen',
 		}
 	},
-	{		
+	{
 		_id: new ObjectId('123456789123456789123451'),
 		idtwo: 'P000001',
 		isActive: true,
@@ -85,7 +85,7 @@ const parentsSeed = [
 			referBy: '',
 		}
 	},
-	{		
+	{
 		_id: new ObjectId('123456789123456789123452'),
 		idtwo: 'P000002',
 		isActive: true,
@@ -126,7 +126,7 @@ const parentsSeed = [
 			referBy: '',
 		}
 	},
-	{		
+	{
 		_id: new ObjectId('123456789123456789123453'),
 		idtwo: 'P000003',
 		isActive: true,
@@ -168,6 +168,6 @@ const parentsSeed = [
 		}
 	},
 ]
-parentsController.seed(parentsSeed)
+module.exports = parentsController.seed(parentsSeed)
 	.then((parents) => console.log(`${parents.length} document(s) inserted to parents!`))
 	.catch((err) => console.log('Error when running seeds for parents'));

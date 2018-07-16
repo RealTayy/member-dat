@@ -56,8 +56,7 @@ export class ParentTableRow extends Component {
 						<Dropdown trigger={
 							<Button className="btn-large btn-square open-students"><i className="material-icons">directions_walk</i></Button>
 						}>
-							{data.students.map((student, i) => {
-								console.log(student);
+							{data.students.map((student, i) => {								
 								return <NavItem key={i} data-student={i} onClick={this.handleClickStudent}>{student.info.name.dFull}</NavItem>
 							})}
 						</Dropdown>

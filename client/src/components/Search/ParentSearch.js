@@ -30,6 +30,7 @@ export class ParentSearch extends Component {
     // Get array of data from API based on searchQuery
     parentsAPI.getSomeParents(searchQuery)
       .then((data) => {
+        console.log(data.data);
         // Button finishes "Working" animation
         $('.parent-searchbtn i').removeClass('animated infinite flip');
         $('.parent-searchbtn a').removeClass('disabled');

@@ -31,8 +31,9 @@ const ParentsController = {
 		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
 		Parents
 			.find(req.query)
-			.populate('students')
 			.populate('invoices')
+			.populate({ path: 'students', populate: { path: 'parent' } })
+			.populate({ path: 'students', populate: { path: 'enrollment' } })
 			.exec(function (err, parentsModel) {
 				if (err) { console.log(err); res.status(422).json(err) }
 				res.json(parentsModel)
@@ -47,8 +48,11 @@ const ParentsController = {
 	findByIdPop: function (req, res) {
 		Parents
 			.findById(req.params.id)
-			.populate('students')
 			.populate('invoices')
+			.populate('students')
+			// .populate('students.parent')
+			.populate({ path: 'students', populate: { path: 'parent' } })
+			// .populate({ path: 'students', populate: { path: 'enrollment' } })
 			.exec(function (err, parentsModel) {
 				if (err) { console.log(err); res.status(422).json(err) }
 				res.json(parentsModel)

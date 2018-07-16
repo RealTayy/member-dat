@@ -102,12 +102,12 @@
 }
 
 .data-col {
-  width: calc(100% - 104px - 2.25rem);
+  width: calc(100% - 94px - 2.25rem);
   margin-top: 2px;
 }
 
 .button-col {
-  width: calc(104px + 2.25rem);
+  width: calc(94px + 2.25rem);
 }
 
 .open-student,

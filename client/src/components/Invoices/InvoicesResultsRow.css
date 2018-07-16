@@ -1,0 +1,47 @@
+.invoice-col {
+  width: calc(100% - 170px);
+  /* background-color: red; */
+}
+
+.detail-col {
+  width: 170px;
+}
+
+.pay-col {
+  padding-left: 0 !important;
+  margin-left: .75rem !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.pay-col {
+  overflow: auto;
+}
+
+.info-col {
+  width: calc(41.66667% - .75rem) !important;
+}
+
+.pay-col {
+  width: calc(41.66667% - .75rem) !important;
+}
+
+.due-status.overdue {
+  background-color: #D32F2F;
+}
+
+.due-status.pending {
+  background-color: #ff9800;
+}
+
+.due-status.paid {
+  background-color: #4caf50;
+}
+
+.payment-status.paid {
+  background-color: #2196f3;
+}
+
+.payment-status.notpaid {
+  background-color: #222;
+}

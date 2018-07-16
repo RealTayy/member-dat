@@ -1,8 +1,9 @@
 // AT WORK TO DO LIST:
+> ADD PAYMENT METHOD TO INVOICE MODEL AND SEEDS
 > Make ID# LABEL click throughable for search
-
 > Working animation not working addStudent
-> Turn icon into fav icon
+> Turn icon into fav icon???
+> Search by belt rank is broken
 > Format input type=tel to autoformat #.
 > Put scroll bar on top of tabbar instead of bottom
 > Make close tab button hover transition smoothly
@@ -13,19 +14,15 @@
 > Make search side bar thing fixed
 > Remove collectionName bp code
 > Validator for email and phone
-
 > add horizontal scrolling to results scrolls?
 > tooltip shows on intial hover
 > Fix toast width
-
 > Add comments to stuff
 > Add React Materialize to portfolio
-
 > hoverintent over results scrolls?
+> Add validator for phone field
+> Change Pointofsale to PointOfSale
 
 GAME PLAN:
 MemberDat - SP ref
 C. Ejiofore
-
-> Add validator for phone field
-> Change Pointofsale to PointOfSale

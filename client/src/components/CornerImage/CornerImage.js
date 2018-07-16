@@ -6,7 +6,7 @@ export class CornerImage extends Component {
 		const getIcon = () => {
 			switch (this.props.activeTab) {
 				case 'dashboard-tab': return 'dashboard';
-				case 'search-tab': return 'search';
+				case 'search-tab': return 'find_in_page';
 				case 'invoice-tab': return 'receipt';
 				case 'pointofsale-tab': return 'monetization_on';
 				case 'addparent-tab': return 'contacts';

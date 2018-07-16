@@ -27,6 +27,9 @@ const InvoiceSchema = new Schema({
   parent: { type: Schema.Types.ObjectId, ref: 'Parents', required: true },
 });
 
+//PAID     |Type |  DueDate  | 
+//PAYMENT  |idtwo|  Amount |
+
 /***********|
 |* EXPORTS *|
 |***********/

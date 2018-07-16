@@ -42,7 +42,7 @@
 }
 
 .table-row:hover {
-  background: rgba(30, 136, 229, 0.15)
+  background: rgba(144, 202, 249, 0.5)
 }
 
 .status-col {
@@ -83,7 +83,7 @@
   overflow: auto;
 }
 
-.info-col {
+.info-col.s4 {
   width: calc(33.33333333% - .75rem) !important;
 }
 

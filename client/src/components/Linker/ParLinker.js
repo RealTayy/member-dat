@@ -53,9 +53,10 @@ export class ParLinker extends Component {
 				$('#parIDtwo').addClass('valid');
 				$('#parPhone').addClass('valid');
 				$('#parEmail').addClass('valid');
-				this.setState({ parID: parent.id, parName: parent.info.name.dFull, parPhone: parent.info.contact.phone, parEmail: parent.info.contact.email });				
+				this.setState({ parID: parent.id, parName: parent.info.name.dFull, parPhone: parent.info.contact.phone, parEmail: parent.info.contact.email });
 				this.props.setParID(parent.id)
 				this.props.setParName(parent.info.name.dFull)
+				if (this.props.setInvoices) this.props.setInvoices(parent.invoices);
 			})
 			.catch((err) => {
 				console.log(err);

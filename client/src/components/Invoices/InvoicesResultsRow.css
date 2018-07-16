@@ -1,3 +1,5 @@
+/* InvoiceResultsRow.css */
+
 .invoice-col {
   width: calc(100% - 170px);
   /* background-color: red; */
@@ -14,11 +16,15 @@
   overflow: hidden;
 }
 
+.type-info {
+  font-weight: bold;
+}
+
 .pay-col {
   overflow: auto;
 }
 
-.info-col {
+.info-col.s5 {
   width: calc(41.66667% - .75rem) !important;
 }
 

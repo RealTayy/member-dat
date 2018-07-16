@@ -1,7 +1,6 @@
 // AT WORK TO DO LIST:
-> ADD PAYMENT METHOD TO INVOICE MODEL AND SEEDS
+> CHECK IF LOGIC TO FLAG SOMETHING AS UNPAID IN PARENT RESULT MAKES SENSE VS DUEDATE SHIT
 > Make ID# LABEL click throughable for search
-> Working animation not working addStudent
 > Turn icon into fav icon???
 > Search by belt rank is broken
 > Format input type=tel to autoformat #.
@@ -13,6 +12,7 @@
 > Add active only to parent fields
 > Make search side bar thing fixed
 > Remove collectionName bp code
+> Change Date stuff in front end API to use moment instead of JS
 > Validator for email and phone
 > add horizontal scrolling to results scrolls?
 > tooltip shows on intial hover

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Dropdown, NavItem, Button } from 'react-materialize'
 
 export class ParentTableRow extends Component {
+	
 	render() {
 		const data = this.props.data;
 

@@ -13,7 +13,7 @@ const studentsController = require('../../controllers/studentsController.js');
 
 // Matches with '/api/students' this is defined in '../index.js'
 router.route('/')
-	.get(studentsController.findSomeRegex)
+	.get(studentsController.findSomeRegexPop)
 	.post(studentsController.create);
 
 // Matches with '/api/students/:id' this is defined in '../index.js'

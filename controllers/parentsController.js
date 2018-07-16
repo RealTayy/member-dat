@@ -44,12 +44,33 @@ const ParentsController = {
 			.then((parentsModel) => res.json(parentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
+	findByIdPop: function (req, res) {
+		Parents
+			.findById(req.params.id)
+			.populate('students')
+			.populate('invoices')
+			.exec(function (err, parentsModel) {
+				if (err) { console.log(err); res.status(422).json(err) }
+				res.json(parentsModel)
+			})
+	},
 	findByIdTwo: function (req, res) {
 		console.log(req.params.id);
 		Parents
 			.find({ idtwo: req.params.id })
 			.then((parentsModel) => res.json(parentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
+	findByIdTwoPop: function (req, res) {
+		console.log(req.params.id);
+		Parents
+			.find({ idtwo: req.params.id })
+			.populate('students')
+			.populate('invoices')
+			.exec(function (err, parentsModel) {
+				if (err) { console.log(err); res.status(422).json(err) }
+				res.json(parentsModel)
+			})
 	},
 	create: function (req, res) {
 		// Get next custom parentID from counters collection

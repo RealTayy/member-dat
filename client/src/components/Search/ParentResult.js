@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { Dropdown, NavItem, Button } from 'react-materialize'
 import './ParentResult.css';
 import { ParentTableRow } from '.';
 
 // import $ from 'jquery';
 
 export class ParentResult extends Component {
-  componentDidMount() {
-    // $('.parent-result .dropdown-trigger').dropdown();
-  }
-
   render() {
     const results = this.props.results;
     return (

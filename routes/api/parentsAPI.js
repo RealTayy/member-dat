@@ -23,7 +23,7 @@ router.route('/:id')
 	.delete(parentsController.remove);
 
 router.route('/idtwo/:id')
-	.get(parentsController.findByIdTwo);
+	.get(parentsController.findByIdTwoPop);
 
 /***********|
 |* EXPORTS *| 

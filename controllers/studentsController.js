@@ -29,6 +29,18 @@ const StudentsController = {
 			.then((studentsModel) => res.json(studentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
+	findSomeRegexPop: function (req, res) {
+		// Convert query to regex query
+		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
+		Students
+			.find(req.query)
+			.populate('enrollment')
+			.populate('parent')
+			.exec(function (err, studentsModel) {
+				if (err) { console.log(err); res.status(422).json(err) }
+				res.json(studentsModel)
+			})
+	},
 	create: function (req, res) {
 		console.log(req.body);
 		// Get next custom studentID from counters collection

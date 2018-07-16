@@ -20,9 +20,9 @@ const EnrollmentSchema = new Schema({
   type: { type: String, required: true, trim: true },
   initFee: { type: Number, required: true },
   rateFee: { type: Number, required: true },
-  expireDate: { type: String, required: true, trim: true },
   length: { type: String, required: true, trim: true },
   startDate: { type: String, required: true, trim: true },
+  expireDate: { type: String, required: true, trim: true },
   willRenew: { type: Boolean, required: true, }
 });
 

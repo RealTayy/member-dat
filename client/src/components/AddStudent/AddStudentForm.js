@@ -180,7 +180,7 @@ export class AddStudentForm extends Component {
 								amountDue: (this.state.beltRank.match(/^Black/)) ? '150.00' : '50.00',
 								dueDate: dueDate,
 								isPaid: false,
-								note: `AUTO: Purchased ${(this.state.beltRank.match(/^Black/)) ? 'Black belt' : 'standard'} uniform when enrolling`,
+								note: `AUTO: Purchased ${(this.state.beltRank.match(/^Black/)) ? 'black belt' : 'standard'} uniform when enrolling`,
 								parID: this.state.parID,
 								parName: this.state.parName,
 							}
@@ -206,7 +206,7 @@ export class AddStudentForm extends Component {
 								amountDue: this.state.rateFee,
 								dueDate: dueDate,
 								isPaid: false,
-								note: 'AUTO: First Member due fee charged when enrolling',
+								note: 'AUTO: First Member dues fee charged when enrolling',
 								parID: this.state.parID,
 								parName: this.state.parName,
 							}

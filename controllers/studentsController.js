@@ -26,7 +26,7 @@ const StudentsController = {
 		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
 		Students
 			.find(req.query)
-			.then((dbModel) => res.json(dbModel))
+			.then((studentsModel) => res.json(studentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	create: function (req, res) {
@@ -37,13 +37,11 @@ const StudentsController = {
 			.then((id) => { req.body.idtwo = id })
 			.catch((err) => { res.status(422).json(err) })
 			.then(() => {
-				// If didn't run into error add student to DB
+				// Add student to DB
 				Students
 					.create(req.body)
 					.then((dbModel) => {
-						console.log('YOU ARE HERE BRO');
-						console.log(req.body);
-						// If didn't run into error add student objID to parent's students array
+						// Add student objID to parent's students array
 						parentsController
 							.updatePromise({
 								params: { id: req.body.parent },
@@ -55,6 +53,13 @@ const StudentsController = {
 					.catch((err) => { console.log(err); res.status(422).json(err) });
 			})
 			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
+	seed: function (seed) {
+		return Students
+			.remove({})
+			.then(() => Students.insertMany(seed))
+			.then((studentsModel) => { return studentsModel })
+			.catch((err) => console.log(err));
 	}
 }
 

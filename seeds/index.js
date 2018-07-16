@@ -3,5 +3,5 @@ module.exports = function () {
 	require('./parentsSeed.js');
 	require('./studentsSeed.js');
 	require('./enrollmentsSeed.js');		
-	require('./invoicesSeed.js')
+	require('./invoicesSeed.js');
 }

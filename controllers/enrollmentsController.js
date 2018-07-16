@@ -24,8 +24,15 @@ const EnrollmentsController = {
 		console.log(req.body)
 		Enrollments
 			.create(req.body)
-			.then((dbModel) => { res.json(dbModel) })
+			.then((enrollmentsModel) => { res.json(enrollmentsModel) })
 			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
+	seed: function (seed) {
+		return Enrollments
+			.remove({})
+			.then(() => Enrollments.insertMany(seed))
+			.then((enrollmentsModel) => { return enrollmentsModel })
+			.catch((err) => console.log(err));
 	}
 }
 

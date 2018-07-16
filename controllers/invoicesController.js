@@ -25,24 +25,32 @@ const InvoicesController = {
 		// Get next custom invoiceID from counters collections
 		countersController
 			.findAndIncrement('invoiceid')
-			.then((id) => { req.body.idtwo = id })
+			.then((idtwo) => { req.body.idtwo = idtwo })
 			.catch(((err) => { res.status(422).json(err) }))
 			.then(() => {
-				// If didnt' run into error add invoice to DB
+				// Add invoice to DB
 				Invoices
 					.create(req.body)
-					.then((dbModel) => {
+					.then((invoicesModel) => {
+						// Add invoice _id to parent's students array
 						parentsController
 							.updatePromise({
 								params: { id: req.body.parent },
-								body: { $push: { invoices: dbModel._id } }
+								body: { $push: { invoices: invoicesModel._id } }
 							})
-							.then(() => res.json(dbModel))
+							.then(() => res.json(invoicesModel))
 							.catch((err) => { console.log(err); res.status(422).json(err) });
 					})
 					.catch((err) => { console.log(err); res.status(422).json(err) });
 			})
 			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
+	seed: function (seed) {
+		return Invoices
+			.remove({})
+			.then(() => Invoices.insertMany(seed))
+			.then((invoicesModel) => { return invoicesModel })
+			.catch((err) => console.log(err));
 	}
 }
 

@@ -15,7 +15,7 @@ const ParentsController = {
 	findSomeExact: function (req, res) {
 		Parents
 			.find(req.query)
-			.then((dbModel) => res.json(dbModel))
+			.then((parentsModel) => res.json(parentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	findSomeRegex: function (req, res) {
@@ -23,7 +23,7 @@ const ParentsController = {
 		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
 		Parents
 			.find(req.query)
-			.then((dbModel) => res.json(dbModel))
+			.then((parentsModel) => res.json(parentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	findSomeRegexPop: function (req, res) {
@@ -33,22 +33,22 @@ const ParentsController = {
 			.find(req.query)
 			.populate('students')
 			.populate('invoices')
-			.exec(function (err, dbModel) {
+			.exec(function (err, parentsModel) {
 				if (err) { console.log(err); res.status(422).json(err) }
-				res.json(dbModel)
+				res.json(parentsModel)
 			})
 	},
 	findById: function (req, res) {
 		Parents
 			.findById(req.params.id)
-			.then((dbModel) => res.json(dbModel))
+			.then((parentsModel) => res.json(parentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	findByIdTwo: function (req, res) {
 		console.log(req.params.id);
 		Parents
 			.find({ idtwo: req.params.id })
-			.then((dbModel) => res.json(dbModel))
+			.then((parentsModel) => res.json(parentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	create: function (req, res) {
@@ -61,7 +61,7 @@ const ParentsController = {
 				console.log(JSON.stringify(req.body, null, 2));
 				Parents
 					.create(req.body)
-					.then((dbModel) => res.json(dbModel))
+					.then((parentsModel) => res.json(parentsModel))
 					.catch((err) => { console.log(err); res.status(422).json(err) });
 			})
 			.catch((err) => res.status(422).json(err))
@@ -69,7 +69,7 @@ const ParentsController = {
 	update: function (req, res) {
 		Parents
 			.findOneAndUpdate({ _id: req.params.id }, req.body)
-			.then((dbModel) => res.json(dbModel))
+			.then((parentsModel) => res.json(parentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	updatePromise: function (req, res) {
@@ -78,15 +78,15 @@ const ParentsController = {
 	remove: function (req, res) {
 		Parents
 			.findById({ _id: req.params.id })
-			.then((dbModel) => dbModel.remove())
-			.then((dbModel) => res.json(dbModel))
+			.then((parentsModel) => parentsModel.remove())
+			.then((parentsModel) => res.json(parentsModel))
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	seed: function (seed) {
 		return Parents
 			.remove({})
 			.then(() => Parents.insertMany(seed))
-			.then((dbModel) => { return dbModel })
+			.then((parentsModel) => { return parentsModel })
 			.catch((err) => console.log(err));
 	}
 };

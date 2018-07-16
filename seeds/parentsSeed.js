@@ -3,7 +3,7 @@ const parentsController = require('../controllers/parentsController');
 const ObjectId = require('mongoose').Types.ObjectId;
 
 const parentsSeed = [
-	{                      
+	{
 		_id: new ObjectId('012345678901234567891000'),
 		idtwo: 'P000000',
 		isActive: true,
@@ -42,7 +42,13 @@ const parentsSeed = [
 			},
 			heardBy: 'Email',
 			referBy: 'Andrew Nguyen',
-		}
+		},
+		students: [
+			new ObjectId('012345678901234567892000'),
+		],
+		invoices: [
+			new ObjectId('012345678901234567894000'),
+		]
 	},
 	{
 		_id: new ObjectId('012345678901234567891001'),
@@ -83,7 +89,13 @@ const parentsSeed = [
 			},
 			heardBy: '',
 			referBy: '',
-		}
+		},
+		students: [
+
+		],
+		invoices: [
+
+		]
 	},
 	{
 		_id: new ObjectId('012345678901234567891002'),
@@ -124,7 +136,13 @@ const parentsSeed = [
 			},
 			heardBy: 'Web Search',
 			referBy: '',
-		}
+		},
+		students: [
+
+		],
+		invoices: [
+
+		]
 	},
 	{
 		_id: new ObjectId('012345678901234567891003'),
@@ -165,7 +183,13 @@ const parentsSeed = [
 			},
 			heardBy: 'Web Search',
 			referBy: '',
-		}
+		},
+		students: [
+
+		],
+		invoices: [
+
+		]
 	},
 ]
 module.exports = parentsController.seed(parentsSeed)

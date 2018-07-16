@@ -62,6 +62,7 @@ input[type=date]::-webkit-inner-spin-button {
 }
 
 /* SCROLL BAR STUFF */
+
 /* width */
 
 ::-webkit-scrollbar {
@@ -85,4 +86,10 @@ input[type=date]::-webkit-inner-spin-button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+/* Makes card have transparent background */
+
+.trans-card {
+  background: hsla(0, 0%, 100%, 0.75);
 }

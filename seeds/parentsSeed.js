@@ -204,7 +204,7 @@ const parentsSeed = [
 	{
 		_id: new ObjectId('012345678901234567891004'),
 		idtwo: 'P000004',
-		isActive: true,
+		isActive: false,
 		info: {
 			name: {
 				first: 'frank',
@@ -246,7 +246,10 @@ const parentsSeed = [
 			new ObjectId('012345678901234567892004')
 		],
 		invoices: [
-
+			new ObjectId('012345678901234567894006'),
+			new ObjectId('012345678901234567894007'),
+			new ObjectId('012345678901234567894008'),
+			new ObjectId('012345678901234567894009'),
 		]
 	},
 ]

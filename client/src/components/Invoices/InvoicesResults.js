@@ -14,7 +14,7 @@ export class InvoicesResults extends Component {
 		const parName = this.state.parName;
 		return (
 			<div className="invoices col s8">
-				<div className="col s12 z-depth-2">
+				<div className="col s12 z-depth-2 trans-card">
 					<h4 className="invoices-header">
 						Invoices
 						<span> - {parName}</span>

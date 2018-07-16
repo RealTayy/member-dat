@@ -1,6 +1,5 @@
 // AT WORK TO DO LIST:
-	> Create Seeds for invoices and students and enrollments... fk so much omg
-	> Make no parent id found bounce back thing make sense lmao AKA handleLink
+> Make ID# LABEL click throughable for search
 
 > Working animation not working addStudent
 > Turn icon into fav icon

@@ -1,0 +1,8 @@
+.corner-image,
+.corner-image .material-icons {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+	font-size: 500px;
+	color: rgba(227, 242, 253, 0.75)   ;
+}

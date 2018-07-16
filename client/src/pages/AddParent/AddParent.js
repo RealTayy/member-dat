@@ -7,7 +7,7 @@ export class Addnew extends Component {
 		return (
 			<div className="row">
 				<div className="addparent-container col m12 l10 xl8 push-l1 push-xl2" >
-					<div className="z-depth-2">
+					<div className="z-depth-2 trans-card">
 						<h4 className="addparent-header center-align">Add New Parent</h4>
 						<div className="addparent-subheader center-align">Required field are indicated with a *</div>
 						<AddParentForm />

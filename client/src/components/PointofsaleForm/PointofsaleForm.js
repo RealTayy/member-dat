@@ -121,7 +121,7 @@ export class PointofsaleForm extends Component {
 		const parName = this.state.parName;
 		return (
 			<div className="pointofsale-form col s8">
-				<div className="col s12 z-depth-2">
+				<div className="col s12 z-depth-2 trans-card">
 					<h4 className="pointofsale-header">
 						Point of Sale
 						<span> - {parName}</span>

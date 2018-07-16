@@ -6,16 +6,17 @@ import { Header } from "./components/Header/Header";
 import { Sidenav } from "./components/Sidenav/Sidenav";
 import { Dashboard } from "./pages/Dashboard";
 import { Search } from "./pages/Search";
-import {AddParent} from "./pages/AddParent";
-import {AddStudent} from "./pages/AddStudent";
+import { AddParent } from "./pages/AddParent";
+import { AddStudent } from "./pages/AddStudent";
 import { Pointofsale } from "./pages/Pointofsale";
 import { Tabbar } from "./components/Tabbar/Tabbar";
 import { Invoices } from "./pages/Invoices";
+import { CornerImage } from "./components/CornerImage";
 
 export class App extends Component {
   state = {
     activeID: '',
-    activeTab: 'activeTab',
+    activeTab: 'dashboard-tab',
     tabs: [],
   }
 
@@ -35,6 +36,7 @@ export class App extends Component {
             setActiveTab={this.setActiveTab}
           />
           <Tabbar />
+          <CornerImage activeTab={activeTab} />
           {/* Router starts here */}
           <div className="content-wrapper">
             <Switch>

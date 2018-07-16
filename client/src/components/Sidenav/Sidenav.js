@@ -80,7 +80,7 @@ export class Sidenav extends Component {
 					<li className="sidenav-item">
 						<Link to="/pointofsale" id="pointofsale-tab" className="waves-effect waves-blue tooltipped" onClick={this.handleClick}
 							data-position="right" data-tooltip="Point of Sale">
-							<i className="material-icons">attach_money</i>Point of Sale
+							<i className="material-icons">monetization_on</i>Point of Sale
 						</Link>
 					</li>
 					<li className="sidenav-item">

@@ -38,7 +38,7 @@
 }
 
 .table-row:nth-child(odd) {
-  background: #fff
+  background: hsla(0, 0%, 100%, 0.75)
 }
 
 .table-row:hover {

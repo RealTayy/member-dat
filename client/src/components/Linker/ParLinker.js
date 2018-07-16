@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './ParLinker.css';
-import { parentsAPI, invoicesAPI } from '../../utils/api/index';
+import { parentsAPI } from '../../utils/api/index';
 
 export class ParLinker extends Component {
 	state = {

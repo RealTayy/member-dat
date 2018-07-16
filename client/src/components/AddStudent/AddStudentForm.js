@@ -111,11 +111,11 @@ export class AddStudentForm extends Component {
 				console.log(data);
 				let parent = data.data[0]
 				$('.link-btn i').removeClass('animated infinite flip');
-				$('.link-btn a').removeClass('disabled');				
-				if (data.data.length === 0){
-					
+				$('.link-btn a').removeClass('disabled');
+				if (data.data.length === 0) {
+
 					return window.Materialize.toast(`No parent found with ID: ${this.state.parIDtwo}`, 5000, 'animated bounceInUp red darken-2')
-				} 
+				}
 				else window.Materialize.toast(`${parent.info.name.dFull} linked`, 5000, 'animated bounceInUp green darken-2');
 				$('#parIDtwo').removeClass('invalid');
 				$('#parName').addClass('valid');
@@ -147,6 +147,7 @@ export class AddStudentForm extends Component {
 		// If all required fields not filled in exit handleSubmit and display toast
 		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// Button goes to "Working" animation		
+		console.log($('.submit-btn i'));
 		$('.submit-btn i').addClass('animated infinite flip');
 		$('.submit-btn a').addClass('disabled');
 		// Submit this.state to enrollmentsAPI to add to DB
@@ -215,11 +216,17 @@ export class AddStudentForm extends Component {
 						Promise.all([invoiceArr])
 							// if no error then console.log dataArr and display success toast
 							.then((dataArr) => {
+								// Button finishes "Working" animation
+								$('.submit-btn i').removeClass('animated infinite flip');
+								$('.submit-btn a').removeClass('disabled');
 								console.log(dataArr)
-								window.Materialize.toast(`${dataArr.length} Invoice(s) succesfully created`, 7500, 'animated bounceInUp green darken-2');
+								window.Materialize.toast(`${dataArr[0].length} Invoice(s) succesfully created`, 7500, 'animated bounceInUp green darken-2');
 							})
 							// If error console log entire err and display generic error toast
 							.catch((err) => {
+								// Button finishes "Working" animation
+								$('.submit-btn i').removeClass('animated infinite flip');
+								$('.submit-btn a').removeClass('disabled');
 								console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2');
 							})
 					})
@@ -244,10 +251,6 @@ export class AddStudentForm extends Component {
 				// If err then console log entire err and display generic error toast
 				console.log(err); window.Materialize.toast(`Error adding new student: Unrecognized Error`, 5000, 'animated bounceInUp red darken-2')
 			});
-
-		// Button finishes "Working" animation
-		$('.submit-btn i').removeClass('animated infinite flip');
-		$('.submit-btn a').removeClass('disabled');
 	}
 
 	allRequiredFilled = () => {

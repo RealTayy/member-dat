@@ -291,7 +291,9 @@ export class AddStudentForm extends Component {
 				<form className="col s12" action="#">
 					<div className="divider row"></div>
 					<div className="parent-info row">
-						<h5 className="col s12">Link Parent</h5>
+						<h5 className="col s12">Link Parent
+
+						</h5>
 						<div className="">
 							<div className="input-field col s12 m4">
 								<input

@@ -59,7 +59,7 @@ db.on("error", (error) => {
 db.once("open", () => {
 	console.log("DB connection successful!");
 	console.log("Running Seeds...");
-	require('./seeds/index.js')();
+	require('./seeds/index.js')();	
 });
 
 /*****************|

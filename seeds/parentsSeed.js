@@ -91,15 +91,20 @@ const parentsSeed = [
 			referBy: '',
 		},
 		students: [
-
+			new ObjectId('012345678901234567892001'),
+			new ObjectId('012345678901234567892002'),
 		],
 		invoices: [
-
+			new ObjectId('012345678901234567894001'),
+			new ObjectId('012345678901234567894002'),
+			new ObjectId('012345678901234567894003'),
+			new ObjectId('012345678901234567894004'),
+			new ObjectId('012345678901234567894005'),
 		]
 	},
 	{
 		_id: new ObjectId('012345678901234567891002'),
-		idtwo: 'P000002',
+		idtwo: 'Z000002',
 		isActive: true,
 		info: {
 			name: {
@@ -146,7 +151,54 @@ const parentsSeed = [
 	},
 	{
 		_id: new ObjectId('012345678901234567891003'),
-		idtwo: 'P000003',
+		idtwo: 'Z000003',
+		isActive: true,
+		info: {
+			name: {
+				first: 'chiwetel',
+				last: 'ejiofor'
+			},
+			contact: {
+				phone: '456-456-4567',
+				email: 'blackpanther@wakanda.com'
+			},
+			dob: {
+				full: '1977-07-10'
+			},
+			startDate: {
+				full: '2018-04-24'
+			},
+			address: {
+				line1: '42 T\'Challa Rd',
+				line2: '',
+				city: 'Wakanda',
+				state: 'AF',
+				zip: '55055'
+			},
+			emergencyContact: {
+				name: {
+					first: 'T\'Chaka',
+					last: 'Shuri',
+				},
+				contact: {
+					phone: '777-777-7777',
+					email: 'ripinpeace@rip.com',
+				},
+				relation: 'Former King',
+			},
+			heardBy: 'Web Search',
+			referBy: '',
+		},
+		students: [
+
+		],
+		invoices: [
+
+		]
+	},
+	{
+		_id: new ObjectId('012345678901234567891004'),
+		idtwo: 'P000004',
 		isActive: true,
 		info: {
 			name: {
@@ -193,5 +245,5 @@ const parentsSeed = [
 	},
 ]
 module.exports = parentsController.seed(parentsSeed)
-	.then((parents) => console.log(`${parents.length} document(s) inserted to parents!`))
+	.then((parents) => console.log(`${parents.length} document(s) inserted to parents`))
 	.catch((err) => console.log('Error when running seeds for parents'));

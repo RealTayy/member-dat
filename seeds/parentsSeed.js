@@ -2,6 +2,11 @@
 const parentsController = require('../controllers/parentsController');
 const ObjectId = require('mongoose').Types.ObjectId;
 
+// heardBy: |Email"|Referrence"|Drove By"|Web Search"
+//					|Facebook"|Instagram"|Paper Ads"|Magazine"
+//					|Newspaper"|School Event"|Other Event"
+
+
 const parentsSeed = [
 	{
 		_id: new ObjectId('012345678901234567891000'),
@@ -202,42 +207,43 @@ const parentsSeed = [
 		isActive: true,
 		info: {
 			name: {
-				first: 'chiwetel',
-				last: 'ejiofor'
+				first: 'frank',
+				last: 'reynolds'
 			},
 			contact: {
-				phone: '456-456-4567',
-				email: 'blackpanther@wakanda.com'
+				phone: '156-756-1278',
+				email: 'thegang@alwayssunny.com'
 			},
 			dob: {
-				full: '1977-07-10'
+				full: '1964-11-26'
 			},
 			startDate: {
-				full: '2018-04-24'
+				full: '2018-05-02'
 			},
 			address: {
-				line1: '42 T\'Challa Rd',
-				line2: '',
-				city: 'Wakanda',
-				state: 'AF',
-				zip: '55055'
+				line1: 'Paddys Pub St',
+				line2: 'Suite A7',
+				city: 'Philadelphia ',
+				state: 'PA',
+				zip: '66151'
 			},
 			emergencyContact: {
 				name: {
-					first: 'T\'Chaka',
-					last: 'Shuri',
+					first: 'Bruce',
+					last: 'Mathis',
 				},
 				contact: {
 					phone: '777-777-7777',
-					email: 'ripinpeace@rip.com',
+					email: 'imgoodguy@realdad.com',
 				},
-				relation: 'Former King',
+				relation: 'Children\'s Biological Father',
 			},
-			heardBy: 'Web Search',
+			heardBy: 'Newspaper',
 			referBy: '',
 		},
 		students: [
-
+			new ObjectId('012345678901234567892003'),
+			new ObjectId('012345678901234567892004')
 		],
 		invoices: [
 

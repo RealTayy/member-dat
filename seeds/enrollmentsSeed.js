@@ -23,7 +23,7 @@ const enrollmentsSeed = [
 	{
 		_id: new ObjectId('012345678901234567893001'),
 		dojo: 'Pearland',
-		beltRank: 'White',
+		beltRank: 'Orange Stripe',
 		type: 'Standard',
 		initFee: 0,
 		rateFee: 650,
@@ -35,14 +35,38 @@ const enrollmentsSeed = [
 	{
 		_id: new ObjectId('012345678901234567893002'),
 		dojo: 'Pearland',
-		beltRank: 'Red Stripe',
-		type: 'Standard',
+		beltRank: 'Black 2',
+		type: 'Black Belt',
 		initFee: 0,
 		rateFee: 650,
 		length: '6 Months',
 		startDate: '2018-01-07',
 		expireDate: '2019-01-07',
 		willRenew: true
+	},
+	{
+		_id: new ObjectId('012345678901234567893003'),
+		dojo: 'Pearland',
+		beltRank: 'White',
+		type: 'Trial',
+		initFee: 40,
+		rateFee: 0,
+		length: '2 Weeks',
+		startDate: '2018-05-02',
+		expireDate: '2018-05-23',
+		willRenew: false
+	},
+	{
+		_id: new ObjectId('012345678901234567893004'),
+		dojo: 'Pearland',
+		beltRank: 'Yellow',
+		type: 'Trial',
+		initFee: 40,
+		rateFee: 0,
+		length: '2 Weeks',
+		startDate: '2018-05-02',
+		expireDate: '2018-05-23',
+		willRenew: false
 	},
 ]
 

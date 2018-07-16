@@ -72,6 +72,52 @@ const studentsSeed = [
 		enrollment: new ObjectId('012345678901234567893002'),
 		parent: new ObjectId('012345678901234567891001')
 	},
+	{
+		_id: new ObjectId('012345678901234567892003'),
+		idtwo: 'S000003',
+		isActive: false,
+		info: {
+			name: {
+				first: 'Dennis',
+				last: 'Reynolds',
+			},
+			dob: {
+				full: '1997-12-14'
+			},
+			startDate: {
+				full: '2018-05-02'
+			},
+			contact: {
+				phone: '486-126-5124'
+			},
+			school: 'St. Paddy Private'
+		},
+		enrollment: new ObjectId('012345678901234567893003'),
+		parent: new ObjectId('012345678901234567891004')
+	},
+	{
+		_id: new ObjectId('012345678901234567892004'),
+		idtwo: 'S000004',
+		isActive: false,
+		info: {
+			name: {
+				first: 'Dee',
+				last: 'Reynolds',
+			},
+			dob: {
+				full: '1997-12-14'
+			},
+			startDate: {
+				full: '2018-05-02'
+			},
+			contact: {
+				phone: '164-987-6871'
+			},
+			school: 'St. Paddy Private'
+		},
+		enrollment: new ObjectId('012345678901234567893004'),
+		parent: new ObjectId('012345678901234567891004')
+	},
 ]
 
 module.exports = studentsController.seed(studentsSeed)

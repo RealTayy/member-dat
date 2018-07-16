@@ -20,5 +20,5 @@ const countersSeed = [
 ]
 
 module.exports = countersController.seed(countersSeed)
-	.then((counters) => console.log(`${counters.length} document(s) inserted to counters!`))
+	.then((counters) => console.log(`${counters.length} document(s) inserted to counters`))
 	.catch((err) => console.log('Error when running seeds for counters'));

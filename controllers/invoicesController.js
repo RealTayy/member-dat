@@ -34,7 +34,7 @@ const InvoicesController = {
 					.then((dbModel) => {
 						parentsController
 							.updatePromise({
-								params: { id: req.body.parent._id },
+								params: { id: req.body.parent },
 								body: { $push: { invoices: dbModel._id } }
 							})
 							.then(() => res.json(dbModel))

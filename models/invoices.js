@@ -24,10 +24,7 @@ const InvoiceSchema = new Schema({
   isPaid: { type: Boolean, required: true },
   payment: { type: String, trim: true },
   note: { type: String, trim: true },
-  parent: {
-    _id: { type: Schema.Types.ObjectId, ref: 'Parents', required: true },
-    dFull: { type: String, required: true, trim: true },
-  }
+  parent: { type: Schema.Types.ObjectId, ref: 'Parents', required: true },
 });
 
 /***********|

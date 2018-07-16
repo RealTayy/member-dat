@@ -14,10 +14,7 @@ export default {
 			dueDate: invoiceData.dueDate,
 			isPaid: false,
 			note: invoiceData.note,
-			parent: {
-				_id: invoiceData.parID,
-				dFull: invoiceData.parName
-			}
+			parent: invoiceData.parID,
 		}
 		console.log(formattedData);
 		return axios.post('/api/invoices', formattedData);

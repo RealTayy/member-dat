@@ -53,10 +53,7 @@ const ParentSchema = new Schema({
 		heardBy: { type: String, required: false, trim: true },
 		referBy: { type: String, required: false, trim: true },
 	},
-	students: [{
-		_id: { type: Schema.Types.ObjectId, ref: "Students" },
-		dFull: { type: String, required: true, trim: true },
-	}],
+	students: [{ type: Schema.Types.ObjectId, ref: "Students" }],
 	invoices: [{ type: Schema.Types.ObjectId, ref: "Invoices" }],
 }, {
 		toObject: {

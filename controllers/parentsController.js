@@ -37,8 +37,6 @@ const ParentsController = {
 				if (err) { console.log(err); res.status(422).json(err) }
 				res.json(dbModel)
 			})
-		// .then((dbModel) => res.json(dbModel))
-		// .catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	findById: function (req, res) {
 		Parents

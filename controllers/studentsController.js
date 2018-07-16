@@ -45,7 +45,7 @@ const StudentsController = {
 						parentsController
 							.updatePromise({
 								params: { id: req.body.parent._id },
-								body: { $push: { students: { _id: dbModel._id, dFull: dbModel.info.name.dFull } } }
+								body: { $push: { students: { _id: dbModel._id } } }
 							})
 							.then(() => res.json(dbModel))
 							.catch((err) => { console.log(err); res.status(422).json(err) });

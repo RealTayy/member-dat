@@ -38,47 +38,49 @@ export class App extends Component {
           <Tabbar />
           <CornerImage activeTab={activeTab} />
           {/* Router starts here */}
-          <div className="content-wrapper">
-            <Switch>
-              {/* Dashboard/Home Route */}
-              <Route exact path="/" render={() => {
-                return (
-                  <Dashboard />
-                )
-              }} />
-              {/* Search Route */}
-              <Route exact path="/search" render={() => {
-                return (
-                  <Search />
-                )
-              }} />
-              {/* Search Route */}
-              <Route exact path="/invoices" render={() => {
-                return (
-                  <Invoices />
-                )
-              }} />
-              {/* Pointofsale Route */}
-              <Route exact path="/pointofsale" render={() => {
-                return (
-                  <Pointofsale />
-                )
-              }} />
-              {/* AddParent Route */}
-              <Route exact path="/addparent" render={() => {
-                return (
-                  <AddParent />
-                )
-              }} />
-              {/* AddStudent Route */}
-              <Route exact path="/addstudent" render={() => {
-                return (
-                  <AddStudent />
-                )
-              }} />
-              {/* 404 Route */}
-              <Route component={XNoMatch} />
-            </Switch>
+          <div className="content-container">
+            <div className="content-wrapper">
+              <Switch>
+                {/* Dashboard/Home Route */}
+                <Route exact path="/" render={() => {
+                  return (
+                    <Dashboard />
+                  )
+                }} />
+                {/* Search Route */}
+                <Route exact path="/search" render={() => {
+                  return (
+                    <Search />
+                  )
+                }} />
+                {/* Search Route */}
+                <Route exact path="/invoices" render={() => {
+                  return (
+                    <Invoices />
+                  )
+                }} />
+                {/* Pointofsale Route */}
+                <Route exact path="/pointofsale" render={() => {
+                  return (
+                    <Pointofsale />
+                  )
+                }} />
+                {/* AddParent Route */}
+                <Route exact path="/addparent" render={() => {
+                  return (
+                    <AddParent />
+                  )
+                }} />
+                {/* AddStudent Route */}
+                <Route exact path="/addstudent" render={() => {
+                  return (
+                    <AddStudent />
+                  )
+                }} />
+                {/* 404 Route */}
+                <Route component={XNoMatch} />
+              </Switch>
+            </div>
           </div>
           {/* Router ends here */}
         </div>

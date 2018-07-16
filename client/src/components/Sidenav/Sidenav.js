@@ -15,8 +15,8 @@ export class Sidenav extends Component {
 
 	handleCollapse = () => {
 		if (this.state.isCollapsed) {
-			$('.content-wrapper,.tabbar').css({ 'margin-left': '250px' });
-			$('.content-wrapper').css({ 'width': 'calc(100% - 250px)' });
+			$('.content-container,.tabbar').css({ 'margin-left': '250px' });
+			$('.content-container').css({ 'width': 'calc(100% - 250px)' });
 			$('.sidenav').css({ 'width': '250px' });
 			$('.sidenav>li>a').css({ 'padding': '0 36px' })
 			$('.material-tooltip').css({ 'padding': '0', 'width': '0' })
@@ -28,8 +28,8 @@ export class Sidenav extends Component {
 
 			this.setState({ isCollapsed: false })
 		} else {
-			$('.content-wrapper,.tabbar').css({ 'margin-left': '48px' });
-			$('.content-wrapper').css({ 'width': 'calc(100% - 48px)' });
+			$('.content-container,.tabbar').css({ 'margin-left': '48px' });
+			$('.content-container').css({ 'width': 'calc(100% - 48px)' });
 			$('.sidenav').css({ 'width': '48px' });
 			$('.sidenav>li>a').css({ 'padding': '0 12px' })
 			$('.material-tooltip').css({ 'padding': '10px 8px', 'width': '' })

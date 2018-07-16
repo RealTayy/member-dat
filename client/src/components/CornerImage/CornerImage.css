@@ -3,6 +3,33 @@
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-	font-size: 500px;
-	color: rgba(227, 242, 253, 0.75)   ;
+  font-size: 500px;
+  color: rgba(227, 242, 253, 0.75);
+}
+
+/* Large and up */
+
+@media only screen and (min-width: 993px) {
+  .corner-image,
+  .corner-image .material-icons {
+    font-size: 600px;
+  }
+}
+
+/* XLarge and up */
+
+@media only screen and (min-width: 1201px) {
+  .corner-image,
+  .corner-image .material-icons {
+    font-size: 675px;
+  }
+}
+
+/* XXLarge and up */
+
+@media only screen and (min-width: 1420px) {
+  .corner-image,
+  .corner-image .material-icons {
+    font-size: 750px;
+  }
 }

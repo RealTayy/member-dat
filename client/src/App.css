@@ -1,15 +1,19 @@
 /* Global CSS changes */
 
-.content-wrapper {
+.content-container {
   position: absolute;
   margin-left: 250px;
-  padding: calc(16px + 0.75rem) 16px;
   height: calc(100% - 112px);
+  overflow: auto;  
   width: calc(100% - 250px);
-  overflow: auto;
+}
+
+.content-wrapper {
+  padding: calc(16px + 0.75rem) 16px;
 }
 
 .content-wrapper,
+.content-container,
 .tabbar,
 .sidenav,
 .sidenav>li>a {

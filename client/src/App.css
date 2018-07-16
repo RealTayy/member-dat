@@ -95,5 +95,5 @@ input[type=date]::-webkit-inner-spin-button {
 /* Makes card have transparent background */
 
 .trans-card {
-  background: hsla(0, 0%, 100%, 0.75);
+  background: hsla(0, 0%, 100%, 0.825);
 }

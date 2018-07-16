@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 
 export class StudentTableRow extends Component {
+	handleClickStudent = (e) => {		
+		this.props.pushTab(this.props.data);
+	}
+
+	handleClickParent = (e) => {
+		this.props.pushTab(this.props.data.parent);
+	}
+
 	render() {
 		const data = this.props.data;
-		console.log(data);
 
 		// TODO make this into react component
 		const getActiveDiv = (isActive) => {
@@ -37,8 +44,8 @@ export class StudentTableRow extends Component {
 
 				<div className="button-col col left">
 					<div className="right-align">
-						<a className="waves-effect waves-light btn-large btn-square open-student"><i className="material-icons">directions_walk</i></a>
-						<a className="waves-effect waves-light btn-large btn-square open-parent"><i className="material-icons">contacts</i></a>
+						<a className="waves-effect waves-light btn-large btn-square open-student" data-student={data} onClick={this.handleClickStudent}><i className="material-icons">directions_walk</i></a>
+						<a className="waves-effect waves-light btn-large btn-square open-parent" data-parent={data.parent} onClick={this.handleClickParent}><i className="material-icons">contacts</i></a>
 					</div>
 				</div>
 			</div>

@@ -147,7 +147,6 @@ export class AddStudentForm extends Component {
 		// If all required fields not filled in exit handleSubmit and display toast
 		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// Button goes to "Working" animation		
-		console.log($('.submit-btn i'));
 		$('.submit-btn i').addClass('animated infinite flip');
 		$('.submit-btn a').addClass('disabled');
 		// Submit this.state to enrollmentsAPI to add to DB

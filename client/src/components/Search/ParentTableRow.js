@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
-import { Dropdown, NavItem, Button } from 'react-materialize'
+import { Dropdown, NavItem, Button } from 'react-materialize';
+import $ from 'jquery';
 
 export class ParentTableRow extends Component {
-	
+
+	handleClickStudent = (e) => {
+		e.preventDefault();
+		const studentIndex = $(e.target).parent().data('student');
+		const studentData = this.props.data.students[studentIndex];
+		this.props.pushTab(studentData);
+	}
+
+	handleClickParent = (e) => {
+		console.log(this.props.data);
+		this.props.pushTab(this.props.data);
+	}
+
 	render() {
 		const data = this.props.data;
 
@@ -19,7 +32,7 @@ export class ParentTableRow extends Component {
 			if (unpaidInvoices.length > 0) return <div className="paid-status unpaid">{unpaidInvoices.length} UNPAID</div>
 			else return <div className="paid-status paid">paid</div>
 		}
-		console.log(data);
+		// console.log(data);
 
 		return (
 			<div className="row table-row">
@@ -43,10 +56,12 @@ export class ParentTableRow extends Component {
 						<Dropdown trigger={
 							<Button className="btn-large btn-square open-students"><i className="material-icons">directions_walk</i></Button>
 						}>
-							<NavItem>one</NavItem>
-							<NavItem>two</NavItem>
+							{data.students.map((student, i) => {
+								console.log(student);
+								return <NavItem key={i} data-student={i} onClick={this.handleClickStudent}>{student.info.name.dFull}</NavItem>
+							})}
 						</Dropdown>
-						<a className="waves-effect waves-light btn-large btn-square open-parent"><i className="material-icons">contacts</i></a>
+						<a className="waves-effect waves-light btn-large btn-square open-parent" onClick={this.handleClickParent}><i className="material-icons">contacts</i></a>
 					</div>
 				</div>
 			</div>

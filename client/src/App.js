@@ -17,7 +17,7 @@ export class App extends Component {
   state = {
     activeID: '',
     activeTab: 'dashboard-tab',
-    tabs: [],
+    tabs: ['sdf', 'asdf'],
   }
 
   setActiveTab = (tabID) => {
@@ -25,8 +25,23 @@ export class App extends Component {
     this.setState({ activeTab: tabID });
   }
 
+  pushTab = (tabData) => {
+    let newTabs = this.state.tabs.slice();
+    console.log(tabData);
+    newTabs.push(tabData);
+    this.setState({ tabs: newTabs });
+  }
+
+  removeTab = (tabID) => {
+    // let newTabs = this.state.tabs.filter(tabID);
+
+  }
+
   render() {
+    console.log(this.state);
+    const activeID = this.state.activeID;
     const activeTab = this.state.activeTab;
+    const tabs = this.state.tabs;
     return (
       <Router>
         <div className="app">
@@ -35,11 +50,21 @@ export class App extends Component {
             activeTab={activeTab}
             setActiveTab={this.setActiveTab}
           />
-          <Tabbar />
+          <Tabbar
+            activeTab={activeTab}
+            tabs={tabs}
+            pushTab={this.pushTab}
+            removeTab={this.removeTab}
+          />
           <CornerImage activeTab={activeTab} />
           {/* Router starts here */}
           <div className="content-container">
             <div className="content-wrapper">
+
+              {/* // DELETE ME DELETE ME */}
+              <a className="waves-effect waves-light btn-large" onClick={this.pushTab}>PUSH<i className="material-icons right">person_add</i></a>
+              <a className="waves-effect waves-light btn-large" onClick={this.removeTab}>REMOVE<i className="material-icons right">person_add</i></a>
+
               <Switch>
                 {/* Dashboard/Home Route */}
                 <Route exact path="/" render={() => {
@@ -50,7 +75,9 @@ export class App extends Component {
                 {/* Search Route */}
                 <Route exact path="/search" render={() => {
                   return (
-                    <Search />
+                    <Search
+                      pushTab={this.pushTab}
+                    />
                   )
                 }} />
                 {/* Search Route */}

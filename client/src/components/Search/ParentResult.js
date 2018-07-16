@@ -11,7 +11,10 @@ export class ParentResult extends Component {
       <div className="parent-result result-table">
         {(results.length > 0)
           ? this.props.results.map((parent, i) => {
-            return <ParentTableRow key={i} data={parent} />
+            return <ParentTableRow
+              key={i} data={parent}
+              pushTab={this.props.pushTab}
+            />
           })
           : <div className="placeholder center-align valign-wrapper">
             <h2>Hey dawg make this look nice</h2>

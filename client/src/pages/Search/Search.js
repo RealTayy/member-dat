@@ -30,12 +30,13 @@ export class Search extends Component {
 				<SearchForm
 					setActiveSearchTab={this.setActiveSearchTab}
 					setParSearchResults={this.setParSearchResults}
-					setStuSearchResults={this.setStuSearchResults}
+					setStuSearchResults={this.setStuSearchResults}					
 				/>
 				<SearchResult
 					activeSearchTab={activeSearchTab}
 					parSearchResults={parSearchResults}
 					stuSearchResults={stuSearchResults}
+					pushTab={this.props.pushTab}
 				/>
 			</div>
 		)

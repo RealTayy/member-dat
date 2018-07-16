@@ -3,6 +3,7 @@
 > Make ID# LABEL click throughable for search
 > Put content in container and make 
 > Turn icon into fav icon???
+> Make width of dropdown for students longer?
 > Search by belt rank is broken
 > Format input type=tel to autoformat #.
 > Put scroll bar on top of tabbar instead of bottom
@@ -19,7 +20,7 @@
 > tooltip shows on intial hover
 > Fix toast width
 > Add comments to stuff
-> Add React Materialize to portfolio
+> Add React Materialize/Jquery to portfolio
 > hoverintent over results scrolls?
 > Add validator for phone field
 > Change Pointofsale to PointOfSale

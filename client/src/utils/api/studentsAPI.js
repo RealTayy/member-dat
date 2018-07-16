@@ -31,10 +31,7 @@ export default {
 				school: studentData.school,
 			},
 			enrollment: studentData.enrollment,
-			parent: {
-				_id: studentData.parID,
-				dFull: studentData.parName
-			}
+			parent: studentData.parID
 		};
 		return axios.post('api/students', formattedData);
 	}

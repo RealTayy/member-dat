@@ -34,10 +34,7 @@ const StudentSchema = new Schema({
 		school: { type: String, required: false, trim: true },
 	},
 	enrollment: { type: Schema.Types.ObjectId, ref: 'Enrollments', required: true },
-	parent: {
-		_id: { type: Schema.Types.ObjectId, ref: 'Parents', required: true },
-		dFull: { type: String, required: true, trim: true },
-	}
+	parent: { type: Schema.Types.ObjectId, ref: 'Parents', required: true }
 }, {
 		toObject: {
 			virtuals: true
@@ -50,8 +47,8 @@ const StudentSchema = new Schema({
 
 // Create Virtuals for StudentSchema
 StudentSchema.virtual('info.name.dFull')
-	.get(function () {		
-		if (this.info.name.dFirst && this.info.name.dLast) {			
+	.get(function () {
+		if (this.info.name.dFirst && this.info.name.dLast) {
 			return `${this.info.name.dFirst} ${this.info.name.dLast}`
 		}
 	})

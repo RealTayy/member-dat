@@ -15,7 +15,7 @@ export class StudentResult extends Component {
             />
           })
           : <div className="placeholder center-align valign-wrapper">
-            <h2>Hey dawg make this look nice</h2>
+            <h2></h2>
           </div>
         }
       </div>

@@ -105,7 +105,7 @@ export class StudentSearch extends Component {
               })}
             </select>
             <label htmlFor="beltrank">Belt Rank</label>
-            <span class="helper-text" >Currently not supported in this version</span>
+            <span className="helper-text" >Currently not supported in this version</span>
 
           </div>
           <div className="student-searchbtn center-align">

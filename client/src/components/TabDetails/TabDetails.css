@@ -7,14 +7,20 @@
 }
 
 .parent-students .open-student {
-  margin: 0
+  margin: 0;
 }
 
-.parent-students .button-col {
+.student-parent .open-parent {
+  margin: 0;
+}
+
+.parent-students .button-col,
+.student-parent .button-col {
   width: calc(48px + 1.5rem);
 }
 
-.parent-students .data-col {
+.parent-students .data-col,
+.student-parent .data-col {
   width: calc(100% - 48px - 1.50rem);
 }
 

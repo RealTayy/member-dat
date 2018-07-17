@@ -32,6 +32,7 @@ const ParentsController = {
 		Parents
 			.find(req.query)
 			.populate('invoices')
+			.populate({ path: 'invoices', populate: { path: 'parent' } })
 			.populate('students')
 			.populate({ path: 'students', populate: { path: 'parent' } })
 			.populate({ path: 'students', populate: { path: 'enrollment' } })
@@ -50,6 +51,7 @@ const ParentsController = {
 		Parents
 			.findById(req.params.id)
 			.populate('invoices')
+			.populate({ path: 'invoices', populate: { path: 'parent' } })
 			.populate('students')
 			.populate({ path: 'students', populate: { path: 'parent' } })
 			.populate({ path: 'students', populate: { path: 'enrollment' } })
@@ -70,6 +72,7 @@ const ParentsController = {
 		Parents
 			.find({ idtwo: req.params.id })
 			.populate('invoices')
+			.populate({ path: 'invoices', populate: { path: 'parent' } })
 			.populate('students')
 			.populate({ path: 'students', populate: { path: 'parent' } })
 			.populate({ path: 'students', populate: { path: 'enrollment' } })

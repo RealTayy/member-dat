@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './StudentDetails.css';
 import $ from 'jquery';
+import { parentsAPI } from '../../utils/api';
 
 export class StudentDetails extends Component {
 	state = {
@@ -105,7 +106,9 @@ export class StudentDetails extends Component {
 	}
 
 	handleClickParent = (e) => {
-		console.log('hello');
+		parentsAPI.getOneParentByIdTwo(this.props.data.parent.idtwo)
+		.then((data) => { this.props.pushTab(data.data[0]); })
+		.catch((err) => { console.log(err); window.Materialize.toast(`Error looking up Parent`, 5000, 'animated bounceInUp red darken-2') });
 	}
 
 	allRequiredFilled = () => {

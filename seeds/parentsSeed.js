@@ -109,7 +109,7 @@ const parentsSeed = [
 	},
 	{
 		_id: new ObjectId('012345678901234567891002'),
-		idtwo: 'Z000002',
+		idtwo: 'P000002',
 		isActive: true,
 		info: {
 			name: {
@@ -124,7 +124,7 @@ const parentsSeed = [
 				full: '1990-02-18'
 			},
 			startDate: {
-				full: '2018-04-24'
+				full: '2018-05-17'
 			},
 			address: {
 				line1: '789 Banana Ave',
@@ -148,15 +148,23 @@ const parentsSeed = [
 			referBy: '',
 		},
 		students: [
-
+			new ObjectId('012345678901234567892006'),
+			new ObjectId('012345678901234567892007'),
+			new ObjectId('012345678901234567892008'),
+			new ObjectId('012345678901234567892009'),
 		],
 		invoices: [
-
+			new ObjectId('012345678901234567894013'),
+			new ObjectId('012345678901234567894014'),
+			new ObjectId('012345678901234567894015'),
+			new ObjectId('012345678901234567894016'),
+			new ObjectId('012345678901234567894017'),
+			new ObjectId('012345678901234567894018'),
 		]
 	},
 	{
 		_id: new ObjectId('012345678901234567891003'),
-		idtwo: 'Z000003',
+		idtwo: 'P000003',
 		isActive: true,
 		info: {
 			name: {
@@ -195,10 +203,12 @@ const parentsSeed = [
 			referBy: '',
 		},
 		students: [
-
+			new ObjectId('012345678901234567892005')
 		],
 		invoices: [
-
+			new ObjectId('012345678901234567894010'),
+			new ObjectId('012345678901234567894010'),
+			new ObjectId('012345678901234567894010')
 		]
 	},
 	{

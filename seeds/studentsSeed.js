@@ -118,6 +118,121 @@ const studentsSeed = [
 		enrollment: new ObjectId('012345678901234567893004'),
 		parent: new ObjectId('012345678901234567891004')
 	},
+	{
+		_id: new ObjectId('012345678901234567892005'),
+		idtwo: 'S000005',
+		isActive: true,
+		info: {
+			name: {
+				first: 'Letitia',
+				last: 'Wright',
+			},
+			dob: {
+				full: '1994-02-19'
+			},
+			startDate: {
+				full: '2018-04-24'
+			},
+			contact: {
+				phone: '713-927-6475'
+			},
+			school: 'Home Schooled'
+		},
+		enrollment: new ObjectId('012345678901234567893005'),
+		parent: new ObjectId('012345678901234567891003'),
+	},
+	{
+		_id: new ObjectId('012345678901234567892006'),
+		idtwo: 'S000006',
+		isActive: true,
+		info: {
+			name: {
+				first: 'Camden',
+				last: 'Kirkland',
+			},
+			dob: {
+				full: '1991-07-03'
+			},
+			startDate: {
+				full: '2018-05-17'
+			},
+			contact: {
+				phone: '281-927-6475'
+			},
+			school: 'UT Coding Bootcamp'
+		},
+		enrollment: new ObjectId('012345678901234567893006'),
+		parent: new ObjectId('012345678901234567891002'),
+	},
+	{
+		_id: new ObjectId('012345678901234567892007'),
+		idtwo: 'S000007',
+		isActive: true,
+		info: {
+			name: {
+				first: 'Ian',
+				last: 'Mitchell',
+			},
+			dob: {
+				full: '1994-02-13'
+			},
+			startDate: {
+				full: '2018-05-17'
+			},
+			contact: {
+				phone: '713-245-5472'
+			},
+			school: 'UT Coding Bootcamp'
+		},
+		enrollment: new ObjectId('012345678901234567893007'),
+		parent: new ObjectId('012345678901234567891002'),
+	},
+	{
+		_id: new ObjectId('012345678901234567892008'),
+		idtwo: 'S000008',
+		isActive: true,
+		info: {
+			name: {
+				first: 'Brandon',
+				last: 'Gatlin',
+			},
+			dob: {
+				full: '1987-12-26'
+			},
+			startDate: {
+				full: '2018-05-17'
+			},
+			contact: {
+				phone: '281-785-9824'
+			},
+			school: 'UT Coding Bootcamp'
+		},
+		enrollment: new ObjectId('012345678901234567893008'),
+		parent: new ObjectId('012345678901234567891002'),
+	},
+	{
+		_id: new ObjectId('012345678901234567892009'),
+		idtwo: 'S000009',
+		isActive: false,
+		info: {
+			name: {
+				first: 'Mariam',
+				last: 'Sallam',
+			},
+			dob: {
+				full: '1992-10-19'
+			},
+			startDate: {
+				full: '2018-05-17'
+			},
+			contact: {
+				phone: '281-785-9824'
+			},
+			school: 'UT Coding Bootcamp'
+		},
+		enrollment: new ObjectId('012345678901234567893009'),
+		parent: new ObjectId('012345678901234567891002'),
+	},
 ]
 
 module.exports = studentsController.seed(studentsSeed)

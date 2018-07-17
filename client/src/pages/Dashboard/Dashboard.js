@@ -4,7 +4,7 @@ export class Dashboard extends Component {
 	render() {
 		return (
 			<div>
-				Dashboard
+				Dashboard view coming soon to a MemberDat near you!
 			</div>
 		)
 	}

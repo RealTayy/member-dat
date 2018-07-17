@@ -12,38 +12,42 @@ import { Pointofsale } from "./pages/Pointofsale";
 import { Tabbar } from "./components/Tabbar/Tabbar";
 import { Invoices } from "./pages/Invoices";
 import { CornerImage } from "./components/CornerImage";
+import history from './history/history';
 
 export class App extends Component {
   state = {
     activeID: '',
     activeTab: 'dashboard-tab',
-    tabs: ['sdf', 'asdf'],
+    tabs: [],
   }
 
   setActiveTab = (tabID) => {
-    console.log('Changing activeTab: ' + tabID);
     this.setState({ activeTab: tabID });
   }
 
   pushTab = (tabData) => {
     let newTabs = this.state.tabs.slice();
-    console.log(tabData);
     newTabs.push(tabData);
     this.setState({ tabs: newTabs });
   }
 
   removeTab = (tabID) => {
-    // let newTabs = this.state.tabs.filter(tabID);
+    let newTabs = this.state.tabs.filter((tab) => tab.id !== tabID);
+    this.setState({ tabs: newTabs });
 
   }
 
+  parentOrStudentTabOpen() {
+    console.log(this.state.activeTab.charAt(0) === "S");
+    return (this.state.activeTab.charAt(0) === "S" || this.state.activeTab.charAt(0) === "P")
+  }
+
   render() {
-    console.log(this.state);
     const activeID = this.state.activeID;
     const activeTab = this.state.activeTab;
-    const tabs = this.state.tabs;
+    const tabs = this.state.tabs;    
     return (
-      <Router>
+      <Router history={history}>
         <div className="app">
           <Header />
           <Sidenav
@@ -55,63 +59,78 @@ export class App extends Component {
             tabs={tabs}
             pushTab={this.pushTab}
             removeTab={this.removeTab}
+            setActiveTab={this.setActiveTab}
           />
           <CornerImage activeTab={activeTab} />
-          {/* Router starts here */}
-          <div className="content-container">
-            <div className="content-wrapper">
-
-              {/* // DELETE ME DELETE ME */}
-              <a className="waves-effect waves-light btn-large" onClick={this.pushTab}>PUSH<i className="material-icons right">person_add</i></a>
-              <a className="waves-effect waves-light btn-large" onClick={this.removeTab}>REMOVE<i className="material-icons right">person_add</i></a>
-
-              <Switch>
-                {/* Dashboard/Home Route */}
-                <Route exact path="/" render={() => {
-                  return (
-                    <Dashboard />
-                  )
-                }} />
-                {/* Search Route */}
-                <Route exact path="/search" render={() => {
-                  return (
-                    <Search
-                      pushTab={this.pushTab}
-                    />
-                  )
-                }} />
-                {/* Search Route */}
-                <Route exact path="/invoices" render={() => {
-                  return (
-                    <Invoices />
-                  )
-                }} />
-                {/* Pointofsale Route */}
-                <Route exact path="/pointofsale" render={() => {
-                  return (
-                    <Pointofsale />
-                  )
-                }} />
-                {/* AddParent Route */}
-                <Route exact path="/addparent" render={() => {
-                  return (
-                    <AddParent />
-                  )
-                }} />
-                {/* AddStudent Route */}
-                <Route exact path="/addstudent" render={() => {
-                  return (
-                    <AddStudent />
-                  )
-                }} />
-                {/* 404 Route */}
-                <Route component={XNoMatch} />
-              </Switch>
+          {/* Hack for showing tabs details cause materialize tabs screwed me */}
+          {(this.parentOrStudentTabOpen())
+            ?
+            <div className="tab-content content-container">
+              <div className="content-wrapper">
+                Working tabs coming soon to a MemberDat near you
             </div>
-          </div>
-          {/* Router ends here */}
+            </div>
+            :
+            /* Router starts here */
+            < div className="main-content content-container">
+              <div className="content-wrapper">
+
+                <Switch>
+                  {/* Dashboard/Home Route */}
+                  <Route exact path="/" render={() => {
+                    return (
+                      <Dashboard />
+                    )
+                  }} />
+                  {/* Search Route */}
+                  <Route exact path="/search" render={() => {
+                    return (
+                      <Search
+                        pushTab={this.pushTab}
+                      />
+                    )
+                  }} />
+                  {/* Search Route */}
+                  <Route exact path="/invoices" render={() => {
+                    return (
+                      <Invoices />
+                    )
+                  }} />
+                  {/* Pointofsale Route */}
+                  <Route exact path="/pointofsale" render={() => {
+                    return (
+                      <Pointofsale />
+                    )
+                  }} />
+                  {/* AddParent Route */}
+                  <Route exact path="/addparent" render={() => {
+                    return (
+                      <AddParent />
+                    )
+                  }} />
+                  {/* AddStudent Route */}
+                  <Route exact path="/addstudent" render={() => {
+                    return (
+                      <AddStudent />
+                    )
+                  }} />
+                  {/* detailParent Route */}
+                  <Route exact path="/parent/:id" render={() => {
+                    return (
+                      <div>'Sup bitch'</div>
+                    )
+                  }} />
+                  {/* detailStudent Route */}
+
+                  {/* 404 Route */}
+                  <Route component={XNoMatch} />
+                </Switch>
+              </div>
+            </div>
+            /* Router ends here */
+          }
         </div>
-      </Router>
+      </Router >
     )
   }
 }

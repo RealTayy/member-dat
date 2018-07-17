@@ -4,7 +4,7 @@
   position: absolute;
   margin-left: 250px;
   height: calc(100% - 112px);
-  overflow: auto;  
+  overflow: auto;
   width: calc(100% - 250px);
 }
 
@@ -36,7 +36,7 @@
 /* Lets you click through label to edit form input fields */
 
 form label {
-  pointer-events: none;
+  pointer-events: none !important;
 }
 
 /* Edit date field CSS */
@@ -96,4 +96,10 @@ input[type=date]::-webkit-inner-spin-button {
 
 .trans-card {
   background: hsla(0, 0%, 100%, 0.825);
+}
+
+/* Makes tabbar indicitor stay on top */
+
+.indicator {
+  z-index: 2;
 }

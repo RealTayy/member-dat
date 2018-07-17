@@ -12,7 +12,8 @@ import { Pointofsale } from "./pages/Pointofsale";
 import { Tabbar } from "./components/Tabbar/Tabbar";
 import { Invoices } from "./pages/Invoices";
 import { CornerImage } from "./components/CornerImage";
-import history from './history/history';
+import { TabDetails } from "./components/TabDetails";
+import $ from 'jquery';
 
 export class App extends Component {
   state = {
@@ -21,13 +22,18 @@ export class App extends Component {
     tabs: [],
   }
 
+  componentDidUpdate() {
+    $('.detail-row').hide();
+    $(`#${this.state.activeTab}`).show();
+  }
+
   setActiveTab = (tabID) => {
     this.setState({ activeTab: tabID });
   }
 
   pushTab = (tabData) => {
     let newTabs = this.state.tabs.slice();
-    newTabs.push(tabData);
+    if (newTabs.filter((e) => e.id === tabData.id).length === 0) newTabs.push(tabData);
     this.setState({ tabs: newTabs });
   }
 
@@ -38,16 +44,14 @@ export class App extends Component {
   }
 
   parentOrStudentTabOpen() {
-    console.log(this.state.activeTab.charAt(0) === "S");
     return (this.state.activeTab.charAt(0) === "S" || this.state.activeTab.charAt(0) === "P")
   }
 
   render() {
-    const activeID = this.state.activeID;
     const activeTab = this.state.activeTab;
-    const tabs = this.state.tabs;    
+    const tabs = this.state.tabs;
     return (
-      <Router history={history}>
+      <Router>
         <div className="app">
           <Header />
           <Sidenav
@@ -67,8 +71,10 @@ export class App extends Component {
             ?
             <div className="tab-content content-container">
               <div className="content-wrapper">
-                Working tabs coming soon to a MemberDat near you
-            </div>
+                <TabDetails
+                  tabs={tabs}
+                />
+              </div>
             </div>
             :
             /* Router starts here */

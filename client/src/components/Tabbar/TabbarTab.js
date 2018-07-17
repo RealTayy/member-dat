@@ -3,12 +3,10 @@ import $ from 'jquery';
 
 
 export class TabbarTab extends Component {
-	handleClickTab = (e) => {
-		console.log('hi');
+	handleClickTab = (e) => {		
 		if ($(e.target).hasClass('close-tab')) this.props.removeTab(this.props.data.id);
 		else {
-			this.props.setActiveTab(this.props.data.idtwo)
-			console.log($('#ghost-link'));			
+			this.props.setActiveTab(this.props.data.idtwo)			
 		};
 	}
 
@@ -19,8 +17,8 @@ export class TabbarTab extends Component {
 
 		const data = this.props.data;
 		return (
-			<li className="tab">
-				<a className="waves-effect waves-blue" href="#1" onClick={this.handleClickTab}>
+			<li className="tab animated fadeInRight">
+				<a className="waves-effect waves-blue" href={`#${data.idtwo}`} onClick={this.handleClickTab}>
 					<i className="material-icons">{getIconName(data.idtwo)}</i>{data.info.name.dFull}<i className="material-icons close-tab">cancel</i>
 				</a>
 			</li>

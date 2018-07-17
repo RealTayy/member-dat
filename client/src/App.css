@@ -46,6 +46,11 @@ input[type=date]::-webkit-inner-spin-button {
   display: none;
 }
 
+::-webkit-clear-button {
+  display: none;
+  -webkit-appearance: none;
+}
+
 /* Change select drop down font color */
 
 .dropdown-content li>a,
@@ -95,7 +100,11 @@ input[type=date]::-webkit-inner-spin-button {
 /* Makes card have transparent background */
 
 .trans-card {
-  background: hsla(0, 0%, 100%, 0.825);
+  background: hsla(0, 0%, 100%, 0.85);
+}
+
+.detail-row.active {
+  background-color: unset !important;
 }
 
 /* Makes tabbar indicitor stay on top */

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Tabbar.css';
 import { TabbarTab } from './TabbarTab';
 
-export class Tabbar extends Component {	
+export class Tabbar extends Component {
 	render() {
 		const tabs = this.props.tabs
 		return (

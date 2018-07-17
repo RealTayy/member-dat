@@ -16,8 +16,8 @@ export class ParentInvoiceRow extends Component {
 		}
 
 		const getPaymentDiv = (payment) => {
-			if (payment) return <div className="payment-status paid">{payment}</div>
-			return <div className="payment-status notpaid">NOT PAID</div>
+			if (!payment || (payment === "NOT PAID")) return <div className="payment-status notpaid">NOT PAID</div>
+			return <div className="payment-status paid">{payment}</div>
 		}
 
 		return (

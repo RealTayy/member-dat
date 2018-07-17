@@ -10,18 +10,16 @@ export class InvoicesResultsRow extends Component {
 		const invoice = this.props.invoice;
 
 		const getDueStatusDiv = (invoice) => {
-			// console.log(invoice.dueDate);
 			const dueMoment = moment(invoice.dueDate, 'YYYY-MM-DD');
 			const todayMoment = moment();
-			console.log(todayMoment.isBefore(dueMoment));
 			if (invoice.isPaid) return <div className="due-status paid">PAID</div>
 			if (todayMoment.isBefore(dueMoment)) return <div className="due-status pending">pending</div>
 			return <div className="due-status overdue">OVERDUE</div>
 		}
 
 		const getPaymentDiv = (payment) => {
-			if (payment) return <div className="payment-status paid">{payment}</div>
-			return <div className="payment-status notpaid">NOT PAID</div>
+			if (!payment || (payment === "NOT PAID")) return <div className="payment-status notpaid">NOT PAID</div>
+			return <div className="payment-status paid">{payment}</div>
 		}
 
 		const formatDate = (date) => {

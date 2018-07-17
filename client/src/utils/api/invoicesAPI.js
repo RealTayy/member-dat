@@ -18,5 +18,8 @@ export default {
 		}
 		console.log(formattedData);
 		return axios.post('/api/invoices', formattedData);
+	},
+	updateByID: function (id, invoiceData) {
+		return axios.put(`/api/invoices/${id}`, invoiceData);
 	}
 }

@@ -17,13 +17,14 @@ router.route('/')
 	.post(invoicesController.create);
 
 // Matches with '/api/invoices/:id' this is defined in '../index.js'
-// router.route('/:id')
-// .get(invoicesController.findById)
-// .put(invoicesController.update)
+router.route('/:id')
+	// .get(invoicesController.findById)
+	.put(invoicesController.updateByID)
 // .delete(invoicesController.remove);
 
-// router.route('/idtwo/:id')
-// .get(invoicesController.findByIdTwo);
+router.route('/idtwo/:id')
+	// .get(invoicesController.findByIdTwo);
+	.put(invoicesController.updateByIDTwo)
 
 /***********|
 |* EXPORTS *| 

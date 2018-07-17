@@ -45,13 +45,25 @@ const InvoicesController = {
 			})
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
+	updateByID: function (req, res) {
+		Invoices
+			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.then((invoicesModel) => res.json(invoicesModel))
+			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
+	updateByIDTwo: function (req, res) {
+		Invoices
+			.findOneAndUpdate({ idtwo: req.params.idtwo }, req.body)
+			.then((invoicesModel) => res.json(invoicesModel))
+			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
 	seed: function (seed) {
 		return Invoices
 			.remove({})
 			.then(() => Invoices.insertMany(seed))
 			.then((invoicesModel) => { return invoicesModel })
 			.catch((err) => console.log(err));
-	}
+	},
 }
 
 /***********|

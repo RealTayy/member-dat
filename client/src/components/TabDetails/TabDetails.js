@@ -12,11 +12,13 @@ export class TabDetails extends Component {
 						<ParentDetails
 							key={i}
 							data={tab}
+							pushTab={this.props.pushTab}
 						/>
 						:
 						<StudentDetails
 							key={i}
 							data={tab}
+							pushTab={this.props.pushTab}
 						/>
 				})}
 			</div>

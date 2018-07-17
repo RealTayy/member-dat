@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
-import { ParentStudentRow } from '.';
+import { ParentStudentRow, ParentInvoiceRow } from '.';
 
 export class ParentDetails extends Component {
 	state = {
@@ -274,12 +274,21 @@ export class ParentDetails extends Component {
 							return <ParentStudentRow
 								key={i}
 								data={student}
+								pushTab={this.props.pushTab}
 							/>
 						})}
 					</div>
 
 
 					<div className="parent-invoices col s12 z-depth-2 trans-card">
+						<h5 className="parent-invoices-header" >Invoices</h5>
+						{data.invoices.map((invoice, i) => {
+							return <ParentInvoiceRow
+								key={i}
+								data={invoice}
+								pushTab={this.props.pushTab}
+							/>							
+						})}
 					</div>
 
 

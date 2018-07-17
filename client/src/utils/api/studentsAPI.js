@@ -6,6 +6,9 @@ export default {
 	getSomeStudents: function (query) {
 		return axios.get('/api/students/', { params: query });
 	},
+	getOneStudentByIdTwo: function (id) {
+		return axios.get(`/api/students/idtwo/${id}`);
+	},
 	submitNewStudent: function (studentData) {
 		// Get current date for startDate
 		let curDate = new Date()

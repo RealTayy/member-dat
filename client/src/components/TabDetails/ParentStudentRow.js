@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import { studentsAPI } from '../../utils/api';
 
 export class ParentStudentRow extends Component {
 	handleClickStudent = (e) => {
-		this.props.pushTab(this.props.data);
-	}
-
-	handleClickParent = (e) => {
-		this.props.pushTab(this.props.data.parent);
+		studentsAPI.getOneStudentByIdTwo(this.props.data.idtwo)
+			.then((data) => { this.props.pushTab(data.data[0]); })
+			.catch((err) => { console.log(err); window.Materialize.toast(`Error looking up Student`, 5000, 'animated bounceInUp red darken-2') });
 	}
 
 	render() {
@@ -31,7 +30,7 @@ export class ParentStudentRow extends Component {
 						{getActiveDiv(data.isActive)}
 						{getBeltDiv(data.enrollment.beltRank)}
 					</div>
-					<div className="info-col col s8">
+					<div className="info-col col s7">
 						<div className="name-info"><i className="material-icons">person</i> {data.info.name.dFull}</div>
 						<div className="id-info"><i className="material-icons">featured_play_list</i> {data.idtwo}</div>
 					</div>
@@ -39,7 +38,7 @@ export class ParentStudentRow extends Component {
 
 				<div className="button-col col left">
 					<div className="right-align">
-						<a className="waves-effect waves-light btn-large btn-square open-student" data-student={data} onClick={this.handleClickStudent}><i className="material-icons">directions_walk</i></a>						
+						<a className="waves-effect waves-light btn-large btn-square open-student" data-student={data} onClick={this.handleClickStudent}><i className="material-icons">directions_walk</i></a>
 					</div>
 				</div>
 			</div>

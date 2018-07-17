@@ -50,9 +50,7 @@ const ParentsController = {
 			.findById(req.params.id)
 			.populate('invoices')
 			.populate('students')
-			// .populate('students.parent')
 			.populate({ path: 'students', populate: { path: 'parent' } })
-			// .populate({ path: 'students', populate: { path: 'enrollment' } })
 			.exec(function (err, parentsModel) {
 				if (err) { console.log(err); res.status(422).json(err) }
 				res.json(parentsModel)

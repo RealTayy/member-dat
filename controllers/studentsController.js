@@ -34,7 +34,19 @@ const StudentsController = {
 		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
 		Students
 			.find(req.query)
-			.populate('enrollment')			
+			.populate('enrollment')
+			.populate({ path: 'parent', populate: { path: 'students' } })
+			.populate({ path: 'parent', populate: { path: 'invoices' } })
+			.exec(function (err, studentsModel) {
+				if (err) { console.log(err); res.status(422).json(err) }
+				res.json(studentsModel)
+			})
+	},
+	findByIdTwoPop: function (req, res) {
+		console.log(req.params.id);
+		Students
+			.find({ idtwo: req.params.id })
+			.populate('enrollment')
 			.populate({ path: 'parent', populate: { path: 'students' } })
 			.populate({ path: 'parent', populate: { path: 'invoices' } })
 			.exec(function (err, studentsModel) {

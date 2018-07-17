@@ -50,6 +50,7 @@ export class App extends Component {
   render() {
     const activeTab = this.state.activeTab;
     const tabs = this.state.tabs;
+    const pushTab = this.pushTab;
     return (
       <Router>
         <div className="app">
@@ -73,6 +74,7 @@ export class App extends Component {
               <div className="content-wrapper">
                 <TabDetails
                   tabs={tabs}
+                  pushTab={pushTab}
                 />
               </div>
             </div>

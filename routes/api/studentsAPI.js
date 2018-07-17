@@ -22,8 +22,8 @@ router.route('/')
 // .put(studentsController.update)
 // .delete(studentsController.remove);
 
-// router.route('/idtwo/:id')
-// .get(studentsController.findByIdTwo);
+router.route('/idtwo/:id')
+.get(studentsController.findByIdTwoPop);
 
 /***********|
 |* EXPORTS *| 

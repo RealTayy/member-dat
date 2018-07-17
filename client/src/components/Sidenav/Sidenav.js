@@ -7,7 +7,7 @@ export class Sidenav extends Component {
 	state = {
 		isCollapsed: false
 	}
-	
+
 	handleClick = (e) => {
 		const tabID = e.target.id;
 		this.props.setActiveTab(tabID);

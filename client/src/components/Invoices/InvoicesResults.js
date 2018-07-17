@@ -4,7 +4,6 @@ import { InvoicesResultsRow } from '.';
 export class InvoicesResults extends Component {
 	render() {
 		const invoices = this.props.invoices;
-		const parName = this.props.parName;
 		return (
 			<div className="invoices col s8">
 				<div className="col s12 z-depth-2">

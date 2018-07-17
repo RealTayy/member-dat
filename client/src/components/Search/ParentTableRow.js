@@ -31,8 +31,7 @@ export class ParentTableRow extends Component {
 			const unpaidInvoices = invoices.filter((invoice) => !invoice.isPaid);
 			if (unpaidInvoices.length > 0) return <div className="paid-status unpaid">{unpaidInvoices.length} UNPAID</div>
 			else return <div className="paid-status paid">paid</div>
-		}
-		// console.log(data);
+		}		
 
 		return (
 			<div className="row table-row">

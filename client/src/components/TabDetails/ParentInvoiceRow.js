@@ -9,7 +9,6 @@ export class ParentInvoiceRow extends Component {
 			// console.log(invoice.dueDate);
 			const dueMoment = moment(invoice.dueDate, 'YYYY-MM-DD');
 			const todayMoment = moment();
-			console.log(todayMoment.isBefore(dueMoment));
 			if (invoice.isPaid) return <div className="due-status paid">PAID</div>
 			if (todayMoment.isBefore(dueMoment)) return <div className="due-status pending">pending</div>
 			return <div className="due-status overdue">OVERDUE</div>

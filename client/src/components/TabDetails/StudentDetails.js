@@ -55,7 +55,7 @@ export class StudentDetails extends Component {
 
 	componentWillMount() {
 		const data = this.props.data;
-		console.log(data);
+		
 		this.setState({
 			first: data.info.name.dFirst,
 			last: data.info.name.dLast,

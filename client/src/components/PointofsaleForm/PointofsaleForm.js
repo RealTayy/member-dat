@@ -71,7 +71,18 @@ export class PointofsaleForm extends Component {
 		// Submit this.state to invoicesAPI to add to DB
 		// console.log(this.state);
 		invoicesAPI.submitInvoice(this.state)
-			// .then()
+			.then((data) => {
+				console.log(data);
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				return window.Materialize.toast(`Invoice sucessfully created`, 5000, 'animated bounceInUp green darken-2');
+			})
+			.catch((err) => {
+				console.log(err);
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				window.Materialize.toast(`Error creating Invoice`, 5000, 'animated bounceInUp green darken-2');
+			})
 
 	}
 

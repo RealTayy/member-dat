@@ -30,9 +30,7 @@ export class InvoiceModal extends Component {
 	render() {
 		const invoice = this.props.invoice;
 		const parent = this.props.invoice.parent;
-		console.log(invoice);
-		console.log(parent);
-
+		
 		const formatDate = (date) => {
 			const dateSplit = date.split('-')
 				, year = dateSplit[0]
@@ -42,26 +40,26 @@ export class InvoiceModal extends Component {
 		}
 
 		return (
-			<div class="invoice-modal">
-				<h4 class="modal-header"><i class="material-icons">receipt</i> Invoice - Details</h4>
+			<div className="invoice-modal">
+				<h4 className="modal-header"><i className="material-icons">receipt</i> Invoice - Details</h4>
 				<div className="divider row"></div>
 				<div className="modal-detail row">
 					<div className="col s6">
-						<div><i class="material-icons">info</i> Type: {invoice.type}</div>
-						<div><i class="material-icons">featured_play_list</i> ID: {invoice.idtwo}</div>
-						<div><i class="material-icons">event_note</i> Created: {formatDate(invoice.dateCreated)}</div>
-						<div><i class="material-icons">event_note</i> Due: {formatDate(invoice.dueDate)}</div>
+						<div><i className="material-icons">info</i> Type: {invoice.type}</div>
+						<div><i className="material-icons">featured_play_list</i> ID: {invoice.idtwo}</div>
+						<div><i className="material-icons">event_note</i> Created: {formatDate(invoice.dateCreated)}</div>
+						<div><i className="material-icons">event_note</i> Due: {formatDate(invoice.dueDate)}</div>
 					</div>
 					<div className="col s6">
-						<div><i class="material-icons">info</i> Status: {(invoice.isPaid) ? "PAID" : "NOT PAID"}</div>
-						<div><i class="material-icons">event_available</i> Date Paid: {(invoice.paidDate) ? formatDate(invoice.paidDate) : ""}</div>
-						<div><i class="material-icons">payment</i> Payment: {invoice.payment}</div>
+						<div><i className="material-icons">info</i> Status: {(invoice.isPaid) ? "PAID" : "NOT PAID"}</div>
+						<div><i className="material-icons">event_available</i> Date Paid: {(invoice.paidDate) ? formatDate(invoice.paidDate) : ""}</div>
+						<div><i className="material-icons">payment</i> Payment: {invoice.payment}</div>
 					</div>
 
 				</div>
 				<div className="row center-align">
 					<Dropdown trigger={
-						<Button className="waves-effect waves-light btn btn-large row">Set Payment<i class="material-icons right">monetization_on</i></Button>
+						<Button className="waves-effect waves-light btn btn-large row">Set Payment<i className="material-icons right">monetization_on</i></Button>
 					}>
 						<NavItem data-payment="Unpaid" onClick={this.handleClickPayment}>NOT PAID</NavItem>
 						<NavItem divider />
@@ -71,7 +69,7 @@ export class InvoiceModal extends Component {
 					<Modal
 						id='online-pay'
 						bottomSheet
-						trigger={<a class="waves-effect waves-light btn btn-large">Pay Online<i class="material-icons right">web</i></a>}>
+						trigger={<a className="waves-effect waves-light btn btn-large">Pay Online<i className="material-icons right">web</i></a>}>
 						<InvoiceOnlineModal />
 					</Modal>
 					<h5>Notes</h5>

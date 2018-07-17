@@ -11,9 +11,17 @@
 }
 
 .parent-students .button-col {
-  width: 48px;
+  width: calc(48px + 1.5rem);
 }
 
 .parent-students .data-col {
   width: calc(100% - 48px - 1.50rem);
+}
+
+.parent-invoices .invoice-col {
+  width: calc(100% - 48px - 1.5rem);
+}
+
+.parent-invoices .detail-col {
+  width: calc(48px + 1.5rem);
 }

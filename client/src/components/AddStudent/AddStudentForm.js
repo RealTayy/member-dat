@@ -415,7 +415,7 @@ export class AddStudentForm extends Component {
 							/>
 							<label htmlFor="rateFee">Renewal Fee ($) *</label>
 						</div>
-						<div className="input-field col s12 m6">
+						<div className="input-field check-box-field col s12 m6">
 							<p>
 								<label htmlFor="uniform">
 									<input id="uniform" type="checkbox" className="filled-in"

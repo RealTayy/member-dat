@@ -32,6 +32,7 @@ const ParentsController = {
 		Parents
 			.find(req.query)
 			.populate('invoices')
+			.populate('students')
 			.populate({ path: 'students', populate: { path: 'parent' } })
 			.populate({ path: 'students', populate: { path: 'enrollment' } })
 			.exec(function (err, parentsModel) {
@@ -51,6 +52,7 @@ const ParentsController = {
 			.populate('invoices')
 			.populate('students')
 			.populate({ path: 'students', populate: { path: 'parent' } })
+			.populate({ path: 'students', populate: { path: 'enrollment' } })
 			.exec(function (err, parentsModel) {
 				if (err) { console.log(err); res.status(422).json(err) }
 				res.json(parentsModel)
@@ -67,8 +69,10 @@ const ParentsController = {
 		console.log(req.params.id);
 		Parents
 			.find({ idtwo: req.params.id })
-			.populate('students')
 			.populate('invoices')
+			.populate('students')
+			.populate({ path: 'students', populate: { path: 'parent' } })
+			.populate({ path: 'students', populate: { path: 'enrollment' } })
 			.exec(function (err, parentsModel) {
 				if (err) { console.log(err); res.status(422).json(err) }
 				res.json(parentsModel)

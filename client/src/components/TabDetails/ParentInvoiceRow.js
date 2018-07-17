@@ -31,21 +31,17 @@ export class ParentInvoiceRow extends Component {
 		return (
 			<div className="row table-row">
 				<div className="invoice-col left">
-					<div className="status-col col s2">
+					<div className="status-col col s4">
 						{getDueStatusDiv(invoice)}
 						{getPaymentDiv(invoice.payment)}
 					</div>
-					<div className="info-col col s5">
+					<div className="info-col col s7">
 						<div className="type-info"><i className="material-icons">info</i> {invoice.type}</div>
-						<div className="id-info"><i className="material-icons">featured_play_list</i> {invoice.idtwo}</div>
-					</div>
-					<div className="pay-col col s5">
-						<div className="due-pay"><i className="material-icons">date_range</i> {formatDate(invoice.dueDate)}</div>
 						<div className="amount-pay"><i className="material-icons">monetization_on</i> {invoice.amountDue.toFixed(2)}</div>
-					</div>
+					</div>					
 				</div>
 				<div className="detail-col col right">
-					<a className="waves-effect waves-light btn-large open-detail">Details <i className="material-icons right">description</i></a>
+					<a className="waves-effect waves-light btn-large btn-square open-detail"><i className="material-icons">description</i></a>
 				</div>
 			</div>
 		)

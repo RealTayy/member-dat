@@ -36,7 +36,7 @@ export class ParentStudentRow extends Component {
 					</div>
 				</div>
 
-				<div className="button-col col left">
+				<div className="button-col col">
 					<div className="right-align">
 						<a className="waves-effect waves-light btn-large btn-square open-student" data-student={data} onClick={this.handleClickStudent}><i className="material-icons">directions_walk</i></a>
 					</div>

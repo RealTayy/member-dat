@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { parentsAPI } from '../../utils/api';
 
 export class StudentTableRow extends Component {
-	handleClickStudent = (e) => {		
+	handleClickStudent = (e) => {
 		this.props.pushTab(this.props.data);
 	}
 
 	handleClickParent = (e) => {
-		this.props.pushTab(this.props.data.parent);
+		parentsAPI.getOneParentByIdTwo(this.props.data.parent.idtwo)
+			.then((data) => { console.log(data); this.props.pushTab(data.data[0]); })
+			.catch((err) => { console.log(err); window.Materialize.toast(`Error looking up Parent`, 5000, 'animated bounceInUp red darken-2') });
 	}
 
 	render() {

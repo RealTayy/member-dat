@@ -1,8 +1,7 @@
 /* InvoiceResultsRow.css */
 
 .invoice-col {
-  width: calc(100% - 170px);
-  /* background-color: red; */
+  width: calc(100% - 170px);  
 }
 
 .detail-col {

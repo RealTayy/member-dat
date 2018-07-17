@@ -23,6 +23,6 @@
 }
 
 /* Lets you click checkboxs */
-.input-field label {
-  pointer-events: auto;
+.check-box-field label {
+  pointer-events: auto !important;
 }

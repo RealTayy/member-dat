@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
-import './ParentDetails.css';
+import { ParentStudentRow } from '.';
 
 export class ParentDetails extends Component {
 	state = {
@@ -125,7 +125,6 @@ export class ParentDetails extends Component {
 				<div className="col s7">
 					<div className="addparent-form">
 						<form className="col s12 z-depth-2 trans-card">
-							<div className="divider row"></div>
 							<div className="parent-info row">
 								<h5 className="col s12">Parent Info</h5>
 								<div className="input-field col s12 m6">
@@ -267,16 +266,23 @@ export class ParentDetails extends Component {
 					</div>
 				</div>
 				<div className="col s5">
-					<div className="parent-students">
-						<div className="col s12 z-depth-2 trans-card">
-						students go here
-						</div>
+
+
+					<div className="parent-students col s12 z-depth-2 trans-card">
+						<h5 className="parent-students-header" >Students</h5>
+						{data.students.map((student, i) => {
+							return <ParentStudentRow
+								key={i}
+								data={student}
+							/>
+						})}
 					</div>
-					<div className="parent-invoices">
-						<div className="col s12 z-depth-2 trans-card">
-						Invoices go here
-						</div>
+
+
+					<div className="parent-invoices col s12 z-depth-2 trans-card">
 					</div>
+
+
 				</div>
 			</div>
 		)

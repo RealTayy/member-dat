@@ -1,0 +1,19 @@
+.submit-btn {
+  margin-bottom: 20px;
+}
+
+.parent-students {
+  margin-bottom: 1.5rem;
+}
+
+.parent-students .open-student {
+  margin: 0
+}
+
+.parent-students .button-col {
+  width: 48px;
+}
+
+.parent-students .data-col {
+  width: calc(100% - 48px - 1.50rem);
+}

@@ -91,7 +91,7 @@ ParentSchema.virtual('info.address.full')
 			return `${a.line1}${(a.line2) ? ',' : ` ${a.line2},`} ${a.city}, ${a.state}, ${a.zip}`
 	})
 
-ParentSchema.virtual('info.emergencyContact.name.full')
+ParentSchema.virtual('info.emergencyContact.name.dFull')
 	.get(function () {
 		if (this.info.emergencyContact.first && this.info.emergencyContact.last)
 			return `${this.info.emergencyContact.first} ${this.info.emergencyContact.last}`

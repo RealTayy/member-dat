@@ -31,3 +31,12 @@
 .tabbar .tabs>.tab>a {
   padding: 0;
 }
+
+.tabs .active,
+.tabs .active>i.material-icons {
+  color: #333 !important;
+}
+
+.tabs .active {
+  background-color: #fff !important;
+}

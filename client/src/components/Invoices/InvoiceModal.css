@@ -1,0 +1,17 @@
+.modal-detail .material-icons,
+.modal-header .material-icons {
+  position: relative;
+  bottom: -6px;
+}
+
+.modal-header .material-icons {
+  font-size: 37px;
+}
+
+.invoice-modal h5 {
+  margin-bottom: 0;
+}
+
+.modal .modal-footer {
+  display: none;
+}

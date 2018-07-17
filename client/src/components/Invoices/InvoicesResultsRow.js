@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import './InvoicesResultsRow.css';
-import { Modal, Button } from 'react-materialize'
+import { Modal } from 'react-materialize'
+import { InvoiceModal } from '.';
 
 
 export class InvoicesResultsRow extends Component {
 	render() {
-		const invoice = this.props.invoice
+		const invoice = this.props.invoice;
 
 		const getDueStatusDiv = (invoice) => {
 			// console.log(invoice.dueDate);
@@ -49,11 +50,11 @@ export class InvoicesResultsRow extends Component {
 				</div>
 				<div className="detail-col col right">
 					<Modal
-						header='Modal Header'
-						bottomSheet
 						trigger={<a className="waves-effect waves-light btn-large open-detail">Details <i className="material-icons right">description</i></a>}>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-					</Modal>					
+						<InvoiceModal
+							invoice={invoice}
+						/>
+					</Modal>
 				</div>
 			</div>
 		)

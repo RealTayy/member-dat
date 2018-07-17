@@ -16,12 +16,12 @@
   pointer-events: none;
 }
 
-.active,
-.active>i.material-icons {
+.sidenav .active,
+.sidenav .active>i.material-icons {
   color: #333 !important;
 }
 
-.active {
+.sidenav .active {
   background-color: #fff !important;
 }
 

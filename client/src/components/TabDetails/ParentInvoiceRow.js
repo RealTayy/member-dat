@@ -20,14 +20,6 @@ export class ParentInvoiceRow extends Component {
 			return <div className="payment-status notpaid">NOT PAID</div>
 		}
 
-		const formatDate = (date) => {
-			const dateSplit = date.split('-')
-				, year = dateSplit[0]
-				, month = dateSplit[1]
-				, day = dateSplit[2]
-			return `${month}-${day}-${year}`
-		}
-
 		return (
 			<div className="row table-row">
 				<div className="invoice-col left">

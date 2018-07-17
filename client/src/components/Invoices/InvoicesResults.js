@@ -5,14 +5,9 @@ export class InvoicesResults extends Component {
 	render() {
 		const invoices = this.props.invoices;
 		const parName = this.props.parName;
-		console.log(invoices);
 		return (
 			<div className="invoices col s8">
 				<div className="col s12 z-depth-2">
-					<h4 className="invoices-header">
-						Invoices
-						<span> - {parName}</span>
-					</h4>
 					<div className="divider"></div>
 					<div className="invoices-results">
 						{(invoices.length > 0)

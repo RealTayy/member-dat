@@ -124,7 +124,7 @@ export class ParentDetails extends Component {
 		console.log(data);
 		return (
 			<div id={`${data.idtwo}`} className="detail-row row">
-				<div className="col s7">
+				<div className="col s12 m7 row">
 					<div className="addparent-form">
 						<form className="col s12 z-depth-2 trans-card">
 							<div className="parent-info row">
@@ -274,7 +274,7 @@ export class ParentDetails extends Component {
 						</form>
 					</div>
 				</div>
-				<div className="col s5">
+				<div className="col s12 m5">
 
 
 					<div className="parent-students col s12 z-depth-2 trans-card">

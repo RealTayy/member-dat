@@ -163,7 +163,7 @@ export class StudentDetails extends Component {
 
 		return (
 			<div id={`${data.idtwo}`} className="detail-row row">
-				<div className="col s7">
+				<div className="col s12 m7">
 					<div className="addstudent-form">
 						<form className="detail-info col s12 z-depth-2 trans-card" action="#">
 							<div className="student-info row">
@@ -295,7 +295,7 @@ export class StudentDetails extends Component {
 						</form>
 					</div>
 				</div>
-				<div className="col s5">
+				<div className="col s12 m5">
 					<div className="student-parent col s12 z-depth-2">
 						<h5 className="student-parent-header">Parent</h5>
 						<div className="row table-row">

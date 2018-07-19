@@ -92,7 +92,7 @@
 }
 
 .contact-col {
-  width: calc(50% - .75rem) !important;
+  width: calc(50% - 1.50rem) !important;
 }
 
 @media (max-width: 600px) {

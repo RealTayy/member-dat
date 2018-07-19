@@ -28,7 +28,7 @@
 }
 
 .pay-col {
-  width: calc(41.66667% - .75rem) !important;
+  width: calc(41.66667% - 1.5rem) !important;
 }
 
 .due-status.overdue {

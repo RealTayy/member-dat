@@ -45,6 +45,7 @@ export class Sidenav extends Component {
 	}
 
 	componentDidMount() {
+		
 	}
 
 	componentDidUpdate() {
@@ -94,11 +95,6 @@ export class Sidenav extends Component {
 						<Link to="/addstudent" id="addstudent-tab" className="waves-effect waves-blue tooltipped" onClick={this.handleClick}
 							data-position="right" data-tooltip="Add Student">
 							<i className="material-icons">directions_walk</i>Add Student
-						</Link>
-					</li>
-					<li className="sidenav-item">
-						<Link to="/dontclickme" id="why-you-click-me-bro" className="waves-effect waves-blue" onClick={this.handleClick}>
-							{this.props.activeTab}
 						</Link>
 					</li>
 				</ul>

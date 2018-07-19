@@ -8,4 +8,7 @@
     height: 48px;
     margin: 4px;
   }
+  .log-text {
+    display: none;
+  }
 }

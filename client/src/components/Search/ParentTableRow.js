@@ -36,15 +36,15 @@ export class ParentTableRow extends Component {
 		return (
 			<div className="row table-row">
 				<div className="data-col left">
-					<div className="status-col col s2">
+					<div className="status-col col s12 m2">
 						{getActiveDiv(data.isActive)}
 						{getPaidStatusDiv(data.invoices)}
 					</div>
-					<div className="info-col col s4">
+					<div className="info-col col s12 m4">
 						<div className="name-info"><i className="material-icons">person</i> {data.info.name.dFull}</div>
 						<div className="id-info"><i className="material-icons">featured_play_list</i> {data.idtwo}</div>
 					</div>
-					<div className="contact-col col s6">
+					<div className="contact-col col s12 m6">
 						<div className="email-contact"><i className="material-icons">email</i> {data.info.contact.email}</div>
 						<div className="phone-contact"><i className="material-icons">local_phone</i> {data.info.contact.phone}</div>
 					</div>

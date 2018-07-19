@@ -13,7 +13,7 @@ export class SearchForm extends Component {
 
 	render() {
 		return (
-			<div className="search-form col s4">
+			<div className="search-form col s12 m4 row">
 				<div className="col s12 z-depth-2">
 					<h4 className="search-header center-align">Search By</h4>
 					<div className="search-selector">

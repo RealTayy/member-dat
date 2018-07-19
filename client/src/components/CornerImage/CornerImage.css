@@ -6,6 +6,8 @@
   font-size: 500px;
   color: rgba(227, 242, 253, 0.75);
   max-height: calc(100% - 112px - 1.5rem);
+  max-width: calc(100% - 48px - 1.5rem);
+  pointer-events: none;
 }
 
 /* Large and up */

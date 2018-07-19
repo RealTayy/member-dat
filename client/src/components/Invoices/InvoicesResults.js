@@ -15,8 +15,7 @@ export class InvoicesResults extends Component {
 							})}
 						</div>
 					</div>
-					: <div className="placeholder center-align valign-wrapper trans-card">
-						<h2></h2>
+					: <div className="placeholder">
 					</div>
 				}
 			</div>

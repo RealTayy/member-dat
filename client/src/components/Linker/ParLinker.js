@@ -69,7 +69,7 @@ export class ParLinker extends Component {
 	render() {
 		return (
 			<div className="parlinker col s12 m4 row">
-				<div className="col s12 z-depth-2">
+				<div className="col s12 z-depth-2 trans-card">
 					<h4 className="parlinker-header center-align">Link Parent</h4>
 					<div className="divider row"></div>
 					<form className="col s12">

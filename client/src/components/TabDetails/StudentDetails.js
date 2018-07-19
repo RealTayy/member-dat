@@ -296,7 +296,7 @@ export class StudentDetails extends Component {
 					</div>
 				</div>
 				<div className="col s12 m5">
-					<div className="student-parent col s12 z-depth-2">
+					<div className="student-parent col s12 z-depth-2 trans-card">
 						<h5 className="student-parent-header">Parent</h5>
 						<div className="row table-row">
 							<div className="data-col left">

@@ -131,7 +131,7 @@ export class PointofsaleForm extends Component {
 	render() {
 		const parName = this.state.parName;
 		return (
-			<div className="pointofsale-form col s8">
+			<div className="pointofsale-form col s12 m8">
 				<div className="col s12 z-depth-2 trans-card">
 					<h4 className="pointofsale-header">
 						Point of Sale
@@ -139,7 +139,7 @@ export class PointofsaleForm extends Component {
 					</h4>
 					<div className="divider row"></div>
 					<form>
-						<div className="input-field col s6">
+						<div className="input-field col s12 m6">
 							<select
 								id="type" type="text" className="required validate"
 								value={this.state.type} onChange={this.handleChange}>
@@ -150,14 +150,14 @@ export class PointofsaleForm extends Component {
 							</select>
 							<label htmlFor="type">Type of Invoice*</label>
 						</div>
-						<div className="input-field col s3">
+						<div className="input-field col s12 m3">
 							<input
 								id="amountDue" type="number" className="required validate"
 								value={this.state.amountDue} onChange={this.handleChange} onBlur={this.handleBlurNumber}
 							/>
 							<label htmlFor="amountDue">Amount Due ($) *</label>
 						</div>
-						<div className="input-field col s3">
+						<div className="input-field col s12 m3">
 							<input
 								id="dueDate" type="date" className="required datepicker validate"
 								value={this.state.dueDate} onChange={this.handleChange} onBlur={this.handleBlur}

@@ -31,15 +31,15 @@ export class StudentTableRow extends Component {
 		return (
 			<div className="row table-row">
 				<div className="data-col left">
-					<div className="status-col col s2">
+					<div className="status-col col s12 m2">
 						{getActiveDiv(data.isActive)}
 						{getBeltDiv(data.enrollment.beltRank)}
 					</div>
-					<div className="info-col col s4">
+					<div className="info-col col s12 m4">
 						<div className="name-info"><i className="material-icons">person</i> {data.info.name.dFull}</div>
 						<div className="id-info"><i className="material-icons">featured_play_list</i> {data.idtwo}</div>
 					</div>
-					<div className="contact-col col s6">
+					<div className="contact-col col s12 m6">
 						<div className="parent-contact"><i className="material-icons">contacts</i> {data.parent.info.name.dFull}</div>
 						<div className="dojo-contact"><i className="material-icons">home</i> {data.enrollment.dojo} </div>
 					</div>

@@ -4,7 +4,7 @@ import { StudentTableRow } from '.';
 
 export class StudentResult extends Component {
   render() {
-    const results = this.props.results;    
+    const results = this.props.results;
     return (
       <div className="student-result result-table">
         {(results.length > 0)
@@ -15,7 +15,6 @@ export class StudentResult extends Component {
             />
           })
           : <div className="placeholder center-align valign-wrapper">
-            <h2></h2>
           </div>
         }
       </div>

@@ -5,6 +5,7 @@
   right: 1rem;
   font-size: 500px;
   color: rgba(227, 242, 253, 0.75);
+  max-height: calc(100% - 112px - 1.5rem);
 }
 
 /* Large and up */

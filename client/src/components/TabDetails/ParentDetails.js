@@ -21,7 +21,8 @@ export class ParentDetails extends Component {
 		ecPhone: '',
 		ecRelation: '',
 		referBy: '',
-		heardBy: ''
+		heardBy: '',
+		idtwo: '',
 	};
 
 	heardByArr = [
@@ -61,6 +62,7 @@ export class ParentDetails extends Component {
 			ecRelation: data.info.emergencyContact.relation,
 			referBy: data.info.heardBy,
 			heardBy: data.info.referBy,
+			idtwo: data.idtwo,
 		})
 	}
 
@@ -127,19 +129,26 @@ export class ParentDetails extends Component {
 						<form className="col s12 z-depth-2 trans-card">
 							<div className="parent-info row">
 								<h5 className="col s12">Parent Info</h5>
-								<div className="input-field col s12 m6">
+								<div className="input-field col s12 m4">
 									<input
 										id="first" type="text" className="required validate"
 										value={this.state.first} onChange={this.handleChange}
 									/>
 									<label className="active" htmlFor="first">First Name *</label>
 								</div>
-								<div className="input-field col s12 m6">
+								<div className="input-field col s12 m4">
 									<input
 										id="last" type="text" className="required validate"
 										value={this.state.last} onChange={this.handleChange}
 									/>
 									<label className="active" htmlFor="last">Last Name *</label>
+								</div>
+								<div className="input-field col s4">
+									<input
+										id="idtwo" type="text" className="validate" disabled
+										value={this.state.idtwo} onChange={this.handleChange}
+									/>
+									<label className="active" htmlFor="idtwo">ID#</label>
 								</div>
 								<div className="input-field col s12 m6">
 									<input
@@ -287,7 +296,7 @@ export class ParentDetails extends Component {
 								key={i}
 								data={invoice}
 								pushTab={this.props.pushTab}
-							/>							
+							/>
 						})}
 					</div>
 

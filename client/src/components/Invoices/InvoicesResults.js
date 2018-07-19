@@ -5,7 +5,7 @@ export class InvoicesResults extends Component {
 	render() {
 		const invoices = this.props.invoices;
 		return (
-			<div className="invoices col s8">
+			<div className="invoices col s12 m8">
 				{(invoices.length > 0)
 					? < div className="col s12 z-depth-2">
 						<div className="divider"></div>

@@ -64,6 +64,12 @@ input[type=date]::-webkit-inner-spin-button {
   justify-content: flex-end;
 }
 
+@media (max-width: 600px) {
+  .toast {
+    justify-content: center;
+  }
+}
+
 /* Make a large square button class */
 
 .btn-large.btn-square {
@@ -119,6 +125,7 @@ h4 {
 }
 
 /* Prevent sidenav from dissapearing */
+
 @media only screen and (max-width: 992px) {
   .sidenav.sidenav-fixed {
     transform: none !important;

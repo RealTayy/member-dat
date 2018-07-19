@@ -97,8 +97,9 @@
 
 @media (max-width: 600px) {
   .info-col,
-  .contact-col {
-    overflow: visible;
+  .contact-col,
+  .pay-col {
+    overflow: visible !important;
   }
 }
 

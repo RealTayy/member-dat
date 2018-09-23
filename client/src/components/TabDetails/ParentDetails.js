@@ -129,6 +129,13 @@ export class ParentDetails extends Component {
 						<form className="col s12 z-depth-2 trans-card">
 							<div className="parent-info row">
 								<h5 className="col s12">Parent Info</h5>
+								<div className="input-field col s4">
+									<input
+										id="idtwo" type="text" className="validate" disabled
+										value={this.state.idtwo} onChange={this.handleChange}
+									/>
+									<label className="active" htmlFor="idtwo">ID#</label>
+								</div>
 								<div className="input-field col s12 m4">
 									<input
 										id="first" type="text" className="required validate"
@@ -142,13 +149,6 @@ export class ParentDetails extends Component {
 										value={this.state.last} onChange={this.handleChange}
 									/>
 									<label className="active" htmlFor="last">Last Name *</label>
-								</div>
-								<div className="input-field col s4">
-									<input
-										id="idtwo" type="text" className="validate" disabled
-										value={this.state.idtwo} onChange={this.handleChange}
-									/>
-									<label className="active" htmlFor="idtwo">ID#</label>
 								</div>
 								<div className="input-field col s12 m6">
 									<input

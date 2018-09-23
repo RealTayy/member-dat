@@ -4,7 +4,7 @@ export class Overview extends Component {
 	render() {
 		return (
 			<div>
-				
+				Dashboard View coming soon to a MemberDat near you!
 			</div>
 		)
 	}

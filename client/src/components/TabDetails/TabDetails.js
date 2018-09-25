@@ -13,6 +13,7 @@ export class TabDetails extends Component {
 							key={i}
 							data={tab}
 							pushTab={this.props.pushTab}
+							setActiveTab={this.props.setActiveTab}
 						/>
 						:
 						<StudentDetails

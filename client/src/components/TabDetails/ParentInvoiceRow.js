@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
+import $ from 'jquery';
 
 export class ParentInvoiceRow extends Component {
+	handleClick = (e) => {
+		const tabID = "invoice-tab"
+		this.props.setActiveTab(tabID);
+		$(`.sidenav-item>a`).removeClass('active');
+	}	
 	render() {
+
 		const invoice = this.props.data
 
 		const getDueStatusDiv = (invoice) => {
@@ -29,16 +37,15 @@ export class ParentInvoiceRow extends Component {
 					<div className="info-col col s7">
 						<div className="type-info"><i className="material-icons">info</i> {invoice.type}</div>
 						<div className="amount-pay"><i className="material-icons">monetization_on</i> {invoice.amountDue.toFixed(2)}</div>
-					</div>					
+					</div>
 				</div>
 				<div className="detail-col col right">
-					<a className="waves-effect waves-light btn-large btn-square open-detail"><i className="material-icons">description</i></a>
+					<Link to="/invoices" className="waves-effect waves-light btn-large btn-square open-detail" onClick={this.handleClick}><i className="material-icons">description</i></Link>
 				</div>
+
 			</div>
 		)
 	}
 };
 
-
-export default ParentInvoiceRow
-	;
+export default ParentInvoiceRow;

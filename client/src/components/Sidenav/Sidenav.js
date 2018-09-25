@@ -9,7 +9,7 @@ export class Sidenav extends Component {
 	}
 
 	handleClick = (e) => {
-		const tabID = e.target.id;
+		const tabID = e.target.id;		
 		this.props.setActiveTab(tabID);
 		$(`.sidenav-item>a`).removeClass('active');
 	}

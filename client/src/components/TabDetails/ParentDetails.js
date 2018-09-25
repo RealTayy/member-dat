@@ -294,8 +294,8 @@ export class ParentDetails extends Component {
 						{data.invoices.map((invoice, i) => {
 							return <ParentInvoiceRow
 								key={i}
-								data={invoice}
-								pushTab={this.props.pushTab}
+								data={invoice}								
+								setActiveTab={this.props.setActiveTab}
 							/>
 						})}
 					</div>

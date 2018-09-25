@@ -75,6 +75,7 @@ export class App extends Component {
                 <TabDetails
                   tabs={tabs}
                   pushTab={pushTab}
+                  setActiveTab={this.setActiveTab}
                 />
               </div>
             </div>

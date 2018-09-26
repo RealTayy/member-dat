@@ -99,8 +99,13 @@ export class App extends Component {
                       />
                     )
                   }} />
-                  {/* Search Route */}
+                  {/* Invoice Route */}
                   <Route exact path="/invoices" render={() => {
+                    return (
+                      <Invoices />
+                    )
+                  }} />
+                  <Route exact path="/invoices/:idtwo" render={() => {
                     return (
                       <Invoices />
                     )

@@ -43,7 +43,7 @@ export class ParentDetails extends Component {
 		$(`#heardBy${this.props.data.id}`).material_select();
 		$(`#heardBy${this.props.data.id}`).on('change', this.handleChangeDropdown);
 
-		const data = this.props.data
+		const data = this.props.data;
 		this.setState({
 			first: data.info.name.dFirst,
 			last: data.info.name.dLast,
@@ -294,7 +294,8 @@ export class ParentDetails extends Component {
 						{data.invoices.map((invoice, i) => {
 							return <ParentInvoiceRow
 								key={i}
-								data={invoice}								
+								data={invoice}
+								idtwo={this.state.idtwo}								
 								setActiveTab={this.props.setActiveTab}
 							/>
 						})}

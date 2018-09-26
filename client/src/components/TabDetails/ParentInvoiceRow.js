@@ -8,7 +8,8 @@ export class ParentInvoiceRow extends Component {
 		const tabID = "invoice-tab"
 		this.props.setActiveTab(tabID);
 		$(`.sidenav-item>a`).removeClass('active');
-	}	
+		console.log(this.props.idtwo);
+	}
 	render() {
 
 		const invoice = this.props.data
@@ -40,7 +41,7 @@ export class ParentInvoiceRow extends Component {
 					</div>
 				</div>
 				<div className="detail-col col right">
-					<Link to="/invoices" className="waves-effect waves-light btn-large btn-square open-detail" onClick={this.handleClick}><i className="material-icons">description</i></Link>
+					<Link to={`/invoices/${this.props.idtwo}`} className="waves-effect waves-light btn-large btn-square open-detail" onClick={this.handleClick}><i className="material-icons">description</i></Link>
 				</div>
 
 			</div>

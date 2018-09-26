@@ -10,6 +10,11 @@ export class Invoices extends Component {
 		invoices: [],
 	};
 
+	componentDidMount = () => {
+
+	}
+
+
 	setParID = (parID) => {
 		this.setState({ parID: parID });
 	}
@@ -32,6 +37,7 @@ export class Invoices extends Component {
 					setParID={this.setParID}
 					setParName={this.setParName}
 					setInvoices={this.setInvoices}
+					autoLinkId={this.props.autoLinkId}
 				/>
 				<InvoicesResults
 					parID={parID}

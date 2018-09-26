@@ -5,10 +5,42 @@ import { parentsAPI } from '../../utils/api/index';
 
 export class ParLinker extends Component {
 	state = {
-		parIDtwo: '',
+		parIDtwo: this.props.autoLinkId || '',
 		parName: 'Please link Parent ID',
 		parPhone: 'Please link Parent ID',
 		parEmail: 'Please link Parent ID',
+	}
+
+	componentDidMount = () => {
+		if (this.props.autoLinkId) {
+			$('.link-btn i').addClass('animated infinite flip');
+			$('.link-btn a').addClass('disabled');
+			parentsAPI.getOneParentByIdTwo(this.props.autoLinkId)
+				.then((data) => {
+					let parent = data.data[0]
+					$('.link-btn i').removeClass('animated infinite flip');
+					$('.link-btn a').removeClass('disabled');
+					if (data.data.length === 0) {
+						return window.Materialize.toast(`No parent found with ID: ${this.props.autoLinkId}`, 5000, 'animated bounceInUp red darken-2')
+					}
+					else window.Materialize.toast(`${parent.info.name.dFull} linked`, 5000, 'animated bounceInUp green darken-2');
+					$('#parIDtwo').removeClass('invalid');
+					$('#parName').addClass('valid');
+					$('#parIDtwo').addClass('valid');
+					$('#parPhone').addClass('valid');
+					$('#parEmail').addClass('valid');
+					this.setState({ parIDtwo: this.state.parIDtwo, parID: parent.id, parName: parent.info.name.dFull, parPhone: parent.info.contact.phone, parEmail: parent.info.contact.email });
+					this.props.setParID(parent.id)
+					this.props.setParName(parent.info.name.dFull)
+					if (this.props.setInvoices) this.props.setInvoices(parent.invoices);
+				})
+				.catch((err) => {
+					console.log(err);
+					$('.link-btn i').removeClass('animated infinite flip');
+					$('.link-btn a').removeClass('disabled');
+					window.Materialize.toast(`Error searching ParentID: ${err.response.data.name} `, 5000, 'animated bounceInUp red darken-2');
+				});
+		};
 	}
 
 	handleChange = (e) => {
@@ -40,7 +72,6 @@ export class ParLinker extends Component {
 		$('.link-btn a').addClass('disabled');
 		parentsAPI.getOneParentByIdTwo(this.state.parIDtwo)
 			.then((data) => {
-				console.log(data);
 				let parent = data.data[0]
 				$('.link-btn i').removeClass('animated infinite flip');
 				$('.link-btn a').removeClass('disabled');

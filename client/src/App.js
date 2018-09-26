@@ -14,6 +14,7 @@ import { Invoices } from "./pages/Invoices";
 import { CornerImage } from "./components/CornerImage";
 import { TabDetails } from "./components/TabDetails";
 import $ from 'jquery';
+import { EPROTONOSUPPORT } from "constants";
 
 export class App extends Component {
   state = {
@@ -105,9 +106,10 @@ export class App extends Component {
                       <Invoices />
                     )
                   }} />
-                  <Route exact path="/invoices/:idtwo" render={() => {
+                  <Route exact path="/invoices/:idtwo" render={(props) => {                    
                     return (
-                      <Invoices />
+                      <Invoices
+                        autoLinkId={props.match.params.idtwo} />
                     )
                   }} />
                   {/* Pointofsale Route */}

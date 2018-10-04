@@ -28,8 +28,7 @@ export class InvoiceModal extends Component {
 	}
 
 	render() {
-		const invoice = this.props.invoice;
-		const parent = this.props.invoice.parent;
+		const invoice = this.props.invoice;		
 		
 		const formatDate = (date) => {
 			const dateSplit = date.split('-')

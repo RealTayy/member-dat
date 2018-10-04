@@ -35,18 +35,19 @@ export class StudentSearch extends Component {
 
   handleSearch = (e) => {
     let searchQuery = {};
+    let filter = {};
     // If user inputed value in search field then add field's value to searchQuery object
-    if (this.state.stuID) searchQuery["idtwo"] = this.state.id;
+    if (this.state.stuID) searchQuery["idtwo"] = this.state.stuID;
     if (this.state.stuFirst) searchQuery["info.name.first"] = this.state.stuFirst;
     if (this.state.stuLast) searchQuery["info.name.last"] = this.state.stuLast;
-    if (this.state.beltrank) searchQuery["enrollment.beltrank"] = this.state.beltrank;
+    if (this.state.beltrank) filter["enrollment.beltRank"] = this.state.beltrank;
     // If user didn't fill in any search fields exit handleSearch and display toast
     if ($.isEmptyObject(searchQuery)) return window.Materialize.toast('You must enter in at least one search term', 5000, 'animated bounceInUp');
     // Button goes to "Working" animation
     $('.student-searchbtn i').addClass('animated infinite flip');
     $('.student-searchbtn a').addClass('disabled');
     // Get array of data from API baed on searchQuery
-    studentsAPI.getSomeStudents(searchQuery)
+    studentsAPI.getSomeStudents(searchQuery, filter)
       .then((data) => {
         // Button finishes "Working" animation
         $('.student-searchbtn i').removeClass('animated infinite flip');
@@ -54,7 +55,7 @@ export class StudentSearch extends Component {
         // If no data returned exit handleSearch and display toast
         if (data.data.length === 0) return window.Materialize.toast(`No students found please redefined search`, 5000, 'animated bounceInUp');
         // Else pass data back to parent component and display toast
-        else {          
+        else {
           this.props.setStuSearchResults(data.data);
           window.Materialize.toast(`Search complete! Returned ${data.data.length} results`, 5000, 'animated bounceInUp green darken-2')
         };

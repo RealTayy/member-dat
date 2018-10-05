@@ -4,19 +4,32 @@ import { DashSimpleCard } from './DashSimpleCard';
 export class DashQuickInfo extends Component {
 
 	state = {
-		parentNum: 0,
-		studentNum: 0,
-		invoiceNum: 0,
+		parentNum: 15,
+		studentNum: 11,
+		invoiceNum: 12,
 	};
 
 	simpleCardArr = [
 		{
-			title: 'Parents',
-			subtitle: 'number of',
+			header: 'PARENTS',
+			preheader: 'ACTIVE',
 			number: this.state.parentNum,
-			bgColor: '#000000',
-			color: '#ffffff',
-			icon: 'contact'
+			bgColor: 'blue',
+			icon: 'contacts'
+		},
+		{
+			header: 'STUDENTS',
+			preheader: 'ACTIVE',
+			number: this.state.studentNum,
+			bgColor: 'green',
+			icon: 'directions_walk'
+		},
+		{
+			header: 'INVOICES',
+			preheader: 'UNPAID',
+			number: this.state.invoiceNum,
+			bgColor: 'red',
+			icon: 'receipt'
 		},
 	]
 
@@ -27,11 +40,10 @@ export class DashQuickInfo extends Component {
 					{this.simpleCardArr.map((data, i) => {
 						return <DashSimpleCard
 							key={i}
-							title={data.title}
-							subtitle={data.subtitle}
+							header={data.header}
+							preheader={data.preheader}
 							number={data.number}
 							bgColor={data.bgColor}
-							color={data.color}
 							icon={data.icon}
 						/>
 					})}

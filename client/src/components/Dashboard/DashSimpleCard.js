@@ -4,7 +4,6 @@ import './DashSimpleCard.css';
 
 export class DashSimpleCard extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className={`simple-card col s12 trans-card z-depth-2 ${this.props.bgColor} darken-1`}>
         <div className="card-info-col">

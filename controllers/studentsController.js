@@ -30,8 +30,11 @@ const StudentsController = {
 			.catch((err) => { console.log(err); res.status(422).json(err) });
 	},
 	findSomeRegexPop: function (req, res) {
-		// Convert query to regex query
-		for (let key in req.query) { req.query[key] = { $regex: `^${req.query[key]}` } }
+		// Convert query to regex query except isActive
+		for (let key in req.query) {
+			if (key === 'isActive') { }
+			else { req.query[key] = { $regex: `^${req.query[key]}` } }
+		}
 		Students
 			.find(req.query)
 			.populate('enrollment')

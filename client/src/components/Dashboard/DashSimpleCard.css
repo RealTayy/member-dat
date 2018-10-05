@@ -1,0 +1,52 @@
+/* /components/Dashboard/DashSimpleCard.css */
+
+.simple-card {
+  color: #fff;
+  /* height: calc(144px + 3rem); */
+  position: relative;
+  padding: .75rem !important;
+  margin-bottom: .75rem;
+}
+
+.simple-card-icon {
+  color: rgba(255, 255, 255, 0.15  );
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: calc(144px + 3rem);
+  z-index: 0;
+}
+
+.card-info-preheader {
+  position: relative;
+  left: 3px;
+  top: 5px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.card-info-header {
+  font-weight: bold;
+  line-height: 1;
+  font-size: 30px;
+}
+
+.card-info-number {
+  font-weight: bold;
+  line-height: .8;
+  font-size: 70px;
+}
+
+.card-buttons-col {
+  max-width: 60px;  
+}
+
+.card-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: .75rem !important;  
+  z-index: 1;
+}

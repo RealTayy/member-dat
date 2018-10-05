@@ -1,4 +1,5 @@
 MAKE WHEN CLICK TAB MAKE SIDE NAV SHIT UNACTIVE!!
+> Make corner image have user-select: none;
 
 // AT WORK TO DO LIST:
 > CHECK IF LOGIC TO FLAG SOMETHING AS UNPAID IN PARENT RESULT MAKES SENSE VS DUEDATE SHIT
@@ -27,6 +28,7 @@ MAKE WHEN CLICK TAB MAKE SIDE NAV SHIT UNACTIVE!!
 > hoverintent over results scrolls?
 > Add validator for phone field
 > Change Pointofsale to PointOfSale
+> Make  pixel off when scroll bar appear when hovering over email in parent search
 
 GAME PLAN:
 MemberDat - SP ref

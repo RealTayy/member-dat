@@ -31,7 +31,7 @@ export class ParentTableRow extends Component {
 			const unpaidInvoices = invoices.filter((invoice) => !invoice.isPaid);
 			if (unpaidInvoices.length > 0) return <div className="paid-status unpaid">{unpaidInvoices.length} UNPAID</div>
 			else return <div className="paid-status paid">paid</div>
-		}		
+		}
 
 		return (
 			<div className="row table-row">
@@ -55,7 +55,7 @@ export class ParentTableRow extends Component {
 						<Dropdown trigger={
 							<Button className="btn-large btn-square open-students"><i className="material-icons">directions_walk</i></Button>
 						}>
-							{data.students.map((student, i) => {								
+							{data.students.map((student, i) => {
 								return <NavItem key={i} data-student={i} onClick={this.handleClickStudent}>{student.info.name.dFull}</NavItem>
 							})}
 						</Dropdown>

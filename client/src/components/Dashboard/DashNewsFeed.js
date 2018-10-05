@@ -12,7 +12,9 @@ export class DashNewsFeed extends Component {
 		return (
 			<div className="row">
 				<div className="col s12">
-					DashNewsFeed
+					<div className="dash-news-feed-col col s12 trans-card z-depth-2">
+						DashNewsFeed
+					</div>
 				</div>
 			</div>
 		)

@@ -19,6 +19,9 @@ export default {
 		console.log(formattedData);
 		return axios.post('/api/invoices', formattedData);
 	},
+	getSomeInvoices: function (query) {
+		return axios.get('/api/invoices', { params: query });
+	},
 	updateByID: function (id, invoiceData) {
 		return axios.put(`/api/invoices/${id}`, invoiceData);
 	}

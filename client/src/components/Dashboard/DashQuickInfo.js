@@ -4,19 +4,22 @@ import { parentsAPI, studentsAPI, invoicesAPI } from '../../utils/api';
 
 export class DashQuickInfo extends Component {
 	state = {
-		parentNum: 15,
-		studentNum: 11,
-		invoiceNum: 12,
+		parentNum: 0,
+		studentNum: 0,
+		invoiceNum: 0,
 	};
 
 	componentDidMount = () => {
 		parentsAPI.getSomeParents({ 'isActive': true })
 			.then((parents) => { this.setState({ parentNum: parents.data.length }) })
-			.catch((err) => { console.log(err); })
+			.catch((err) => { console.log(err) })
 		studentsAPI.getSomeStudents({ 'isActive': true })
 			.then((students) => { this.setState({ studentNum: students.data.length }) })
-			.catch((err) => { console.log(err); })
-			
+			.catch((err) => { console.log(err) })
+		invoicesAPI.getSomeInvoices({ 'isPaid': false })
+			.then((invoices) => { this.setState({ invoiceNum: invoices.data.length }) })
+			.catch((err) => { console.log(err) })
+
 	}
 
 

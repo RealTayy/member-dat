@@ -4,7 +4,7 @@ export default {
   getAllParents: function () {
     return axios.get('/api/parents');
   },
-  getSomeParents: function (query) {    
+  getSomeParents: function (query) {
     return axios.get('/api/parents/', { params: query });
   },
   getOneParentById: function (id) {

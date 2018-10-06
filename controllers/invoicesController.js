@@ -20,6 +20,12 @@ const parentsController = require('./parentsController')
 |*  Methods for controller *|
 |***************************/
 const InvoicesController = {
+	findSomeExact: function (req, res) {
+		Invoices
+			.find(req.query || {})
+			.then((invoicesModel) => res.json(invoicesModel))
+			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
 	create: function (req, res) {
 		console.log(req.body)
 		// Get next custom invoiceID from counters collections

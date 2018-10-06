@@ -13,7 +13,7 @@ const invoicesController = require('../../controllers/invoicesController.js');
 
 // Matches with '/api/invoices' this is defined in '../index.js'
 router.route('/')
-	// .get(invoicesController.findSomeRegex)
+	.get(invoicesController.findSomeExact)
 	.post(invoicesController.create);
 
 // Matches with '/api/invoices/:id' this is defined in '../index.js'

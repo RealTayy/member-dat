@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { DashNewsCard } from './DashNewsCard';
 
 export class DashNewsFeed extends Component {
 
@@ -11,10 +12,10 @@ export class DashNewsFeed extends Component {
 	render() {
 		return (
 			<div className="row">
-				<div className="col s12">
-					<div className="dash-news-feed-col col s12 trans-card z-depth-2">
-						DashNewsFeed
-					</div>
+				<div className="dash-news-feed-col col s12">
+
+					<DashNewsCard />
+
 				</div>
 			</div>
 		)

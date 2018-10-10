@@ -28,3 +28,19 @@
 .news-header .material-icons {
   pointer-events: none;
 }
+
+.news-header.expanded .news-header-collapse .material-icons::after {  
+  content: 'expand_more';
+}
+
+.news-header.collapsed .news-header-collapse .material-icons::after {  
+  content: 'expand_less';
+}
+
+.news-header.expanded .news-context {
+  height: initial;
+}
+
+.news-header.collapsed .news-context {
+  height: 0;
+}

@@ -1,7 +1,7 @@
 /* /components/Dashboard/DashNewsCard.css */
 
-.news-header {  
-  margin-left: -0.75rem;  
+.news-header {
+  margin-left: -0.75rem;
   margin-right: -0.75rem;
   height: 48px;
   line-height: 48px;
@@ -18,7 +18,7 @@
 .news-header-collapse {
   cursor: pointer;
   width: 48px;
-  height: 48px;  
+  height: 48px;
   background: #F49738;
   display: flex;
   align-items: center;
@@ -29,18 +29,22 @@
   pointer-events: none;
 }
 
-.news-header.expanded .news-header-collapse .material-icons::after {  
+.news-card.collapsed .news-header-collapse .material-icons::after {
+  content: 'keyboard_arrow_left';
+}
+
+.news-card.expanded .news-header-collapse .material-icons::after {
   content: 'expand_more';
 }
 
-.news-header.collapsed .news-header-collapse .material-icons::after {  
-  content: 'expand_less';
+.news-card .news-context {
+  transition-duration: .3s;
+  transition-property: height;
+  overflow:hidden;
 }
 
-.news-header.expanded .news-context {
-  height: initial;
+.news-card.expanded .news-context {
 }
 
-.news-header.collapsed .news-context {
-  height: 0;
+.news-card.collapsed .news-context {
 }

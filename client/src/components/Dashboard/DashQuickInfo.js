@@ -4,9 +4,9 @@ import { parentsAPI, studentsAPI, invoicesAPI } from '../../utils/api';
 
 export class DashQuickInfo extends Component {
 	state = {
-		parentNum: 0,
-		studentNum: 0,
-		invoiceNum: 0,
+		parentNum: '0',
+		studentNum: '0',
+		invoiceNum: '0',
 	};
 
 	componentDidMount = () => {
@@ -19,11 +19,18 @@ export class DashQuickInfo extends Component {
 		invoicesAPI.getSomeInvoices({ 'isPaid': false })
 			.then((invoices) => { this.setState({ invoiceNum: invoices.data.length }) })
 			.catch((err) => { console.log(err) })
-
 	}
 
 	render() {
 		const simpleCardArr = [
+			{
+				header: 'NEWSFEED',
+				preheader: 'MY',
+				number: ``,
+				bgColor: 'blue-grey',
+				icon: 'dashboard',
+				action: () => console.log('newsfeed'),
+			},
 			{
 				header: 'PARENTS',
 				preheader: 'ACTIVE',

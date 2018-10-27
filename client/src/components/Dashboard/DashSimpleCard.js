@@ -17,7 +17,7 @@ export class DashSimpleCard extends Component {
 		  className="card-button btn-large btn-square waves-effect waves-light open-test z-depth-2"
 		  onClick={this.handleClick}
 		>
-          <i className="material-icons">menu</i>
+          <i className="material-icons">list</i>
         </Button>
         <i className="simple-card-icon material-icons">{this.props.icon}</i>
       </div>

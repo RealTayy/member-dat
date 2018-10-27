@@ -22,7 +22,6 @@ export class DashQuickInfo extends Component {
 
 	}
 
-
 	render() {
 		const simpleCardArr = [
 			{
@@ -30,21 +29,24 @@ export class DashQuickInfo extends Component {
 				preheader: 'ACTIVE',
 				number: this.state.parentNum,
 				bgColor: 'blue',
-				icon: 'contacts'
+				icon: 'contacts',
+				action: () => console.log('parent'),
 			},
 			{
 				header: 'STUDENTS',
 				preheader: 'ACTIVE',
 				number: this.state.studentNum,
 				bgColor: 'green',
-				icon: 'directions_walk'
+				icon: 'directions_walk',
+				action: () => console.log('student'),
 			},
 			{
 				header: 'INVOICES',
 				preheader: 'UNPAID',
 				number: this.state.invoiceNum,
 				bgColor: 'red',
-				icon: 'receipt'
+				icon: 'receipt',
+				action: () => console.log('invoice'),
 			},
 		]
 		return (
@@ -58,6 +60,7 @@ export class DashQuickInfo extends Component {
 							number={data.number}
 							bgColor={data.bgColor}
 							icon={data.icon}
+							action={data.action}
 						/>
 					})}
 				</div>

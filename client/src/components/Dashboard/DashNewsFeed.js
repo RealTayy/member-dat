@@ -14,7 +14,7 @@ export class DashNewsFeed extends Component {
 			<div className="row">
 				<div className="dash-news-feed-col col s12">
 
-					<DashNewsCard />
+					<DashNewsCard />					
 
 				</div>
 			</div>

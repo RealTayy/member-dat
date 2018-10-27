@@ -1,5 +1,9 @@
 /* /components/Dashboard/DashNewsCard.css */
 
+.news-card {
+	margin-bottom: 1.5rem;
+}
+
 .news-header {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
@@ -30,7 +34,7 @@
 }
 
 .news-card.collapsed .news-header-collapse .material-icons::after {
-  content: 'keyboard_arrow_left';
+  content: 'expand_less';
 }
 
 .news-card.expanded .news-header-collapse .material-icons::after {
@@ -41,10 +45,4 @@
   transition-duration: .3s;
   transition-property: height;
   overflow:hidden;
-}
-
-.news-card.expanded .news-context {
-}
-
-.news-card.collapsed .news-context {
 }

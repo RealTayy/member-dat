@@ -5,18 +5,19 @@ import $ from 'jquery';
 export class DashNewsCard extends Component {
   handleCollapse(e) {
     const $card = $(e.target).parent().parent();
-	const $header = $(e.target).parent();
-	const $context = $card.find('.news-context');
-	const initHeight = ($context[0].scrollHeight);$context.height(`${initHeight}px`);
+    const $header = $(e.target).parent();
+    const $context = $card.find('.news-context');
+    const initHeight = ($context[0].scrollHeight);
+    $context.height(`${initHeight}px`);
     if ($card.hasClass('expanded')) {
       $card.removeClass('expanded');
       $card.addClass('collapsed');
-	  $context.height('0px');
+      $context.height('0px');
     } else {
       $card.removeClass('collapsed');
       $card.addClass('expanded');
-	  $context.height(`${initHeight}px`);
-    }		
+      $context.height(`${initHeight}px`);
+    }
   }
 
   render() {
@@ -31,17 +32,17 @@ export class DashNewsCard extends Component {
           </div>
         </div>
         <div className="news-context ">
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-			<div>1. This Dashboard's functionality</div>
-		</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+          <div>1. This Dashboard's functionality</div>
+        </div>
       </div>
     )
   }

@@ -57,6 +57,13 @@ const StudentsController = {
 				res.json(studentsModel)
 			})
 	},
+	updateByIdTwo: function (req, res) {
+		console.log(req.params.id, req.body);
+		Students
+			.findOneAndUpdate({ idtwo: req.params.id }, req.body)
+			.then((studentsModel) => res.json(studentsModel))
+			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
 	create: function (req, res) {
 		console.log(req.body);
 		// Get next custom studentID from counters collection

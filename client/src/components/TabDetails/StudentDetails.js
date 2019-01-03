@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './StudentDetails.css';
 import $ from 'jquery';
-import { parentsAPI } from '../../utils/api';
+import { parentsAPI, studentsAPI } from '../../utils/api';
 
 export class StudentDetails extends Component {
 	state = {
@@ -56,7 +56,7 @@ export class StudentDetails extends Component {
 
 	componentWillMount() {
 		const data = this.props.data;
-		
+
 		this.setState({
 			first: data.info.name.dFirst,
 			last: data.info.name.dLast,
@@ -103,14 +103,41 @@ export class StudentDetails extends Component {
 		this.setState({ [e.target.id]: rate });
 	}
 
-	handleSubmit = (e) => {
-		window.Materialize.toast(`Sorry! This function not yet implemented`, 5000, 'animated bounceInUp red darken-2');
+	handleUpdateStudent = (e) => {
+		// If all required fields not filled in exit handleSubmit and display toast
+		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
+		// Button goes to "Working" animation
+		$('.submit-btn i').addClass('animated infinite flip');
+		$('.submit-btn a').addClass('disabled');
+		// Submit this.state to API to updateStudent
+		studentsAPI.updateStudent(this.state)
+			.then((data) => {
+				// Button finishes "Working" animation
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				// Console log response data and display Success toast
+				let student = data.data;
+				console.log(data);
+				window.Materialize.toast(`${student.info.name.dFull} successfully updated`, 5000, 'animated bounceInUp green darken-2');
+			})
+			.catch((err) => {
+				// Button finishes "Working" animation
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				// If error then display generic error toast
+				console.log(err)
+				window.Materialize.toast(`Error updating student`, 5000, 'animated bounceInUp red darken-2');
+			});
+	}
+
+	handleSubmit = (e) => {		
+		window.Materialize.toast(`Sorry! This function not yet implemssented`, 5000, 'animated bounceInUp red darken-2');
 	}
 
 	handleClickParent = (e) => {
 		parentsAPI.getOneParentByIdTwo(this.props.data.parent.idtwo)
-		.then((data) => { this.props.pushTab(data.data[0]); })
-		.catch((err) => { console.log(err); window.Materialize.toast(`Error looking up Parent`, 5000, 'animated bounceInUp red darken-2') });
+			.then((data) => { this.props.pushTab(data.data[0]); })
+			.catch((err) => { console.log(err); window.Materialize.toast(`Error looking up Parent`, 5000, 'animated bounceInUp red darken-2') });
 	}
 
 	allRequiredFilled = () => {
@@ -214,7 +241,7 @@ export class StudentDetails extends Component {
 								</div>
 							</div>
 							<div className="submit-btn center-align">
-								<a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Update<i className="material-icons right">person_add</i></a>
+								<a className="waves-effect waves-light btn-large" onClick={this.handleUpdateStudent}>Update<i className="material-icons right">person_add</i></a>
 							</div>
 						</form>
 					</div>

@@ -37,5 +37,26 @@ export default {
 			parent: studentData.parID
 		};
 		return axios.post('api/students', formattedData);
+	},
+	updateStudent: function (studentData) {
+		let formattedData = {
+			info: {
+				name: {
+					first: studentData.first,
+					last: studentData.last,
+				},
+				dob: {
+					full: studentData.dob,
+				},
+				startDate: {
+					full: studentData.startDate,
+				},
+				contact: {
+					phone: studentData.phone,
+				},
+				school: studentData.school,
+			},
+		};		
+		return axios.put(`api/students/idtwo/${studentData.idtwo}`, formattedData);
 	}
 }

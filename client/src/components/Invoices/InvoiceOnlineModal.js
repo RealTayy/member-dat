@@ -18,14 +18,14 @@ export class InvoiceOnlineModal extends Component {
 		window.Materialize.toast(`Sorry! This feature not yet implemented`, 5000, 'animated bounceInUp red darken-2');
 	}
 
-	render() {
+	render() {		
 		return (
 			<div className="container">
 				<div className="center-align">
 					<h4>Please Enter Card Information</h4>
 				</div>
 				<div className="row">
-					<form class="col s12 center-align">
+					<form className="col s12 center-align">
 						<div className="input-field col s6">
 							<input
 								id="cardFirstName" type="text" className="validate"
@@ -68,7 +68,7 @@ export class InvoiceOnlineModal extends Component {
 							/>
 							<label htmlFor="cardZipCode">Zip Code</label>
 						</div>
-						<a onClick={this.handleClick} class="waves-effect waves-light btn btn-large">Submit Payment<i class="material-icons right">send</i></a>
+						<a onClick={this.handleClick} className="waves-effect waves-light btn btn-large">Submit Payment<i className="material-icons right">send</i></a>
 					</form>
 				</div>
 			</div>

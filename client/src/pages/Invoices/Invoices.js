@@ -31,6 +31,7 @@ export class Invoices extends Component {
 		const parID = this.state.parID;
 		const parName = this.state.parName;
 		const invoices = this.state.invoices;
+		const setInvoices = this.setInvoices;
 		return (
 			<div className="row">
 				<ParLinker
@@ -43,6 +44,7 @@ export class Invoices extends Component {
 					parID={parID}
 					parName={parName}
 					invoices={invoices}
+					setInvoices={setInvoices}
 				/>
 			</div>
 		)

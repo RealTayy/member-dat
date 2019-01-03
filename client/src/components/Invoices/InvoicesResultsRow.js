@@ -29,7 +29,7 @@ export class InvoicesResultsRow extends Component {
 				, day = dateSplit[2]
 			return `${month}-${day}-${year}`
 		}
-
+		
 		return (
 			<div className="row table-row">
 				<div className="invoice-col left">
@@ -48,9 +48,12 @@ export class InvoicesResultsRow extends Component {
 				</div>
 				<div className="detail-col col right">
 					<Modal
-						trigger={<a className="waves-effect waves-light btn-large open-detail">Details <i className="material-icons right">description</i></a>}>
+						trigger={<a className="waves-effect waves-light btn-large open-detail">Details <i className="material-icons right">description</i></a>}
+					>
 						<InvoiceModal
+							setInvoices={this.props.setInvoices}
 							invoice={invoice}
+							parID={this.props.parID}
 						/>
 					</Modal>
 				</div>

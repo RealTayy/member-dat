@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './InvoiceModal.css';
 import { Button, Modal, Dropdown, NavItem } from 'react-materialize'
 import { InvoiceOnlineModal } from '.';
-import { invoicesAPI } from '../../utils/api/index';
+import { invoicesAPI, parentsAPI } from '../../utils/api/index';
 import $ from 'jquery';
 import moment from 'moment';
 
@@ -18,7 +18,18 @@ export class InvoiceModal extends Component {
 		invoicesAPI
 			.updateByID(id, updateObject)
 			.then((data) => {
-				console.log(data)
+				// TODO: NOTE TO MYSELF FROM PAST ME.
+				// Wow you lazy POS you actually did this you little lazy fk. You actually just yolo'd in two queries to the same document. LMAO
+				parentsAPI
+					.getOneParentById(this.props.parID)
+					.then((data) => {
+						parentsAPI.getOneParentByIdTwo(data.data.idtwo)
+							.then((data) => {
+								const invoices = data.data[0].invoices;
+								this.props.setInvoices(invoices);
+							});
+					})
+					.catch((err) => console.log(err));
 				return window.Materialize.toast(`Payment updated sucessfully!`, 5000, 'animated bounceInUp green darken-2');
 			})
 			.catch((err) => {
@@ -28,8 +39,9 @@ export class InvoiceModal extends Component {
 	}
 
 	render() {
-		const invoice = this.props.invoice;		
-		
+		console.log(this.props)
+		const invoice = this.props.invoice;
+
 		const formatDate = (date) => {
 			const dateSplit = date.split('-')
 				, year = dateSplit[0]
@@ -69,7 +81,8 @@ export class InvoiceModal extends Component {
 						id='online-pay'
 						bottomSheet
 						trigger={<a className="waves-effect waves-light btn btn-large">Pay Online<i className="material-icons right">web</i></a>}>
-						<InvoiceOnlineModal />
+						<InvoiceOnlineModal
+							setInvoices={this.props.setInvoices} />
 					</Modal>
 					<h5>Notes</h5>
 					<div className="modal-note">{invoice.note}</div>

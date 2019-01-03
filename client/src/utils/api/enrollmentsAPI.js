@@ -41,7 +41,24 @@ export default {
 			length: enrollmentData.length,
 			startDate: enrollmentData.startDate,
 			willRenew: (enrollmentData.rateFee === "0.00") ? false : true,
-		}		
+		}
 		return axios.post('api/enrollments', formattedData);
+	},
+	updateEnrollment: function (enrollmentData) {		
+		console.log(enrollmentData);
+		// Formats enrollmentData into formattedData to be passes to back-end API		
+		const formattedData = {
+			dojo: enrollmentData.dojo,
+			beltRank: enrollmentData.beltRank,
+			type: enrollmentData.type,
+			initFee: enrollmentData.initFee,
+			rateFee: enrollmentData.rateFee,
+			expireDate: enrollmentData.expDate,
+			length: enrollmentData.length,
+			startDate: enrollmentData.startDate,
+			willRenew: enrollmentData.willRenew,
+		}
+		return axios.put(`api/enrollments/${enrollmentData.enrollmentID}`, formattedData);
 	}
+
 }

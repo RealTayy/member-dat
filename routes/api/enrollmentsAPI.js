@@ -17,13 +17,13 @@ router.route('/')
 	.post(enrollmentsController.create);
 
 // Matches with '/api/enrollments/:id' this is defined in '../index.js'
-// router.route('/:id')
-// .get(enrollmentsController.findById)
-// .put(enrollmentsController.update)
+router.route('/:id')
+	// .get(enrollmentsController.findById)
+	.put(enrollmentsController.update);
 // .delete(enrollmentsController.remove);
 
 // router.route('/idtwo/:id')
-// .get(enrollmentsController.findByIdTwo);
+// .put(enrollmentsController.updateByIdTwo);
 
 /***********|
 |* EXPORTS *| 

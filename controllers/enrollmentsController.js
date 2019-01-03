@@ -33,6 +33,12 @@ const EnrollmentsController = {
 			.then(() => Enrollments.insertMany(seed))
 			.then((enrollmentsModel) => { return enrollmentsModel })
 			.catch((err) => console.log(err));
+	},
+	update: function (req, res) {		
+		Enrollments
+			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.then((enrollmentsModel) => res.json(enrollmentsModel))
+			.catch((err) => { console.log(err); res.status(422).json(err) });
 	}
 }
 

@@ -47,8 +47,7 @@ export class App extends Component {
           })
           .catch((err) => console.log(err));
       }
-      else {
-        console.log('YOU ARE NOT SUPPOSE TO BE HERE')
+      else {        
         studentsAPI.getOneStudentByIdTwo(idtwo)
           .then((data) => {
             console.log(data.data[0]);
@@ -61,8 +60,7 @@ export class App extends Component {
 
     }
     // IF not replacing a tab and tab doesn't exist then push it
-    else if (newTabs.filter((el) => el.id === tabData.id).length === 0) {
-      console.log('YOU ARE NOT SUPPOSE TO BE HERE')
+    else if (newTabs.filter((el) => el.id === tabData.id).length === 0) {      
       newTabs.push(tabData);
       this.setState({ tabs: newTabs });
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './StudentDetails.css';
 import $ from 'jquery';
-import { parentsAPI, studentsAPI } from '../../utils/api';
+import { parentsAPI, studentsAPI, invoicesAPI, enrollmentsAPI } from '../../utils/api';
 
 export class StudentDetails extends Component {
 	state = {
@@ -20,6 +20,7 @@ export class StudentDetails extends Component {
 		expDate: '',
 		willRenew: true,
 		idtwo: '',
+		enrollmentID: '',
 	}
 
 	dojoArr = [
@@ -56,6 +57,7 @@ export class StudentDetails extends Component {
 
 	componentWillMount() {
 		const data = this.props.data;
+		console.log(data)
 
 		this.setState({
 			first: data.info.name.dFirst,
@@ -72,6 +74,7 @@ export class StudentDetails extends Component {
 			expDate: data.enrollment.expireDate,
 			willRenew: data.enrollment.willRenew,
 			idtwo: data.idtwo,
+			enrollmentID: data.enrollment._id,
 		})
 	}
 
@@ -94,6 +97,17 @@ export class StudentDetails extends Component {
 		this.setState({ [e.target.id]: (e.target.value === 'false') ? 'true' : 'false' });
 	}
 
+	handleChangeDropdown = (e) => {
+		const stateProperty = e.target.id.replace(/[0-9]/g, '');
+		console.log(stateProperty, e.target.value)
+		this.setState({ [stateProperty]: e.target.value });
+		if (e.target.value) {
+			$(`#${e.target.id}`).parent().children('input').addClass('valid');
+			$(`#${e.target.id}`).parent().children('input').removeClass('invalid');
+		}
+		else $(`#${e.target.id}`).parent().children('input').removeClass('valid');
+	}
+
 	handleBlur = (e) => {
 		if (e.target.value !== ''); $(`#${e.target.id}`).removeClass('invalid'); $(`#${e.target.id}`).addClass('valid');
 	}
@@ -104,7 +118,7 @@ export class StudentDetails extends Component {
 	}
 
 	handleUpdateStudent = (e) => {
-		// If all required fields not filled in exit handleSubmit and display toast
+		// If all required fields not filled in exit handleUpdateStudent and display toast
 		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
 		// Button goes to "Working" animation
 		$('.submit-btn i').addClass('animated infinite flip');
@@ -130,8 +144,26 @@ export class StudentDetails extends Component {
 			});
 	}
 
-	handleSubmit = (e) => {		
-		window.Materialize.toast(`Sorry! This function not yet implemssented`, 5000, 'animated bounceInUp red darken-2');
+	handleUpdateEnrollment = (e) => {
+		// If all required fields not filled in exit handleUpdateEnrollment and display toast
+		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
+		enrollmentsAPI.updateEnrollment(this.state)
+			.then((data) => {
+				// Button finishes "Working" animation
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				// Console log response data and display Success toast				
+				console.log(data);
+				window.Materialize.toast(`Enrollment successfully updated`, 5000, 'animated bounceInUp green darken-2');
+			})
+			.catch((err) => {
+				// Button finishes "Working" animation
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				// If error then display generic error toast
+				console.log(err)
+				window.Materialize.toast(`Error updating enrollment`, 5000, 'animated bounceInUp red darken-2');
+			});
 	}
 
 	handleClickParent = (e) => {
@@ -326,7 +358,7 @@ export class StudentDetails extends Component {
 								</div>
 							</div>
 							<div className="submit-btn center-align">
-								<a className="waves-effect waves-light btn-large" onClick={this.handleSubmit}>Update<i className="material-icons right">person_add</i></a>
+								<a className="waves-effect waves-light btn-large" onClick={this.handleUpdateEnrollment}>Update<i className="material-icons right">person_add</i></a>
 							</div>
 						</form>
 					</div>

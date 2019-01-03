@@ -14,7 +14,7 @@ import { Invoices } from "./pages/Invoices";
 import { CornerImage } from "./components/CornerImage";
 import { TabDetails } from "./components/TabDetails";
 import $ from 'jquery';
-import { EPROTONOSUPPORT } from "constants";
+import { parentsAPI, studentsAPI } from "./utils/api";
 
 export class App extends Component {
   state = {
@@ -32,16 +32,45 @@ export class App extends Component {
     this.setState({ activeTab: tabID });
   }
 
-  pushTab = (tabData) => {
-    let newTabs = this.state.tabs.slice();
-    if (newTabs.filter((e) => e.id === tabData.id).length === 0) newTabs.push(tabData);
-    this.setState({ tabs: newTabs });
+  pushTab = (tabData, idtwo) => {
+    const newTabs = this.state.tabs.slice();
+    // if idtwo was passed in AKA replacing a tab
+    if (idtwo) {
+      const tabIndex = newTabs.map((el) => el.idtwo).indexOf(idtwo);
+      console.log(newTabs);
+      const parOrStu = (newTabs[tabIndex].idtwo.charAt(0));
+      if (parOrStu === "P") {
+        parentsAPI.getOneParentByIdTwo(idtwo)
+          .then((data) => {
+            newTabs[tabIndex] = data.data[0];
+            this.setState({ tabs: newTabs });
+          })
+          .catch((err) => console.log(err));
+      }
+      else {
+        console.log('YOU ARE NOT SUPPOSE TO BE HERE')
+        studentsAPI.getOneStudentByIdTwo(idtwo)
+          .then((data) => {
+            console.log(data.data[0]);
+            newTabs[tabIndex] = data.data[0];
+            this.setState({ tabs: newTabs });
+          })
+          .catch((err) => console.log(err));
+        this.setState({ tabs: newTabs });
+      }
+
+    }
+    // IF not replacing a tab and tab doesn't exist then push it
+    else if (newTabs.filter((el) => el.id === tabData.id).length === 0) {
+      console.log('YOU ARE NOT SUPPOSE TO BE HERE')
+      newTabs.push(tabData);
+      this.setState({ tabs: newTabs });
+    }
   }
 
   removeTab = (tabID) => {
     let newTabs = this.state.tabs.filter((tab) => tab.id !== tabID);
     this.setState({ tabs: newTabs });
-
   }
 
   parentOrStudentTabOpen() {
@@ -106,7 +135,7 @@ export class App extends Component {
                       <Invoices />
                     )
                   }} />
-                  <Route exact path="/invoices/:idtwo" render={(props) => {                    
+                  <Route exact path="/invoices/:idtwo" render={(props) => {
                     return (
                       <Invoices
                         autoLinkId={props.match.params.idtwo} />

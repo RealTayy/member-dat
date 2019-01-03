@@ -15,6 +15,7 @@ export class Tabbar extends Component {
 								data={tab}
 								setActiveTab={this.props.setActiveTab}
 								removeTab={this.props.removeTab}
+								pushTab={this.props.pushTab}
 							/>
 						})}
 					</ul>

@@ -207,8 +207,8 @@ const parentsSeed = [
 		],
 		invoices: [
 			new ObjectId('012345678901234567894010'),
-			new ObjectId('012345678901234567894010'),
-			new ObjectId('012345678901234567894010')
+			new ObjectId('012345678901234567894011'),
+			new ObjectId('012345678901234567894012')
 		]
 	},
 	{

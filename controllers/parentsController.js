@@ -108,6 +108,12 @@ const ParentsController = {
 	updatePromise: function (req, res) {
 		return Parents.findOneAndUpdate({ _id: req.params.id }, req.body)
 	},
+	updateByIdTwo: function (req, res) {
+		Parents
+			.findOneAndUpdate({ idtwo: req.params.id }, req.body)
+			.then((parentsModel) => res.json(parentsModel))
+			.catch((err) => { console.log(err); res.status(422).json(err) });
+	},
 	remove: function (req, res) {
 		Parents
 			.findById({ _id: req.params.id })

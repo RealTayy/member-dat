@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import 'jquery-ui';
 import { ParentStudentRow, ParentInvoiceRow } from '.';
+import { parentsAPI } from '../../utils/api';
 
 export class ParentDetails extends Component {
 	state = {
@@ -81,8 +82,28 @@ export class ParentDetails extends Component {
 	handleSubmit = (e) => {
 		// If all required fields not filled in exit handleSubmit and display toast
 		if (!this.allRequiredFilled()) return window.Materialize.toast('Please fill in all required * fields', 5000, 'animated bounceInUp');
-		// TODO: THIS LMAO
-		window.Materialize.toast(`Sorry! This function not yet implemented`, 5000, 'animated bounceInUp red darken-2');
+		// Button goes to "Working" animation
+		$('.submit-btn i').addClass('animated infinite flip');
+		$('.submit-btn a').addClass('disabled');
+		// Submit this.state to API to updateParent
+		parentsAPI.updateParent(this.state)
+			.then((data) => {
+				// Button finishes "Working" animation
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				// Console log response data and display Success toast
+				let parent = data.data;
+				console.log(data);
+				window.Materialize.toast(`${parent.info.name.dFull} successfully updated`, 5000, 'animated bounceInUp green darken-2');
+			})
+			.catch((err) => {
+				// Button finishes "Working" animation
+				$('.submit-btn i').removeClass('animated infinite flip');
+				$('.submit-btn a').removeClass('disabled');
+				// If error then display generic error toast
+				console.log(err)
+				window.Materialize.toast(`Error updating parent`, 5000, 'animated bounceInUp red darken-2');
+			});
 	}
 
 	allRequiredFilled = () => {
@@ -121,7 +142,6 @@ export class ParentDetails extends Component {
 
 	render() {
 		const data = this.props.data;
-		console.log(data);
 		return (
 			<div id={`${data.idtwo}`} className="detail-row row">
 				<div className="col s12 m7 row">
@@ -295,7 +315,7 @@ export class ParentDetails extends Component {
 							return <ParentInvoiceRow
 								key={i}
 								data={invoice}
-								idtwo={this.state.idtwo}								
+								idtwo={this.state.idtwo}
 								setActiveTab={this.props.setActiveTab}
 							/>
 						})}

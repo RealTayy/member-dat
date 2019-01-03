@@ -42,7 +42,19 @@
 }
 
 .news-card .news-context {
+  padding: 0 .75rem 0 .75rem;
   transition-duration: .3s;
   transition-property: height;
   overflow:hidden;
+}
+
+.news-card .news-context .news-point {
+  padding-bottom: .75rem;
+}
+
+.news-card .news-context .news-header {
+  color: #222;
+  line-height: 32px;
+  height: 32px;
+
 }

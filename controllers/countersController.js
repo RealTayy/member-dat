@@ -15,7 +15,7 @@ const CountersControllers = {
 	},
 	seed: function (seed) {
 		return Counters
-			.remove({})
+			.deleteMany({})
 			.then(() => Counters.insertMany(seed))
 			.then((dbModel) => { return dbModel })
 			.catch((err) => { console.log(err) });

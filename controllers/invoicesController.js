@@ -65,7 +65,7 @@ const InvoicesController = {
 	},
 	seed: function (seed) {
 		return Invoices
-			.remove({})
+			.deleteMany({})
 			.then(() => Invoices.insertMany(seed))
 			.then((invoicesModel) => { return invoicesModel })
 			.catch((err) => console.log(err));

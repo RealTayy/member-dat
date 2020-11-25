@@ -123,7 +123,7 @@ const ParentsController = {
 	},
 	seed: function (seed) {
 		return Parents
-			.remove({})
+			.deleteMany({})
 			.then(() => Parents.insertMany(seed))
 			.then((parentsModel) => { return parentsModel })
 			.catch((err) => console.log(err));

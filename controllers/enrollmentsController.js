@@ -29,12 +29,12 @@ const EnrollmentsController = {
 	},
 	seed: function (seed) {
 		return Enrollments
-			.remove({})
+			.deleteMany({})
 			.then(() => Enrollments.insertMany(seed))
 			.then((enrollmentsModel) => { return enrollmentsModel })
 			.catch((err) => console.log(err));
 	},
-	update: function (req, res) {		
+	update: function (req, res) {
 		Enrollments
 			.findOneAndUpdate({ _id: req.params.id }, req.body)
 			.then((enrollmentsModel) => res.json(enrollmentsModel))

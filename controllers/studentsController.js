@@ -91,7 +91,7 @@ const StudentsController = {
 	},
 	seed: function (seed) {
 		return Students
-			.remove({})
+			.deleteMany({})
 			.then(() => Students.insertMany(seed))
 			.then((studentsModel) => { return studentsModel })
 			.catch((err) => console.log(err));

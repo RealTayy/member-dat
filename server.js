@@ -21,7 +21,7 @@ const mongoose = require('mongoose');
 /* PROMISE LIBRARY */
 // Bluebird is a fully featured promise library with focus on features and performance
 const Promise = require('bluebird');
-// Replace mongoose's promise library 
+// Replace mongoose's promise library
 mongoose.Promise = Promise;
 
 /* BODY PARSERS */
@@ -41,11 +41,11 @@ const logger = require('morgan');
 app.use(logger('dev'));
 
 /*******************|
-|* SET UP DATABASE *| 
+|* SET UP DATABASE *|
 |*******************/
 // Connect to db
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/memberdatdb";
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection;
 
 // Logs error if mongoDB/mongoose runs into an error
@@ -59,11 +59,11 @@ db.on("error", (error) => {
 db.once("open", () => {
 	console.log("DB connection successful!");
 	console.log("Running Seeds...");
-	require('./seeds/index.js')();	
+	require('./seeds/index.js')();
 });
 
 /*****************|
-|* SET UP ROUTES *| 
+|* SET UP ROUTES *|
 |*****************/
 // Setup app to serve static files from React App depending on dev/prod
 if (process.env.NODE_ENV === 'production') {
@@ -75,7 +75,7 @@ const routes = require("./routes");
 app.use(routes);
 
 /*********************************|
-|* LISTEN FOR CONNECTION ON PORT *| 
+|* LISTEN FOR CONNECTION ON PORT *|
 |*********************************/
 app.listen(PORT, () => { console.log(`App listening on PORT: ${PORT}`) });
 
